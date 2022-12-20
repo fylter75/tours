@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="report_purchasequotation_inherit"
+		inherit_id="purchase.report_purchasequotation_document">
+
+		<xpath expr="//table/thead/tr/th[hasclass('text-center')]"
+			position="replace">
+			<th>
+				From
+			</th>
+			<th>
+				To
+			</th>
+		</xpath>
+
+		<xpath expr="//table/tbody/tr/td[hasclass('text-center')]"
+			position="replace">
+			<td>
+				<span t-field="order_line.from_date" />
+			</td>
+			<td>
+				<span t-field="order_line.to_date" />
+			</td>
+		</xpath>
+
+		<xpath expr="//div[hasclass('oe_structure')]"
+			position="before">
+			<table>
+				<tr>
+					<td>
+						<h4>
+							<b>
+								Passenger List
+							</b>
+						</h4>
+					</td>
+				</tr>
+			</table>
+			<table class="table table-condensed">
+				<tr>
+					<th>
+						Name
+					</th>
+					<th>
+						Age
+					</th>
+					<th>
+						Gender
+					</th>
+					<th>
+						Type
+					</th>
+					<th>
+						Nationality
+					</th>
+				</tr>
+				<t t-if="o.sale_order_id">
+					<tr t-foreach="o.sale_order_id.passenger_ids"
+						t-as="passenger_line">
+						<td>
+							<span t-field="passenger_line.partner_id.name" />
+						</td>
+						<td>
+							<span t-field="passenger_line.age" />
+						</td>
+						<td>
+							<span t-field="passenger_line.gender" />
+						</td>
+						<td>
+							<span t-field="passenger_line.type" />
+						</td>
+						<td>
+							<span t-field="passenger_line.country_id.name" />
+						</td>
+					</tr>
+				</t>
+			</table>
+		</xpath>
+	</template>
+</odoo>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+	
+		<record id="product_attribute_1" model="product.attribute">
+			<field name="name">Vehicle Type</field>
+		</record>
+		
+		<record id="product_attribute_value_1"
+			model="product.attribute.value">
+			<field name="name">Coaster</field>
+			<field name="attribute_id" ref="product_attribute_1" />
+		</record>
+		
+		<record id="product_attribute_value_2"
+			model="product.attribute.value">
+			<field name="name">7 seater</field>
+			<field name="attribute_id" ref="product_attribute_1" />
+		</record>
+		
+		<record id="product_attribute_value_3"
+			model="product.attribute.value">
+			<field name="name">15 seater</field>
+			<field name="attribute_id" ref="product_attribute_1" />
+		</record>
+		
+		<record id="product_attribute_value_4"
+			model="product.attribute.value">
+			<field name="name">30 seater</field>
+			<field name="attribute_id" ref="product_attribute_1" />
+		</record>
+		
+		<record id="product_attribute_value_5"
+			model="product.attribute.value">
+			<field name="name">50 seater</field>
+			<field name="attribute_id" ref="product_attribute_1" />
+		</record>
+
+		<record id="t_product_product_1" model="product.template">
+			<field name="name">Abu Dhabi 8 Hours</field>
+			<field name="list_price">95000.0</field>
+			
+			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_6" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">A0001</field>
+
+		</record>
+
+		<record id="service_cost_01" model="product.product">
+			<field name="default_code">A0002</field>
+			<field name="product_tmpl_id" ref="t_product_product_1" />
+
+		</record>
+		
+		<record id="service_cost_02" model="product.product">
+			<field name="default_code">A0003</field>
+			<field name="product_tmpl_id" ref="t_product_product_1" />
+
+		</record>
+
+		<record id="service_cost_03" model="product.product">
+			<field name="default_code">A0004</field>
+			<field name="product_tmpl_id" ref="t_product_product_1" />
+
+		</record>
+		
+		<record id="service_cost_04" model="product.product">
+			<field name="default_code">A0005</field>
+			<field name="product_tmpl_id" ref="t_product_product_1" />
+
+		</record>
+
+		<record id="product_attribute_line_1"
+			model="product.template.attribute.line">
+			<field name="product_tmpl_id" ref="t_product_product_1" />
+			<field name="attribute_id" ref="product_attribute_1" />
+			<field name="value_ids"
+				eval="[(6,0,[ref('product_attribute_value_1'),ref('product_attribute_value_2'),ref('product_attribute_value_3'),ref('product_attribute_value_4'), ref('product_attribute_value_5')])]" />
+		</record>
+
+		<record id="product_attribute_price_1"
+			model="product.template.attribute.value">
+			<field name="product_tmpl_id" ref="t_product_product_1" />
+			<field name="product_attribute_value_id" ref="product_attribute_value_2" />
+			<field name="price_extra">18.00</field>
+		</record>
+
+		<record id="product_attribute_price_2"
+			model="product.template.attribute.value">
+			<field name="product_tmpl_id" ref="t_product_product_1" />
+			<field name="product_attribute_value_id" ref="product_attribute_value_3" />
+			<field name="price_extra">20.00</field>
+		</record>
+
+		<record id="product_attribute_price_3"
+			model="product.template.attribute.value">
+			<field name="product_tmpl_id" ref="t_product_product_1" />
+			<field name="product_attribute_value_id" ref="product_attribute_value_4" />
+			<field name="price_extra">25.00</field>
+		</record>
+
+		<record id="product_attribute_price_4"
+			model="product.template.attribute.value">
+			<field name="product_tmpl_id" ref="t_product_product_1" />
+			<field name="product_attribute_value_id" ref="product_attribute_value_5" />
+			<field name="price_extra">30.00</field>
+		</record>
+
+		<record id="t_product_product_2" model="product.template">
+			<field name="name">Arrival Pick Up - DXB</field>
+			<field name="list_price">75000.0</field>
+			<!-- <field name="website_sequence">110</field>
+			<field name="website_published" eval="True" /> -->
+			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_6" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">Ar0001</field>
+			
+		</record>
+
+		<record id="t_product_product_demo" model="product.template">
+			<field name="name">Itinerary</field>
+			<field name="list_price">0.0</field>
+			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_11" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">Ar0011</field>
+			
+		</record>
+
+		<record id="service_AR_01" model="product.product">
+			<field name="default_code">Ar0002</field>
+			<field name="product_tmpl_id" ref="t_product_product_2" />
+			
+		</record>
+		
+		<record id="service_AR_02" model="product.product">
+			<field name="default_code">Ar0003</field>
+			<field name="product_tmpl_id" ref="t_product_product_2" />
+		</record>
+
+		<record id="service_AR_03" model="product.product">
+			<field name="default_code">Ar0004</field>
+			<field name="product_tmpl_id" ref="t_product_product_2" />
+		</record>
+		
+		<record id="service_AR_04" model="product.product">
+			<field name="default_code">Ar0005</field>
+			<field name="product_tmpl_id" ref="t_product_product_2" />
+		</record>
+
+		<record id="product_attribute_line_2"
+			model="product.template.attribute.line">
+			<field name="product_tmpl_id" ref="t_product_product_2" />
+			<field name="attribute_id" ref="product_attribute_1" />
+			<field name="value_ids"
+				eval="[(6,0,[ref('product_attribute_value_1'),ref('product_attribute_value_2'),ref('product_attribute_value_3'),ref('product_attribute_value_4'), ref('product_attribute_value_5')])]" />
+		</record>
+
+		<record id="product_attribute_price_5"
+			model="product.template.attribute.value">
+			<field name="product_tmpl_id" ref="t_product_product_2" />
+			<field name="product_attribute_value_id" ref="product_attribute_value_2" />
+			<field name="price_extra">18.00</field>
+		</record>
+
+		<record id="product_attribute_price_6"
+			model="product.template.attribute.value">
+			<field name="product_tmpl_id" ref="t_product_product_2" />
+			<field name="product_attribute_value_id" ref="product_attribute_value_3" />
+			<field name="price_extra">20.00</field>
+		</record>
+
+		<record id="product_attribute_price_7"
+			model="product.template.attribute.value">
+			<field name="product_tmpl_id" ref="t_product_product_2" />
+			<field name="product_attribute_value_id" ref="product_attribute_value_4" />
+			<field name="price_extra">25.00</field>
+		</record>
+
+		<record id="product_attribute_price_8"
+			model="product.template.attribute.value">
+			<field name="product_tmpl_id" ref="t_product_product_2" />
+			<field name="product_attribute_value_id" ref="product_attribute_value_5" />
+			<field name="price_extra">30.00</field>
+		</record>
+
+
+		<record id="t_product_product_3" model="product.product">
+			<field name="name">The Taj</field>
+			<field name="list_price">82000.0</field>
+<!-- 			<field name="website_published" eval="True" />
+ -->			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_9" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">TAJ0001</field>
+		</record>
+
+		<record id="t_product_product_4" model="product.product">
+			<field name="name">The Oberoi Grand</field>
+			<field name="list_price">65000.0</field>
+<!-- 			<field name="website_published" eval="True" />
+ -->			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_8" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">OB0001</field>
+		</record>
+
+		<record id="t_product_product_5" model="product.product">
+			<field name="name">Novotel Hotel</field>
+			<field name="list_price">73000.0</field>
+			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_7" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">N0001</field>
+		</record>
+
+		<record id="t_product_product_6" model="product.product">
+			<field name="name">Jaipur</field>
+			<field name="list_price">65000.0</field>
+			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_2" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">J0001</field>
+		</record>
+
+		<record id="t_product_product_7" model="product.product">
+			<field name="name">Mount Abu</field>
+			<field name="list_price">15000.0</field>
+			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_2" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">MA0001</field>
+		</record>
+
+		<record id="t_product_product_8" model="product.product">
+			<field name="name">Shimla</field>
+			<field name="list_price">85000.0</field>
+ 			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_2" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">S0001</field>
+		</record>
+
+		<record id="t_product_product_9" model="product.product">
+			<field name="name">Dessert Safari</field>
+			<field name="list_price">60000.0</field>
+			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_3" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">DS0001</field>
+		</record>
+
+		<record id="t_product_product_10" model="product.product">
+			<field name="name">Kutch</field>
+			<field name="list_price">9000.0</field>
+ 			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_3" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">KU0001</field>
+		</record>
+
+		<record id="t_product_product_11" model="product.product">
+			<field name="name">15 days visa</field>
+			<field name="list_price">15000.0</field>
+ 			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_4" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">VISA0001</field>
+		</record>
+		
+		<record id="t_product_product_12" model="product.product">
+			<field name="name">30 days visa</field>
+			<field name="list_price">30000.0</field>
+ 			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_4" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">VISA0002</field>
+		</record>
+		
+		<record id="t_product_product_13" model="product.product">
+			<field name="name">90 days visa</field>
+			<field name="list_price">75000.0</field>
+ 			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_4" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">VISA003</field>
+		</record>
+
+		<record id="t_product_product_14" model="product.product">
+			<field name="name">Breakfast</field>
+			<field name="list_price">1000.0</field>
+ 			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_5" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">BR0001</field>
+		</record>
+
+		<record id="t_product_product_15" model="product.product">
+			<field name="name">Coffee</field>
+			<field name="list_price">1000.0</field>
+ 			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_5" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">CF0001</field>
+		</record>
+
+		<record id="t_product_product_16" model="product.product">
+			<field name="name">Dinner</field>
+			<field name="list_price">1000.0</field>
+			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_5" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">DI0001</field>
+		</record>
+
+		<record id="t_product_product_17" model="product.product">
+			<field name="name">Guide FD 10 Hours</field>
+			<field name="list_price">10000.0</field>
+			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_10" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">GU0001</field>
+		</record>
+
+		<record id="t_product_product_18" model="product.product">
+			<field name="name">Tour Guide</field>
+			<field name="list_price">8000.0</field>
+			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_10" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">GU0002</field>
+		</record>
+
+		<record id="t_product_product_19" model="product.product">
+			<field name="name">Guide FD 5 Hours</field>
+			<field name="list_price">5000.0</field>
+			<field name="type">service</field>
+			<field name="categ_id" ref="product_category_10" />
+			<field name="uom_id" ref="uom.product_uom_unit" />
+			<field name="uom_po_id" ref="uom.product_uom_unit" />
+			<field name="default_code">GU0003</field>
+		</record>
+
+	</data>
+</odoo>

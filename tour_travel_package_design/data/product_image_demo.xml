@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+	
+		<record id="t_product_product_3" model="product.product">
+			<field name="image" type="base64"
+				file="tour_travel_package_design/static/src/img/thetaj.jpg" />
+		</record>
+
+		<record id="t_product_product_4" model="product.product">
+			<field name="image" type="base64"
+				file="tour_travel_package_design/static/src/img/oberoi.jpg" />
+		</record>
+
+		<record id="t_product_product_5" model="product.product">
+			<field name="image" type="base64"
+				file="tour_travel_package_design/static/src/img/novetol.jpg" />
+		</record>
+		s
+	</data>
+</odoo>
+
+
+
+

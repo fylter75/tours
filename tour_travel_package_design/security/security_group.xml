@@ -1,0 +1,9 @@
+<odoo>
+
+	<!-- Contract Approver group -->
+	<record id="tour_travel_package_design.group_contract_approver"
+		model="res.groups">
+		<field name="name">Contract Approver</field>
+	</record>
+
+</odoo>

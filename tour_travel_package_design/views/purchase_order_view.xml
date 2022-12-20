@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <record id ="purchase_order_view_extended" model="ir.ui.view">
+            <field name="name">Purchase Form</field>
+            <field name="model">purchase.order</field>
+            <field name ="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type ="xml">
+                <xpath expr="//form/sheet/group/group/field[@name='date_order']" position="after">
+                    <field name="arrival_date" options="{'disable_past_date' : True,'to_date':'return_date'}" required="1"/>
+                    <field name="return_date" options="{'disable_past_date' : True,'from_date':'arrival_date'}" required="1"/>
+                    <field name="sale_order_id" invisible="1"/>
+                    <field name="meal_plan"/>
+                    <field name="agreed_rate" />
+                </xpath>
+                <xpath expr="//field[@name='currency_id']" position="after">
+                    <field name="budget"/>
+                </xpath>    
+                <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='name']" position="after">
+                     <field name="from_date" required="1"/>
+                    <field name="to_date" required="1"/>
+                </xpath>
+                <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='product_uom']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/notebook/page/field/tree/field[@name='product_uom']" position="before">
+                    <field name="room_accupacy_id" invisible="1" />
+                    <field name="room_qty" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+    </odoo>
