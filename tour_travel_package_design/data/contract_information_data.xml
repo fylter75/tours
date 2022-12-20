@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+	
+		<record id="vehical_rate_contract" model="vehical.rates">
+			<field name="vehicle_id" ref="service_AR_01" />
+			<field name="rate">150.00</field>
+			<field name="vehicle_contract_id"
+				ref="hr_contract_firstcontract1" />
+		</record>
+
+		<record id="season_1" model="resource.calendar.attendance">
+			<field name="rate">2500.00</field>
+			<field name="room_selection_id" ref="room2" />
+			<field name="room_type" ref="room_type2" />
+			<field name="date_from" eval="time.strftime('%Y-%m')+'-1'" />
+			<field name="date_to" eval="time.strftime('%Y')+'-12-31'" />
+		</record>
+		
+		<record id="rate_card" model="rate.cards">
+			<field name="hotel_id" ref="t_product_product_3"></field>
+			<field name="season_ids" eval="[(6,0,[ref('season_1')])]"></field>
+			<field name="contract_id" ref="hr_contract_firstcontract2" />
+		</record>
+		
+		<record id="tour_contract" model="meal.contract">
+			<field name="product_id" ref="t_product_product_7"></field>
+			<field name="description">Tour For Mount Abu</field>
+			<field name="price_unit">12000.00</field>
+			<field name="tour_contract_id" ref="hr_contract_firstcontract3" />
+		</record>
+		
+		<record id="day1" model="days.valid">
+			<field name="name">Sunday</field>
+		</record>
+		
+		<record id="day2" model="days.valid">
+			<field name="name">Monday</field>
+		</record>
+		
+		<record id="day3" model="days.valid">
+			<field name="name">Tuesday</field>
+		</record>
+		<record id="day4" model="days.valid">
+			<field name="name">Wednesday</field>
+		</record>
+		
+		<record id="day5" model="days.valid">
+			<field name="name">Thrusday</field>
+		</record>
+		
+		<record id="day6" model="days.valid">
+			<field name="name">Friday</field>
+		</record>
+		
+		<record id="day7" model="days.valid">
+			<field name="name">Saturday</field>
+		</record>
+		
+		<record id="ticket_contract" model="meal.contract">
+			<field name="product_id" ref="t_product_product_10"></field>
+			<field name="description">Ticket for Kutch</field>
+			<field name="ticket_contract_id"
+				ref="hr_contract_firstcontract4" />
+			<field name="days_valid_ids"
+				eval="[(6,0,[ref('day1'),ref('day6')])]"></field>
+			<field name="price_unit">1500.00</field>
+		</record>
+		
+		<record id="meal_contract" model="meal.contract">
+			<field name="product_id" ref="t_product_product_14" />
+			<field name="description">Bread,butter,Jam,Orange-juice</field>
+			<field name="price_unit">220.00</field>
+			<field name="meal_contract_id1"
+				ref="hr_contract_firstcontract5" />
+			<field name="menu_type_ids"
+				eval="[(6,0,[ref('menu_data1'),ref('menu_data6')])]"></field>
+		</record>
+		
+		<record id="visa_contract" model="meal.contract">
+			<field name="product_id" ref="t_product_product_12" />
+			<field name="description">Visitor Visa For Germany</field>
+			<field name="price_unit">25000.00</field>
+			<field name="visa_contract_id" ref="hr_contract_firstcontract6" />
+		</record>
+		
+		<record id="guide_contract" model="meal.contract">
+			<field name="product_id" ref="t_product_product_17" />
+			<field name="description">Guide for 10 Hour</field>
+			<field name="price_unit">10000.00</field>
+			<field name="guide_contract_id"
+				ref="hr_contract_firstcontract7" />
+		</record>
+		
+	</data>
+</odoo>

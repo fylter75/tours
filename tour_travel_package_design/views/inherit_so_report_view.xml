@@ -1,0 +1,17 @@
+<odoo>
+
+    <template id="report_saleorder_inherit123" inherit_id = "sale.report_saleorder_document">
+        <xpath expr="//tbody[hasclass('sale_tbody')]/t/t/tr/td/span" position="replace">
+                <span t-field="line.day_date" t-field-options='{"format": "dd-MM-yy"}' />
+        </xpath>
+        <xpath expr="//thead/tr/th" position="inside">
+            <th>Time</th>
+        </xpath>
+        <xpath expr="//tbody[hasclass('sale_tbody')]/t/tr/t/td" position="after">
+            <td>
+                <span t-field="line.time"/>
+            </td>
+        </xpath>
+    </template>
+
+</odoo>

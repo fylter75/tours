@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <!-- <report id="qweb_so_report" string="Report" model="sale.order"
+            name="tour_travel_package_design.qweb_so_package_report" report_type="qweb-pdf" /> -->
+
+        <report id="qweb_po_report" string="Booking Reference" model="purchase.order"
+            name="tour_travel_package_design.qweb_po_package_report" report_type="qweb-pdf" />
+
+        <report id="qweb_booking_ref_report_id" string="Booking Reference With Room List"
+            model="purchase.order" name="tour_travel_package_design.qweb_booking_ref_room_report"
+            report_type="qweb-pdf" />
+
+        <report id="rfq_quote_report_id" string="RFQ Quote" model="purchase.order"
+            name="tour_travel_package_design.qweb_rfq_quote_report" report_type="qweb-pdf" />
+
+        <report id="cust_group_cost_report" string="Customer Group Cost"
+            model="sale.order" name="tour_travel_package_design.cust_group_cost_report_temp"
+            report_type="qweb-pdf" />
+
+        <report id="customer_quote" string="Customer Quote"
+            model="sale.order" name="tour_travel_package_design.cust_quote_report_temp"
+            report_type="qweb-pdf" />
+
+        <record id="paperformat_tour_report" model="report.paperformat">
+            <field name="name">Report</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">50</field>
+            <field name="margin_bottom">30</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <!-- <record id="qweb_so_report" model="ir.actions.report.xml">
+            <field name="paperformat_id"
+                ref="tour_travel_package_design.paperformat_tour_report" />
+        </record> -->
+
+        <record id="qweb_po_report" model="ir.actions.report">
+            <field name="paperformat_id"
+                ref="tour_travel_package_design.paperformat_tour_report" />
+        </record>
+
+        <record id="qweb_booking_ref_report_id" model="ir.actions.report">
+            <field name="paperformat_id"
+                ref="tour_travel_package_design.paperformat_tour_report" />
+        </record>
+
+        <record id="rfq_quote_report_id" model="ir.actions.report">
+            <field name="paperformat_id"
+                ref="tour_travel_package_design.paperformat_tour_report" />
+        </record>
+
+        <report id="invoice_package_report" string="Invoice Report"
+            model="account.invoice" name="tour_travel_package_design.qweb_invoice_package_report1"
+            report_type="qweb-pdf" />
+
+        <record id="paperformat_report_invoice" model="report.paperformat">
+            <field name="name">Invoice Report</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">50</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">40</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="invoice_package_report" model="ir.actions.report">
+            <field name="paperformat_id"
+                ref="tour_travel_package_design.paperformat_report_invoice" />
+        </record>
+
+        <record id="paperformat_group_cost_report" model="report.paperformat">
+            <field name="name">Customer Group CostReport</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">50</field>
+            <field name="margin_bottom">15</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">50</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="cust_group_cost_report" model="ir.actions.report">
+            <field name="paperformat_id"
+                ref="tour_travel_package_design.paperformat_group_cost_report" />
+        </record>
+
+        <record id="customer_quote" model="ir.actions.report">
+            <field name="paperformat_id"
+                ref="tour_travel_package_design.paperformat_group_cost_report" />
+        </record>
+    </data>
+</odoo>

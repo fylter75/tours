@@ -1,0 +1,371 @@
+<odoo>
+    <record id="view_order_day_form" model="ir.ui.view">
+        <field name="name">date.days.form</field>
+        <field name="model">date.days</field>
+        <field name="arch" type="xml">
+            <form string="Date Days">
+                <sheet>
+                    <group col="4" colspan="4">
+                        <field name="name" required="1"/>
+                        <field name="hotel_date" required="1"/>
+                        <field name="sale_day_id" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+     <record id="view_order_day_tree" model="ir.ui.view">
+        <field name="name">date.days.tree</field>
+        <field name="model">date.days</field>
+        <field name="arch" type="xml">
+            <tree string="Date Days">
+                <field name="name" required="1"/>
+                <field name="hotel_date" required="1"/>
+                <field name="sale_day_id"/>
+            </tree>
+        </field>
+    </record>
+    
+     <record id="action_order_date_day" model="ir.actions.act_window">
+        <field name="name">Days</field>
+        <field name="res_model">date.days</field>
+        <field name="view_type">form</field>
+         <field name="view_id" ref="view_order_day_tree"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <!-- <menuitem id="menu_date_day1" action="action_order_date_day" parent="menu_sale_package_configuration"/> -->
+    
+    <record id="view_order_airport_form" model="ir.ui.view">
+        <field name="name">airport.form</field>
+        <field name="model">airport</field>
+        <field name="arch" type="xml">
+            <form string="Airport">
+                <sheet>
+                    <group col="4" colspan="4">
+                        <field name="name" required="1"/>
+                        <field name="code" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_order_airport_tree1" model="ir.ui.view">
+        <field name="name">airport.tree</field>
+        <field name="model">airport</field>
+        <field name="arch" type="xml">
+            <tree string="Airport">
+                 <field name="name" required="1"/>
+                 <field name="code" required="1"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="action_order_airport1" model="ir.actions.act_window">
+        <field name="name">Airport</field>
+        <field name="res_model">airport</field>
+        <field name="view_type">form</field>
+         <field name="view_id" ref="view_order_airport_tree1"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem id="menu_airport1" sequence="101" action="action_order_airport1" parent="menu_sale_package_configuration"/>
+    
+    
+    <!-- Room Type -->
+    <record id="view_order_room_details" model="ir.ui.view">
+        <field name="name">room.type.form</field>
+        <field name="model">room.type</field>
+        <field name="arch" type="xml">
+            <form string="Room Type">
+                <sheet>
+                    <group>
+                        <field name="name" required="1" class='oe_inline'/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_order_room_tree" model="ir.ui.view">
+        <field name="name">room.type.form</field>
+        <field name="model">room.type</field>
+        <field name="arch" type="xml">
+            <tree string="Room Type">
+                <field name="name" required="1"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="action_room" model="ir.actions.act_window">
+        <field name="name">Room Type</field>
+        <field name="res_model">room.type</field>
+        <field name="view_type">form</field>
+         <field name="view_id" ref="view_order_room_tree"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_room_type" sequence="100" action="action_room" parent="menu_sale_package_configuration"/>
+    
+    
+    <!-- Rooms -->
+    <record id="view_order_room_form" model="ir.ui.view">
+        <field name="name">room.room.form</field>
+        <field name="model">room.room</field>
+        <field name="arch" type="xml">
+            <form string="Room">
+                <sheet>
+                    <group col="4" colspan="4">
+                        <field name="name" required="1"/>
+                        <field name="no_of_person" required="1"/>
+                        <field name="room_selection"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_room_room_tree" model="ir.ui.view">
+        <field name="name">room.room.tree</field>
+        <field name="model">room.room</field>
+        <field name="arch" type="xml">
+            <tree string="Room">
+                <field name="name" required="1"/>
+                <field name="no_of_person" required="1" class='oe_inline'/>
+                <field name="room_selection"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="action_room_room" model="ir.actions.act_window">
+        <field name="name">Room</field>
+        <field name="res_model">room.room</field>
+        <field name="view_type">form</field>
+         <field name="view_id" ref="view_room_room_tree"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_room_room" sequence='99' action="action_room_room" parent="menu_sale_package_configuration"/>
+    
+    
+    
+    <!-- Vehicle Details -->
+    <record id="view_order_vehicle_details" model="ir.ui.view">
+        <field name="name">sale.order.visa.form</field>
+        <field name="model">vehicle.details</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Details">
+                <sheet>
+                    <group col="4" colspan="4">
+                        <field name="name" required="1"/>
+                       <!--  <field name="duration" required="1"/>
+                        <field name="rate" required="1"/> -->
+                        <field name="seat_capacity" required="1"/>
+                        <field name="vehical_model" required="1"/>
+                        <field name="plate_no" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    
+    <!-- Meal Supplement -->
+    <record id="meal_supplement_form_view" model="ir.ui.view">
+        <field name="name">meal.supplement.form</field>
+        <field name="model">meal.supplement</field>
+        <field name="arch" type="xml">
+            <form string="Meal Supplement">
+                <sheet>
+                    <group>
+                        <field name="age_group" required="1"/>
+                        <field name="half_board"/>
+                        <field name="full_board"/>
+                    </group>
+               </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="meal_supplement_tree_view" model="ir.ui.view">
+        <field name="name">meal.supplement.tree</field>
+        <field name="model">meal.supplement</field>
+        <field name="arch" type="xml">
+            <tree string="Meal Supplement">
+                <field name="age_group" required="1"/>
+                <field name="half_board"/>
+                <field name="full_board"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_meal_supplement" model="ir.actions.act_window">
+        <field name="name">Meal Supplement</field>
+        <field name="res_model">meal.supplement</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <!-- <menuitem id="menu_meal_supplement" sequence="10" action="action_meal_supplement" parent="menu_sale_package_configuration"/> -->
+    
+    
+    <!--  Inherited view of resource calendar -->
+    <record id ="resource_calender_extended" model="ir.ui.view">
+        <field name="name">resource.calender.form.view</field>
+        <field name="model">resource.calendar</field>
+        <field name ="inherit_id" ref="resource.resource_calendar_form"/>
+        <field name="arch" type ="xml">
+            <xpath expr="//form/sheet/div[@name='button_box']" position="replace">
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page[2]/field[@name='global_leave_ids']" position="replace">
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page[1]/field[@name='attendance_ids']" position="attributes">
+                <attribute name="nolabel">1</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page[1]/field[@name='attendance_ids']" position="after">
+                <field name="meal_supplement_ids">
+                    <tree editable="bottom">
+                        <field name="age_group" required="1"/>
+                        <field name="half_board"/>
+                        <field name="full_board"/>
+                    </tree>
+                </field>
+            </xpath>
+        </field>
+     </record>
+    
+      <!--Inherited view of resource calendar attendance -->
+    <record id ="resource_calender_tree_working_extended" model="ir.ui.view">
+        <field name="name">resource.calender.working.tree.view</field>
+        <field name="model">resource.calendar.attendance</field>
+        <field name ="inherit_id" ref="resource.view_resource_calendar_attendance_tree"/>
+        <field name="arch" type ="xml">
+            <xpath expr="//tree" position="replace">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name ="room_type"/>
+                    <field name="allotment"/>
+                    <field name="date_from" required="1"/>
+                    <field name="date_to" required="1"/>
+                    <field name="rate"/>
+                    <field name="third_supplement" string="Extra bed"/>
+                </tree>
+            </xpath>
+        </field>
+     </record>
+     
+     <record id ="resource_calender_form_working_extended" model="ir.ui.view">
+        <field name="name">resource.calender.working.tree.form</field>
+        <field name="model">resource.calendar.attendance</field>
+        <field name ="inherit_id" ref="resource.view_resource_calendar_attendance_form"/>
+        <field name="arch" type ="xml">
+            <xpath expr="//form" position="replace">
+                <form string="Season">
+                    <group col="4" colspan="4">
+                        <field name="name"/>
+                        <field name ="room_selection_id"/>
+                        <field name ="room_type"/>
+                        <field name="date_from" required="1"/>
+                        <field name="date_to" required="1"/>
+                         <field name="allotment"/>
+                        <field name="allotment_release"/>
+                        <field name="rate"/>
+                        <field name="third_supplement" string="Extra bed"/>
+                   </group>
+                </form>
+                <tree string="Season">
+                    <field name="name"/>
+                    <field name ="room_selection_id"/>
+                    <field name ="room_type"/>
+                    <field name="date_from" required="1"/>
+                    <field name="date_to" required="1"/>
+                     <field name="allotment"/>
+                    <field name="allotment_release"/>
+                    <field name="rate"/>
+                    <field name="third_supplement" string="Extra bed"/>
+                </tree>
+            </xpath>
+        </field>
+     </record>
+    
+    <!-- Hotel line action  -->
+    <record id="view_order_hotel_form" model="ir.ui.view">
+        <field name="name">hotel.contract.form</field>
+        <field name="model">hotel.contract</field>
+        <field name="arch" type="xml">
+            <form string="Hotel" create="false" edit="false">
+                <sheet>
+                    <group col="4" colspan="4">
+                        <form>
+                            <group col="4" colspan="4">
+                                <field name="hotel_categ" domain="[('parent_id.name','=','Hotel')]"/>
+                                <field name="hotel_id" domain="[('categ_id','=',hotel_categ)]"
+                                context="{'hotel_onchange':True,'default_type':'service'}"/>
+                                <field name="partner_id" context="{'default_supplier':True}" required="1" domain="[('supplier','=',True)]"/>
+                                <!-- <field name="date" required="1"/> -->
+                                 <field name="from_date" options="{'no_create': True, 'no_open': True}" domain="[('sale_day_id','=',parent.id)]"/>
+                                 <field name="to_date" options="{'no_create': True, 'no_open': True}" domain="[('sale_day_id','=',parent.id)]"/>
+                                <field name="season_id" invisible="1"/>
+                                <!-- <field name="room_selection" required="1"/> -->
+                                <field name="room_accupacy_id"/>
+                                <field name="room_type"  required="1"/>
+                                <field name="product_uom_qty" required="1" string="Nights"/>
+                                <field name="room_qty"/>
+                                <field name="no_of_person"/>
+                                <field name="price_unit" required="1"/>
+                               <!--  <field name="extra_bed_price"/> -->
+                                <field name="price_subtotal" required="1" sum="price_subtotal"/>
+                                <field name="sale_id" invisible="1"/>
+                            </group>
+                            <footer>
+                                <button name="convert_to_rfq" type="object" string="Generate RFQ"/>
+                            </footer>
+                        </form>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_order_hotel_tree" model="ir.ui.view">
+        <field name="name">hotel.contract.form</field>
+        <field name="model">hotel.contract</field>
+        <field name="arch" type="xml">
+            <tree string="Hotel" create="false" edit="false" delete="true">
+                <!-- <field name="name" required="1"/> -->
+                <field name="hotel_id" context="{'default_type':'service','hotel_onchange':True}" 
+                required="1" domain="['|',('categ_id.name','=','Hotel'),('categ_id.parent_id.name','=','Hotel')]"/>
+                 <field name="partner_id" context="{'default_supplier':True}" domain="[('supplier', '=', True)]" required="1"/>
+                <field name="hotel_categ" string="Hotel Category" domain="[('parent_id.name','=','Hotel')]"/>
+                <field name="date" required="1"/>
+                <field name="location" required="1"/>
+                <field name="season_ids" string="Rooming List"/>
+                <field name="notes" string="Notes"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="action_order_line_hotel" model="ir.actions.act_window">
+        <field name="name">Hotel</field>
+        <field name="res_model">hotel.contract</field>
+        <field name="view_type">form</field>
+         <field name="view_id" ref="view_order_hotel_tree"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <record id="order_line_hotel_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_order_hotel_tree"/>
+            <field name="act_window_id" ref="action_order_line_hotel"/>
+        </record>
+
+        <record id="order_line_hotel_form" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_order_hotel_form"/>
+            <field name="act_window_id" ref="action_order_line_hotel"/>
+        </record>
+    
+    <menuitem id="menu_order_line_hotel" action="action_order_line_hotel" parent="menu_sale_package_template_child"/>
+</odoo>
