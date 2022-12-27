@@ -1,0 +1,18 @@
+<odoo>
+    <!--visa-->
+    <record id="visa" model="product.product">
+        <field name="name">15 days visa</field>
+        <field name="type_travel_product">visa</field>
+        <field name="type">service</field>
+    </record>
+    <record id="visa2" model="product.product">
+        <field name="name">30 days visa</field>
+        <field name="type_travel_product">visa</field>
+        <field name="type">service</field>
+    </record>
+    <record id="visa3" model="product.product">
+        <field name="name">90 days visa</field>
+        <field name="type_travel_product">visa</field>
+        <field name="type">service</field>
+    </record>
+</odoo>

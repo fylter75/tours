@@ -1,0 +1,267 @@
+<odoo noupdate="1">
+    <!-- Hotel Facilities -->
+    <record id="hotel_facilities_01" model="hotel.facilities">
+        <field name="name">Swimming pool/ Jacuzzi</field>
+    </record>
+    <record id="hotel_facilities_02" model="hotel.facilities">
+        <field name="name">Spa</field>
+    </record>
+    <record id="hotel_facilities_03" model="hotel.facilities">
+        <field name="name">Poolside bar</field>
+    </record>
+    <record id="hotel_facilities_04" model="hotel.facilities">
+        <field name="name">Public computer</field>
+    </record>
+    <record id="hotel_facilities_05" model="hotel.facilities">
+        <field name="name">24 Hour security</field>
+    </record>
+    <record id="hotel_facilities_06" model="hotel.facilities">
+        <field name="name">Sunset boat trip</field>
+    </record>
+    <record id="hotel_facilities_07" model="hotel.facilities">
+        <field name="name">Laundry service</field>
+    </record>
+    <record id="hotel_facilities_08" model="hotel.facilities">
+        <field name="name">Airport transfers</field>
+    </record>
+    <!-- Hotel Room Type -->
+    <record id="room_type_01" model="hotel.room.type">
+        <field name="name">Single Room</field>
+    </record>
+    <record id="room_type_02" model="hotel.room.type">
+        <field name="name">Double Room</field>
+    </record>
+    <record id="room_type_03" model="hotel.room.type">
+        <field name="name">Viila Room</field>
+    </record>
+    <!-- Hotel Room -->
+    <record id="hotel_room_01" model="hotel.room">
+        <field name="name">Single Room</field>
+        <field name="detailed_type">service</field>
+        <field name="list_price">1000</field>
+        <field name="standard_price">500</field>
+        <field name="capacity">1</field>
+        <field name="max_adult">1</field>
+        <field name="max_child">0</field>
+    </record>
+    <record id="hotel_room_02" model="hotel.room">
+        <field name="name">Double Room</field>
+        <field name="detailed_type">service</field>
+        <field name="list_price">2000</field>
+        <field name="standard_price">1000</field>
+        <field name="capacity">2</field>
+        <field name="max_adult">2</field>
+        <field name="max_child">0</field>
+    </record>
+    <record id="hotel_room_03" model="hotel.room">
+        <field name="name">Villa Room</field>
+        <field name="detailed_type">service</field>
+        <field name="list_price">3000</field>
+        <field name="standard_price">2000</field>
+        <field name="capacity">3</field>
+        <field name="max_adult">2</field>
+        <field name="max_child">1</field>
+    </record>
+    <!-- Hotel Registration -->
+    <record id="hotel_registration_01" model="res.partner">
+        <field name="name">Rove Trade Centre</field>
+        <field name="company_id" eval="None" />
+        <field name="is_company" eval="False" />
+        <field name="street">2nd December Street, Al Jafiliya</field>
+        <field name="zip">119444</field>
+        <field name="phone" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="state_id" ref="base.state_ae_du" />
+        <field name="is_hotel">True</field>
+        <field name="registration_type">hotel</field>
+    </record>
+    <record id="hotel_registration_02" model="res.partner">
+        <field name="name">PARK CENTRAL HOTEL NEW YORK</field>
+        <field name="company_id" eval="None" />
+        <field name="is_company" eval="False" />
+        <field name="street">870 7TH AVENUE NEW YORK</field>
+        <field name="zip">10019-4038</field>
+        <field name="phone" />
+        <field name="city_id" ref="tour_travel_management.city11" />
+        <field name="state_id" ref="base.state_us_27" />
+        <field name="is_hotel">True</field>
+        <field name="registration_type">hotel</field>
+    </record>
+    <!-- Hotel Registration Room Line -->
+    <record id="hotel_registration_line_01" model="hotel.room.line">
+        <field name="hotel_id" ref="hotel_registration_01" />
+        <field name="room_qty">10</field>
+        <field name="room_id" ref="hotel_room_01" />
+        <field name="room_type_id" ref="room_type_01" />
+        <field name="cost_price">500</field>
+        <field name="unit_price">1000</field>
+        <field name="capacity">1</field>
+    </record>
+    <record id="hotel_registration_line_02" model="hotel.room.line">
+        <field name="hotel_id" ref="hotel_registration_01" />
+        <field name="room_qty">20</field>
+        <field name="room_id" ref="hotel_room_02" />
+        <field name="room_type_id" ref="room_type_02" />
+        <field name="cost_price">1000</field>
+        <field name="unit_price">2000</field>
+        <field name="capacity">2</field>
+    </record>
+    <record id="hotel_registration_line_03" model="hotel.room.line">
+        <field name="hotel_id" ref="hotel_registration_01" />
+        <field name="room_qty">30</field>
+        <field name="room_id" ref="hotel_room_03" />
+        <field name="room_type_id" ref="room_type_03" />
+        <field name="cost_price">2000</field>
+        <field name="unit_price">3000</field>
+        <field name="capacity">3</field>
+    </record>
+    <record id="hotel_registration_line_04" model="hotel.room.line">
+        <field name="hotel_id" ref="hotel_registration_02" />
+        <field name="room_qty">10</field>
+        <field name="room_id" ref="hotel_room_01" />
+        <field name="room_type_id" ref="room_type_01" />
+        <field name="cost_price">500</field>
+        <field name="unit_price">1000</field>
+        <field name="capacity">1</field>
+    </record>
+    <record id="hotel_registration_line_05" model="hotel.room.line">
+        <field name="hotel_id" ref="hotel_registration_02" />
+        <field name="room_qty">20</field>
+        <field name="room_id" ref="hotel_room_02" />
+        <field name="room_type_id" ref="room_type_02" />
+        <field name="cost_price">1000</field>
+        <field name="unit_price">2000</field>
+        <field name="capacity">2</field>
+    </record>
+    <record id="hotel_registration_line_06" model="hotel.room.line">
+        <field name="hotel_id" ref="hotel_registration_02" />
+        <field name="room_qty">30</field>
+        <field name="room_id" ref="hotel_room_03" />
+        <field name="room_type_id" ref="room_type_03" />
+        <field name="cost_price">2000</field>
+        <field name="unit_price">3000</field>
+        <field name="capacity">3</field>
+    </record>
+    <!-- Hotel Contact-->
+    <record id="hotel01_contract" model="package.contract">
+        <field name="name">Contract For Hotel Rove Trade Centre</field>
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="package_contract_type">hotel</field>
+        <field name="partner_id" ref="hotel_registration_01" />
+        <field name="hotel_id" ref="hotel_registration_01" />
+        <field name="date_start" eval="(DateTime.today())" />
+        <field name="date_end" eval="(DateTime.today()+ timedelta(days=15))" />
+        <field name="state">open</field>
+    </record>
+    <record id="hotel02_contract" model="package.contract">
+        <field name="name">Contract For Hotel PARK CENTRAL HOTEL NEW YORK </field>
+        <field name="city_id" ref="tour_travel_management.city11" />
+        <field name="package_contract_type">hotel</field>
+        <field name="partner_id" ref="hotel_registration_02" />
+        <field name="hotel_id" ref="hotel_registration_02" />
+        <field name="date_start" eval="(DateTime.today())" />
+        <field name="date_end" eval="(DateTime.today()+ timedelta(days=15))" />
+        <field name="state">open</field>
+    </record>
+    <!-- Hotel Contact Lines-->
+    <record id="hotel_contract_line_01" model="package.contract.line">
+        <field name="hotel_package_contract_id" ref="hotel01_contract" />
+        <field name="room_id" ref="hotel_room_01" />
+        <field name="room_type_id" ref="room_type_01" />
+        <field name="capacity">1</field>
+        <field name="room_qty">10</field>
+        <field name="unit_price">500</field>
+        <field name="sales_price">1000</field>
+    </record>
+    <record id="hotel_contract_line_02" model="package.contract.line">
+        <field name="hotel_package_contract_id" ref="hotel01_contract" />
+        <field name="room_id" ref="hotel_room_02" />
+        <field name="room_type_id" ref="room_type_02" />
+        <field name="capacity">2</field>
+        <field name="room_qty">15</field>
+        <field name="unit_price">1000</field>
+        <field name="sales_price">2000</field>
+    </record>
+    <record id="hotel_contract_line_03" model="package.contract.line">
+        <field name="hotel_package_contract_id" ref="hotel01_contract" />
+        <field name="room_id" ref="hotel_room_03" />
+        <field name="room_type_id" ref="room_type_03" />
+        <field name="capacity">3</field>
+        <field name="room_qty">20</field>
+        <field name="unit_price">2000</field>
+        <field name="sales_price">3000</field>
+    </record>
+    <record id="hotel_contract_line_04" model="package.contract.line">
+        <field name="hotel_package_contract_id" ref="hotel02_contract" />
+        <field name="room_id" ref="hotel_room_01" />
+        <field name="room_type_id" ref="room_type_01" />
+        <field name="capacity">1</field>
+        <field name="room_qty">10</field>
+        <field name="unit_price">500</field>
+        <field name="sales_price">1000</field>
+    </record>
+    <record id="hotel_contract_line_05" model="package.contract.line">
+        <field name="hotel_package_contract_id" ref="hotel02_contract" />
+        <field name="room_id" ref="hotel_room_02" />
+        <field name="room_type_id" ref="room_type_02" />
+        <field name="capacity">2</field>
+        <field name="room_qty">15</field>
+        <field name="unit_price">1000</field>
+        <field name="sales_price">2000</field>
+    </record>
+    <record id="hotel_contract_line_06" model="package.contract.line">
+        <field name="hotel_package_contract_id" ref="hotel02_contract" />
+        <field name="room_id" ref="hotel_room_03" />
+        <field name="room_type_id" ref="room_type_03" />
+        <field name="capacity">3</field>
+        <field name="room_qty">20</field>
+        <field name="unit_price">2000</field>
+        <field name="sales_price">3000</field>
+    </record>
+    <!--Package Hotel Line -->
+    <record id="package_hotel_line_01" model="hotel.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="from_date" eval="DateTime.now()" />
+        <field name="to_date" eval="(DateTime.now() + relativedelta(days=3))" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="hotel_id" ref="hotel_registration_01" />
+        <field name="room_type_id" ref="hotel_room_01" />
+        <field name="name">Hotel : Rove Trade Centre,Dubai
+Room Type: Single Room</field>
+        <field name="stay_days">15</field>
+        <field name="qty">1</field>
+        <field name="cost_price">500</field>
+        <field name="price_unit">1000</field>
+        <field name="price_subtotal">30000</field>
+    </record>
+    <record id="package_hotel_line_02" model="hotel.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="from_date" eval="(DateTime.now() + relativedelta(days=3))" />
+        <field name="to_date" eval="(DateTime.now() + relativedelta(days=7))" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="hotel_id" ref="hotel_registration_01" />
+        <field name="room_type_id" ref="hotel_room_02" />
+        <field name="name">Hotel : Rove Trade Centre,Dubai
+Room Type: Double Room</field>
+        <field name="stay_days">15</field>
+        <field name="qty">1</field>
+        <field name="cost_price">500</field>
+        <field name="price_unit">1000</field>
+        <field name="price_subtotal">3000</field>
+    </record>
+    <record id="package_hotel_line_03" model="hotel.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="from_date" eval="(DateTime.now() + relativedelta(days=7))" />
+        <field name="to_date" eval="(DateTime.now() + relativedelta(days=15))" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="hotel_id" ref="hotel_registration_01" />
+        <field name="room_type_id" ref="hotel_room_03" />
+        <field name="name">Hotel : Rove Trade Centre,Dubai
+Room Type: Villa Room</field>
+        <field name="stay_days">15</field>
+        <field name="qty">1</field>
+        <field name="cost_price">666.66</field>
+        <field name="price_unit">1000</field>
+        <field name="price_subtotal">7000</field>
+    </record>
+</odoo>

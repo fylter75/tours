@@ -1,0 +1,271 @@
+<odoo noupdate="1">
+    <!-- Meal Package -->
+    <record id="meal_package_01" model="meal.package">
+        <field name="name">Breakfast</field>
+        <field name="detailed_type">service</field>
+        <field name="list_price">1500</field>
+        <field name="standard_price">500</field>
+    </record>
+    <record id="meal_package_02" model="meal.package">
+        <field name="name">Lunch</field>
+        <field name="detailed_type">service</field>
+        <field name="list_price">2500</field>
+        <field name="standard_price">1000</field>
+    </record>
+    <record id="meal_package_03" model="meal.package">
+        <field name="name">Dinner</field>
+        <field name="detailed_type">service</field>
+        <field name="list_price">3500</field>
+        <field name="standard_price">2000</field>
+    </record>
+    <!-- Meal Registration -->
+    <record id="meal_registration_01" model="res.partner">
+        <field name="name">The Modern Restaurant</field>
+        <field name="company_id" eval="None" />
+        <field name="is_company" eval="False" />
+        <field name="street" />
+        <field name="zip">382011</field>
+        <field name="phone" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="state_id" ref="base.state_ae_du" />
+        <field name="is_restaurant">True</field>
+        <field name="registration_type">hotel</field>
+    </record>
+    <record id="meal_registration_02" model="res.partner">
+        <field name="name">MarkJoseph Steakhouse</field>
+        <field name="company_id" eval="None" />
+        <field name="is_company" eval="False" />
+        <field name="street" />
+        <field name="zip">302151</field>
+        <field name="phone" />
+        <field name="city_id" ref="tour_travel_management.city11" />
+        <field name="state_id" ref="base.state_us_27" />
+        <field name="is_restaurant">True</field>
+        <field name="registration_type">hotel</field>
+    </record>
+    <!-- Meal Registration Meal Package Line -->
+    <record id="meal_registration_line_01" model="meal.packages.line">
+        <field name="meal_id" ref="meal_registration_01" />
+        <field name="meal_package_id" ref="meal_package_01" />
+        <field name="meal_qty">20</field>
+        <field name="cost_price">500</field>
+        <field name="unit_price">1500</field>
+    </record>
+    <record id="meal_registration_line_02" model="meal.packages.line">
+        <field name="meal_id" ref="meal_registration_01" />
+        <field name="meal_package_id" ref="meal_package_02" />
+        <field name="meal_qty">20</field>
+        <field name="cost_price">1000</field>
+        <field name="unit_price">2500</field>
+    </record>
+    <record id="meal_registration_line_03" model="meal.packages.line">
+        <field name="meal_id" ref="meal_registration_01" />
+        <field name="meal_package_id" ref="meal_package_03" />
+        <field name="meal_qty">20</field>
+        <field name="cost_price">2000</field>
+        <field name="unit_price">3500</field>
+    </record>
+    <record id="meal_registration_line_04" model="meal.packages.line">
+        <field name="meal_id" ref="meal_registration_02" />
+        <field name="meal_package_id" ref="meal_package_01" />
+        <field name="meal_qty">20</field>
+        <field name="cost_price">500</field>
+        <field name="unit_price">1500</field>
+    </record>
+    <record id="meal_registration_line_05" model="meal.packages.line">
+        <field name="meal_id" ref="meal_registration_02" />
+        <field name="meal_package_id" ref="meal_package_02" />
+        <field name="meal_qty">20</field>
+        <field name="cost_price">1000</field>
+        <field name="unit_price">2500</field>
+    </record>
+    <record id="meal_registration_line_06" model="meal.packages.line">
+        <field name="meal_id" ref="meal_registration_02" />
+        <field name="meal_package_id" ref="meal_package_03" />
+        <field name="meal_qty">20</field>
+        <field name="cost_price">2000</field>
+        <field name="unit_price">3500</field>
+    </record>
+    <!-- Meal Contract-->
+    <record id="meal01_contract" model="package.contract">
+        <field name="name">Contract For The Modern Restaurant</field>
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="package_contract_type">meal</field>
+        <field name="partner_id" ref="meal_registration_01" />
+        <field name="meal_id" ref="meal_registration_01" />
+        <field name="date_start" eval="(DateTime.today())" />
+        <field name="date_end" eval="(DateTime.today()+ timedelta(days=15))" />
+        <field name="state">open</field>
+    </record>
+    <record id="meal02_contract" model="package.contract">
+        <field name="name">MarkJoseph Steakhouse</field>
+        <field name="city_id" ref="tour_travel_management.city11" />
+        <field name="package_contract_type">meal</field>
+        <field name="partner_id" ref="meal_registration_02" />
+        <field name="meal_id" ref="meal_registration_02" />
+        <field name="date_start" eval="(DateTime.today())" />
+        <field name="date_end" eval="(DateTime.today()+ timedelta(days=15))" />
+        <field name="state">open</field>
+    </record>
+    <!-- Meal Contract Lines-->
+    <record id="meal_contract_line_01" model="package.contract.line">
+        <field name="meal_package_contract_id" ref="meal01_contract" />
+        <field name="meal_package_id" ref="meal_package_01" />
+        <field name="meal_package_qty">20</field>
+        <field name="unit_price">500</field>
+        <field name="sales_price">600</field>
+    </record>
+    <record id="meal_contract_line_02" model="package.contract.line">
+        <field name="meal_package_contract_id" ref="meal01_contract" />
+        <field name="meal_package_id" ref="meal_package_02" />
+        <field name="meal_package_qty">20</field>
+        <field name="unit_price">800</field>
+        <field name="sales_price">1000</field>
+    </record>
+    <record id="meal_contract_line_03" model="package.contract.line">
+        <field name="meal_package_contract_id" ref="meal01_contract" />
+        <field name="meal_package_id" ref="meal_package_03" />
+        <field name="meal_package_qty">20</field>
+        <field name="unit_price">900</field>
+        <field name="sales_price">1100</field>
+    </record>
+    <record id="meal_contract_line_04" model="package.contract.line">
+        <field name="meal_package_contract_id" ref="meal02_contract" />
+        <field name="meal_package_id" ref="meal_package_01" />
+        <field name="meal_package_qty">20</field>
+        <field name="unit_price">500</field>
+        <field name="sales_price">600</field>
+    </record>
+    <record id="meal_contract_line_05" model="package.contract.line">
+        <field name="meal_package_contract_id" ref="meal02_contract" />
+        <field name="meal_package_id" ref="meal_package_02" />
+        <field name="meal_package_qty">20</field>
+        <field name="unit_price">800</field>
+        <field name="sales_price">1000</field>
+    </record>
+    <record id="meal_contract_line_06" model="package.contract.line">
+        <field name="meal_package_contract_id" ref="meal02_contract" />
+        <field name="meal_package_id" ref="meal_package_03" />
+        <field name="meal_package_qty">20</field>
+        <field name="unit_price">900</field>
+        <field name="sales_price">1100</field>
+    </record>
+    <!--Package Meal Line -->
+    <record id="package_meal_line_01" model="template.meal.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="DateTime.now()" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="meal_id" ref="meal_registration_01" />
+        <field name="meal_package_id" ref="meal_package_01" />
+        <field name="name">Restaurant : The Modern Restaurant,Dubai
+Food Type: Breakfast</field>
+        <field name="qty">1</field>
+        <field name="cost_price">500</field>
+        <field name="price_unit">600</field>
+        <field name="price_subtotal">600</field>
+    </record>
+    <record id="package_meal_line_02" model="template.meal.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="DateTime.now()" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="meal_id" ref="meal_registration_01" />
+        <field name="meal_package_id" ref="meal_package_02" />
+        <field name="name">Restaurant : The Modern Restaurant,Dubai
+Food Type: Lunch</field>
+        <field name="qty">1</field>
+        <field name="cost_price">800</field>
+        <field name="price_unit">1000</field>
+        <field name="price_subtotal">1000</field>
+    </record>
+    <record id="package_meal_line_03" model="template.meal.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="DateTime.now()" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="meal_id" ref="meal_registration_01" />
+        <field name="meal_package_id" ref="meal_package_03" />
+        <field name="name">Restaurant : The Modern Restaurant,Dubai
+Food Type: Dinner</field>
+        <field name="qty">1</field>
+        <field name="cost_price">900</field>
+        <field name="price_unit">1100</field>
+        <field name="price_subtotal">1100</field>
+    </record>
+    <record id="package_meal_line_04" model="template.meal.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="(DateTime.now() + relativedelta(days=2))" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="meal_id" ref="meal_registration_01" />
+        <field name="meal_package_id" ref="meal_package_01" />
+        <field name="name">Restaurant : The Modern Restaurant,Dubai
+Food Type: Breakfast</field>
+        <field name="qty">1</field>
+        <field name="cost_price">500</field>
+        <field name="price_unit">600</field>
+        <field name="price_subtotal">600</field>
+    </record>
+    <record id="package_meal_line_05" model="template.meal.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="(DateTime.now() + relativedelta(days=2))" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="meal_id" ref="meal_registration_01" />
+        <field name="meal_package_id" ref="meal_package_02" />
+        <field name="name">Restaurant : The Modern Restaurant,Dubai
+Food Type: Lunch</field>
+        <field name="qty">1</field>
+        <field name="cost_price">800</field>
+        <field name="price_unit">1000</field>
+        <field name="price_subtotal">1000</field>
+    </record>
+    <record id="package_meal_line_06" model="template.meal.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="(DateTime.now() + relativedelta(days=2))" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="meal_id" ref="meal_registration_01" />
+        <field name="meal_package_id" ref="meal_package_03" />
+        <field name="name">Restaurant : The Modern Restaurant,Dubai
+Food Type: Dinner</field>
+        <field name="qty">1</field>
+        <field name="cost_price">900</field>
+        <field name="price_unit">1100</field>
+        <field name="price_subtotal">1100</field>
+    </record>
+    <record id="package_meal_line_07" model="template.meal.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="(DateTime.now() + relativedelta(days=3))" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="meal_id" ref="meal_registration_01" />
+        <field name="meal_package_id" ref="meal_package_01" />
+        <field name="name">Restaurant : The Modern Restaurant,Dubai
+Food Type: Breakfast</field>
+        <field name="qty">1</field>
+        <field name="cost_price">500</field>
+        <field name="price_unit">600</field>
+        <field name="price_subtotal">600</field>
+    </record>
+    <record id="package_meal_line_08" model="template.meal.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="(DateTime.now() + relativedelta(days=3))" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="meal_id" ref="meal_registration_01" />
+        <field name="meal_package_id" ref="meal_package_02" />
+        <field name="name">Restaurant : The Modern Restaurant,Dubai
+Food Type: Lunch</field>
+        <field name="qty">1</field>
+        <field name="cost_price">800</field>
+        <field name="price_unit">1000</field>
+        <field name="price_subtotal">1000</field>
+    </record>
+    <record id="package_meal_line_09" model="template.meal.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="(DateTime.now() + relativedelta(days=3))" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="meal_id" ref="meal_registration_01" />
+        <field name="meal_package_id" ref="meal_package_03" />
+        <field name="name">Restaurant : The Modern Restaurant,Dubai
+Food Type: Dinner</field>
+        <field name="qty">1</field>
+        <field name="cost_price">900</field>
+        <field name="price_unit">1100</field>
+        <field name="price_subtotal">1100</field>
+    </record>
+</odoo>

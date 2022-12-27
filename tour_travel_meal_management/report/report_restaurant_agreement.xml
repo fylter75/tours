@@ -1,0 +1,189 @@
+<odoo>
+    <template id="report_agreement_template_meal">
+        <div class="row">
+            <div class="mt64 col-md-12">
+                <div
+                    style="font: 20px sans-serif; margin-top: 30px; position: relative; text-align: center;border:1px solid black;background-color: aliceblue"
+                >
+                    <h5>
+                        <b>Restaurant:<span t-field="o.meal_id.name" /><br />
+                    </b>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <br />
+        <h5>
+            <b>
+                <span t-field="o.name" />
+            </b>
+        </h5>
+        <br />
+        <p>
+            We hereby declare that you have done contract with our Restaurant
+            &#160;
+            <strong>
+                <span t-field="o.meal_id.name" />
+            </strong>
+            in
+            <strong>
+                <span t-field="o.city_id.name" />
+            </strong>.
+            The contract between us will be from
+            <strong>
+                <span t-field="o.date_start" />
+            </strong>
+            to
+            <strong>
+                <span t-field="o.date_end" />
+            </strong>.
+            Contract Details are given below:
+        </p>
+        <div style="height: 15px;">
+        </div>
+        <div class="row mt32">
+            <div class="col-md-12">
+                <div
+                    style="float: left; margin-left: 45px; margin-top: -25px; padding: 10px; background-color: white; align: center;color:black;font-size: 20px; bold: 12px;"
+                >
+                    <span>
+                        <b>Contract Details</b>
+                    </span>
+                </div>
+                <div style="margin-top: 5px; border: 1.5px solid black">
+                    <table
+                        class="table-condensed"
+                        width="100%"
+                        style="text-align: center; border: 0;background-color: aliceblue"
+                    >
+                        <tr>
+                            <th
+                                width="25%"
+                                class="text-center"
+                                style="color:black"
+                            >Meal Name</th>
+                            <th
+                                class="text-center"
+                                style="color:black;border-left: 1px solid black; padding: 5px"
+                                width="20%"
+                            >Meal Quantity
+                            </th>
+                            <th
+                                class="text-center"
+                                style="color:black;border-left: 1px solid black; padding: 5px"
+                                width="20%"
+                            >Meal Cost Price
+                            </th>
+                            <th
+                                class="text-center"
+                                style="color:black;border-left: 1px solid black; padding: 5px"
+                                width="20%"
+                            >Meal Sales Price
+                            </th>
+                        </tr>
+                        <t t-foreach="o.meal_contract_lines_ids" t-as="line">
+                            <tr style="text-align: center; font-size: 10px">
+                                <td width="25%" style=" border-top: 1px solid black;">
+                                    <span
+                                        style="color:black"
+                                        t-field="line.meal_package_id.name"
+                                    />
+                                </td>
+                                <td
+                                    width="25%"
+                                    style="padding: 5px; border-left: 1px solid black; padding: 5px;border-top: 1px solid black"
+                                >
+                                    <span
+                                        style="color:black"
+                                        t-field="line.meal_package_qty"
+                                    />
+                                </td>
+                                <td
+                                    width="25%"
+                                    style="padding: 5px; border-left: 1px solid black; padding: 5px;border-top: 1px solid black"
+                                >
+                                    <span
+                                        style="color:black"
+                                        t-field="line.unit_price"
+                                    />
+                                </td>
+                                <td
+                                    width="25%"
+                                    style="padding: 5px; border-top: 1px solid black; border-left:1px solid black; padding: 5px"
+                                >
+                                    <span
+                                        style="color:black"
+                                        t-field="line.sales_price"
+                                    />
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <table width="100%">
+            <tr>
+                <td style="text-align:left;" width="50%">
+                    <strong>
+                        .............................................
+                    </strong>
+                </td>
+                <td style="text-align:right;" width="50%">
+                    <strong>
+                        .............................................
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:left;" width="50%">
+                    <strong>Customer signature</strong>
+                </td>
+                <td style="text-align:right;" width="50%">
+                    <strong>Manager Signature</strong>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <div align="left" style="margin-left:1px " class="row">
+            <span>
+                <b>Kind Regards</b>
+            </span>
+            ,
+            <br />
+            <b>Restaurant&#160;<span t-field="o.meal_id.name" />&#160;Team</b>
+            <br />
+            <t t-if="o.meal_id.street">
+                <span t-field="o.meal_id.street" />
+                <br />
+            </t>
+            <t t-if="o.meal_id.city_id.name"><span t-field="o.meal_id.city_id.name" />
+                ,</t><t t-if="o.meal_id.city_id.name">
+                <span t-field="o.meal_id.state_id.name" />
+                <br />
+            </t>
+            <t t-if="o.meal_id.country_id.name">
+                <span t-field="o.meal_id.country_id.name" />
+                <br />
+            </t>
+            <t t-if="o.meal_id.website">
+                <span t-field="o.meal_id.website" />
+                <br />
+            </t>
+        </div>
+    </template>
+    <template
+        id="report_agreement_template_inherit2"
+        inherit_id='tour_travel_management.report_agreement_template'
+    >
+        <xpath expr="//div[hasclass('container')]" position="inside">
+            <t t-if="o.meal_id">
+                <t
+                    t-call="tour_travel_meal_management.report_agreement_template_meal"
+                />
+            </t>
+        </xpath>
+    </template>
+</odoo>

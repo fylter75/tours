@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_visit_purpose_manager,access.visit.purpose.manager,model_visit_purpose,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_visiting_location_manager,access.visiting.location.maneger,model_visiting_location,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_transportation_mode_manager,access.transportation.mode.manager,model_transportation_mode,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_hotel_type_manager,access.hotel.type.manager,model_hotel_type,tour_travel_management.group_tour_traveller_manager,1,1,1,1

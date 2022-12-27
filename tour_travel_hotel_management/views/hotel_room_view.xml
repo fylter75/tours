@@ -1,0 +1,110 @@
+<odoo>
+    <record id="hotel_room_form" model="ir.ui.view">
+        <field name="name">hotel.room.form</field>
+        <field name="model">hotel.room</field>
+        <field name="arch" type="xml">
+            <form string="Hotel Room">
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        text="Archived"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': [('active', '=', True)]}"
+                    />
+                    <field
+                        name="image_1920"
+                        widget="image"
+                        class="oe_avatar"
+                        options="{'preview_image': 'image_128'}"
+                    />
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name" string="Room Name" />
+                        <h1>
+                            <field name="name" placeholder="ex.Deluxe Room" />
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page name="information_hotel_room" string="Information">
+                            <group>
+                                <group>
+                                    <field name="detailed_type" invisible="1"/>
+                                    <field name="list_price" />
+                                    <field name="standard_price" />
+                                    <field name="taxes_id" widget="many2many_tags" />
+                                </group>
+                                <group>
+                                    <field name="capacity" />
+                                    <field name="max_adult" />
+                                    <field name="max_child" />
+                                    <field name="hotel_id" invisible="1" />
+                                    <field name="active" invisible="1" />
+                                </group>
+                            </group>
+                            <separator string="Description" />
+                            <field colspan="4" name="description" nolabel="1" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='hotel_room_tree' model='ir.ui.view'>
+        <field name='name'>hotel.room.tree</field>
+        <field name='model'>hotel.room</field>
+        <field name='arch' type='xml'>
+            <tree string='Hotel Room'>
+                <field name='name' />
+                <field name="max_adult" />
+                <field name="max_child" />
+                <field name="capacity" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_hotel_room" model="ir.actions.act_window">
+        <field name="name">Hotel Room</field>
+        <field name="res_model">hotel.room</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_detailed_type': 'service'}</field>
+    </record>
+    <menuitem
+        id="hotel_room_menu"
+        action="action_hotel_room"
+        name="Room"
+        parent="hotel_configuration_menu"
+        sequence="20"
+    />
+    <record id="hotel_room_type_form" model="ir.ui.view">
+        <field name="name">hotel.room.type.form</field>
+        <field name="model">hotel.room.type</field>
+        <field name="arch" type="xml">
+            <form string="Hotel Room Type">
+                <sheet>
+                    <group>
+                        <field name='name' />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='hotel_room_type_tree' model='ir.ui.view'>
+        <field name='name'>hotel.room.type.tree</field>
+        <field name='model'>hotel.room.type</field>
+        <field name='arch' type='xml'>
+            <tree string='Hotel Room Type' editable="top">
+                <field name='name' required="1" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_hotel_room_type" model="ir.actions.act_window">
+        <field name="name">Hotel Room Type</field>
+        <field name="res_model">hotel.room.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="hotel_room_type_menu"
+        action="action_hotel_room_type"
+        name="Room Type"
+        parent="hotel_configuration_menu"
+        sequence="30"
+    />
+</odoo>

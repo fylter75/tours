@@ -1,0 +1,25 @@
+<odoo>
+    <template id="report_agreement_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div class="container" style="margin-top: 25px;">
+                </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="action_report_agreement" model="ir.actions.report">
+        <field name="name">Contract</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="model">package.contract</field>
+        <field
+            name="report_name"
+        >tour_travel_management.report_agreement_template</field>
+        <field
+            name="report_file"
+        >tour_travel_management.report_agreement_template</field>
+        <field name="binding_model_id" ref="model_package_contract" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

@@ -1,0 +1,77 @@
+<odoo noupdate="0">
+    <!-- Package Category -->
+    <record id="package_category1" model="package.category">
+        <field name="name">Adventure Tourism Package</field>
+    </record>
+    <record id="package_category2" model="package.category">
+        <field name="name">Wildlife Tourism Package</field>
+    </record>
+    <record id="package_category3" model="package.category">
+        <field name="name">Pilgrimage Tourism Package</field>
+    </record>
+    <record id="package_category4" model="package.category">
+        <field name="name">Cruise Tourism Package</field>
+    </record>
+    <record id="package_category5" model="package.category">
+        <field name="name">Family Tourism Package</field>
+    </record>
+    <record id="package_category6" model="package.category">
+        <field name="name">Honeymoon Tourism Package</field>
+    </record>
+    <!-- City -->
+    <record id="city1" model="city.city">
+        <field name="name">Gandhinagar</field>
+        <field name="state_id" ref="base.state_in_gj" />
+        <field name="zip">382011</field>
+    </record>
+    <record id="city2" model="city.city">
+        <field name="name">Ahmedabad</field>
+        <field name="state_id" ref="base.state_in_gj" />
+        <field name="zip">302151</field>
+    </record>
+    <record id="city3" model="city.city">
+        <field name="name">Mumbai</field>
+        <field name="state_id" ref="base.state_in_mh" />
+        <field name="zip">325251</field>
+    </record>
+    <record id="city4" model="city.city">
+        <field name="name">Dubai</field>
+        <field name="state_id" ref="base.state_ae_du" />
+        <field name="zip">259421</field>
+    </record>
+    <record id="city5" model="city.city">
+        <field name="name">London</field>
+        <field name="state_id" ref="base.state_uk117" />
+        <field name="zip">124568</field>
+    </record>
+    <record id="city6" model="city.city">
+        <field name="name">Victoria</field>
+        <field name="state_id" ref="base.state_au_7" />
+        <field name="zip">25493</field>
+    </record>
+    <record id="city7" model="city.city">
+        <field name="name">Alaska</field>
+        <field name="state_id">10</field>
+        <field name="zip">785412</field>
+    </record>
+    <record id="city8" model="city.city">
+        <field name="name">Andaman and Nicobar</field>
+        <field name="state_id" ref="base.state_in_an" />
+        <field name="zip">879254</field>
+    </record>
+    <record id="city9" model="city.city">
+        <field name="name">Goa</field>
+        <field name="state_id" ref="base.state_in_ga" />
+        <field name="zip">879546</field>
+    </record>
+    <record id="city10" model="city.city">
+        <field name="name">Sikkim</field>
+        <field name="state_id" ref="base.state_in_sk" />
+        <field name="zip">981264</field>
+    </record>
+    <record id="city11" model="city.city">
+        <field name="name">New York</field>
+        <field name="state_id" ref="base.state_us_27" />
+        <field name="zip">10019-4038</field>
+    </record>
+</odoo>

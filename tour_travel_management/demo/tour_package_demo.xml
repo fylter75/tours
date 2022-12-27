@@ -1,0 +1,15 @@
+<odoo noupdate="0">
+    <record id="package1" model="sale.order.template">
+        <field name="name">Dubai</field>
+        <field name="package_type">international</field>
+        <field name="pax_group">15</field>
+        <field name="max_pax_group">20</field>
+        <field name="category_id" ref="package_category5" />
+        <field name="arrival_date" eval="DateTime.now()" />
+        <field name="return_date" eval="(DateTime.now() + relativedelta(days=15))" />
+        <field name="state_id" ref="base.state_ae_du" />
+        <field name="country_id" ref="base.ae" />
+        <field name="is_package">True</field>
+        <field name='selling_currency_id' ref="base.USD" />
+    </record>
+</odoo>

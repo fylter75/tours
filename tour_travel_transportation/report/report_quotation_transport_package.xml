@@ -1,0 +1,155 @@
+<odoo>
+    <template
+        id="report_quotation_tour_transport_inherit"
+        inherit_id="tour_travel_management.report_quotation_tour"
+    >
+        <xpath expr="//div[hasclass('container')]" position="inside">
+            <div style="height: 15px;">
+            </div>
+            <div class="row mt32" t-if="o.transportation_line_ids">
+                <div class="col-md-12">
+                    <div
+                        style="float: left; margin-left: 45px; margin-top: -25px; padding: 10px; background-color: white; align: center;color: #19460b;font-size: 20px; bold: 12px;"
+                    >
+                        <span>
+                            <b>Transportation Details</b>
+                        </span>
+                    </div>
+                    <div style="margin-top: 5px; border: 1.5px solid #e6b800">
+                        <table
+                            class="table-condensed"
+                            width="100%"
+                            style="text-align: center; border: 0;"
+                        >
+                            <tr>
+                                <th
+                                    width="15%"
+                                    class="text-center"
+                                    style="color:#19460b"
+                                >Journey Date</th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="10%"
+                                >Travel From
+                                </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="10%"
+                                >Travel To
+                                </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="15%"
+                                >Transportation Agency
+                                </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="10%"
+                                >Vehicle Type
+                                </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="10%"
+                                >Number of Vehicles
+                                </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="15%"
+                                >Vehicle Price
+                                </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="15%"
+                                >Sub Total
+                                </th>
+                            </tr>
+                            <t t-foreach="o.transportation_line_ids" t-as="line">
+                                <tr style="text-align: center; font-size: 10px">
+                                    <td
+                                        width="15%"
+                                        style=" border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.journey_date"
+                                        />
+                                    </td>
+                                    <td
+                                        width="10%"
+                                        style="padding: 5px; border-left: 1px dotted black !important; padding: 5px;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.source_id.name"
+                                        />
+                                    </td>
+                                    <td
+                                        width="10%"
+                                        style="padding: 5px; border-top: 1px dotted black !important; border-left: 1px dotted black !important; padding: 5px"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.destination_id.name"
+                                        />
+                                    </td>
+                                    <td
+                                        width="15%"
+                                        style="padding: 5px; border-top: 1px dotted black !important; border-left: 1px dotted black !important; padding: 5px"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.transportation_id.name"
+                                        />
+                                    </td>
+                                    <td
+                                        width="10%"
+                                        style="padding: 5px; border-left: 1px dotted black !important;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.vehicle_id.name"
+                                        />
+                                    </td>
+                                    <td
+                                        width="10%"
+                                        style="padding: 5px; border-left: 1px dotted black !important;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.product_uom_qty"
+                                        />
+                                    </td>
+                                    <td
+                                        width="15%"
+                                        style="padding: 5px; border-left: 1px dotted black !important;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.price_unit"
+                                        />
+                                    </td>
+                                    <td
+                                        width="15%"
+                                        style="padding: 5px; border-left: 1px dotted black !important; padding: 5px;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.price_subtotal"
+                                        />
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

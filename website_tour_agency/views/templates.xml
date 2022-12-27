@@ -1,0 +1,303 @@
+<odoo>
+    <template id="star_card_travel">
+        <input type="hidden" name="val_integer" value="0.0" />
+        <t t-set="empty_star" t-value="5 - int(val_integer)" />
+        <div class="o_website_rating_static">
+            <t t-foreach="range(0, int(val_integer))" t-as="num">
+                <i class="fa fa-star" />
+            </t>
+            <t t-foreach="range(0, empty_star)" t-as="num">
+                <i class="fa fa-star-o" />
+            </t>
+        </div>
+    </template>
+    <template
+        id="contactus_default_inherit"
+        inherit_id="website.contactus"
+        name="Contactus Inherited"
+    >
+        <xpath expr="//section[hasclass('s_title','parallax','s_parallax_is_fixed')]" position="replace">
+        </xpath>
+        <xpath expr="//form[@id='contactus_form']//div[hasclass('form-group')][6]//span[hasclass('s_website_form_label_content')]" position="after">
+            <span class="s_website_form_mark"> *</span>
+        </xpath>
+        <xpath expr="//div[@id='wrap']" position="before">
+            <div class="oe_structure" />
+            <section
+                class="s_cover parallax s_parallax_is_fixed bg-black-50 pt96 pb96"
+                data-scroll-background-ratio="1"
+                style="background-image: none;"
+            >
+                <span
+                    class="s_parallax_bg oe_img_bg oe_custom_bg"
+                    style="background-image: url('/website_tour_agency/static/src/img/contact_header.jpg'); background-position: 50% 0;"
+                />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 s_title" data-name="Title">
+                            <h1
+                                class="s_title_thin trans_text"
+                                style="font-size: 62px; text-align: center;"
+                            >Let's talk !</h1>
+                        </div>
+                        <div class="col-12 s_text pt16 pb16" data-name="Text">
+                            <p
+                                class="lead"
+                                style="text-align: center;"
+                            >Write one or two paragraphs describing your product, services or a specific feature.<br
+                                /> To be successful your content needs to be useful to your readers.</p>
+                        </div>
+                        <div
+                            class="col-12 s_btn text-center pt16 pb16"
+                            data-name="Buttons"
+                        >
+                            <a
+                                href="/aboutus"
+                                class="btn btn-delta rounded-circle o_default_snippet_text"
+                            >About us</a>
+                            <a
+                                href="/contactus"
+                                class="btn btn-primary rounded-circle o_default_snippet_text"
+                            >Contact us</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="oe_structure" />
+        </xpath>
+    </template>
+    <!-- <template id="login_page_inherit" inherit_id="web.login" name="Login Page Inherited">
+        <xpath expr="//form[hasclass('oe_login_form')]" position="before">
+            <section class="oe_structure">
+                <section style="height: 70vh; background-image: url(&quot;/website_tour_agency/static/src/img/contact_header.jpg&quot;);" class="s_fix_bg_snippet s_fix_bg_option s_fix_bg_snippet oe_img_bg oe_custom_bg">
+                    <div class="container-fluid s_fix_bg_title text-center" style="height:70vh; background-color: rgba(0,0,0,0.5);">
+                        <span style="color: rgb(254, 193, 7); font-family: Lora, serif; font-size: 40px; font-style: italic; font-weight: 600; letter-spacing: 2px; text-transform: capitalize;">Are you user ?</span>
+                        <br />
+                        <h4 class="col-md-8 col-md-offset-2" style="color:white;"> Lorem Ipsum is simply dummy text of the printing and typesetting industry</h4>
+                    </div>
+                </section>
+            </section>
+        </xpath>
+    </template> -->
+    <template id="contactus_thanks_travel" name="Contactus Thanks">
+        <t t-call="website.layout">
+            <div class="oe_structure" />
+            <section
+                class="s_cover parallax s_parallax_is_fixed bg-black-50 pt96 pb96"
+                data-scroll-background-ratio="1"
+                style="background-image: none;"
+            >
+                <span
+                    class="s_parallax_bg oe_img_bg oe_custom_bg"
+                    style="background-image: url('/website_tour_agency/static/src/img/contact_header.jpg'); background-position: 50% 0;"
+                />
+                <div class="container">
+                    <div class="row s_nb_column_fixed">
+                        <div class="col-lg-12 s_title" data-name="Title">
+                            <h1
+                                class="s_title_thin o_default_snippet_text trans_text"
+                                style="font-size: 62px; text-align: center;"
+                            >Thank you!</h1>
+                        </div>
+                        <div class="col-lg-12 text-center pt16 pb16" data-name="Text">
+                            <h3
+                                class="text-white"
+                            >Your message has been sent successfully.</h3>
+                            <h4 class="text-white">We will get back to you shortly.</h4>
+                        </div>
+                        <div
+                            class="col-lg-12 s_btn text-center pt16 pb16"
+                            data-name="Buttons"
+                        >
+                            <a
+                                href="/aboutus"
+                                class="btn btn-delta rounded-circle o_default_snippet_text"
+                            >About us</a>
+                            <a
+                                href="/contactus"
+                                class="btn btn-primary rounded-circle o_default_snippet_text"
+                            >Contact us</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="oe_structure" />
+        </t>
+    </template>
+    <template id="custom_layout" inherit_id="website.layout" name="Upper Header">
+        <xpath expr="." position="inside">
+            <a
+                id="back-to-top"
+                href="#"
+                class="btn back-to-top"
+                role="button"
+                data-placement="left"
+            >
+                <span class="fa fa-long-arrow-up" />
+            </a>
+        </xpath>
+        <xpath expr="//header" position="before">
+            <div class="header-top" style="background: #151515;">
+                <div class="container">
+                    <div class="row mt8">
+                        <div class="col-md-8">
+                            <div id="header-top-second" class="clearfix">
+                                <div class="header-top-dropdown">
+                                    <div class="btn-group dropdown header_address">
+                                        <a class="btn">
+                                            <i class="fa fa-map-marker" />
+                                            <t t-esc="res_company.street" />,<t
+                                                t-esc="res_company.street2"
+                                            />,<t t-esc="res_company.city" />, <t
+                                                t-esc="res_company.country_id.name"
+                                            />.</a>
+                                        <a class="btn divider">
+                                            <i class="fa fa fa-phone" />
+                                            <t t-esc="res_company.phone" />
+                                        </a>
+                                    </div>
+                                    <div
+                                        class="btn-group dropdown"
+                                        t-if="(request.is_frontend_multilang and len(languages) &gt; 1) or editable"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="s_share no_icon_color" data-snippet="s_share" data-name="Social Media">
+                                <small class="s_share_title d-none"><b>Follow us</b></small>
+                                <t t-if="website.social_facebook">
+                                    <a t-att-href="website.social_facebook" class="s_share_facebook" target="_blank">
+                                        <i class="fa fa-facebook m-1" contenteditable="false">​</i>
+                                    </a>
+                                </t>
+                                <t t-if="website.social_twitter">
+                                    <a t-att-href="website.social_twitter" class="s_share_twitter" target="_blank">
+                                        <i class="fa fa-twitter m-1" contenteditable="false">​</i>
+                                    </a>
+                                </t>
+                                <t t-if="website.social_linkedin">
+                                    <a t-att-href="website.social_linkedin" class="s_share_linkedin" target="_blank">
+                                        <i class="fa fa-linkedin m-1" contenteditable="false">​</i>
+                                    </a>
+                                </t>
+                                <t t-if="website.social_youtube">
+                                    <a t-att-href="website.social_youtube" class="s_share_youtube" target="_blank">
+                                        <i class="fa fa-youtube m-1" contenteditable="false">​</i>
+                                    </a>
+                                </t>
+                                <t t-if="website.social_instagram">
+                                    <a t-att-href="website.social_instagram" class="s_share_instagram" target="_blank">
+                                        <i class="fa fa-instagram m-1" contenteditable="false">​</i>
+                                    </a>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]" position="replace">
+            <div class="o_footer_copyright">
+                <div class="container py-3">
+                    <div class="row">
+                        <div class="col-12 text-center text-muted">
+                            <t t-call="web.debug_icon" />
+                            <span>Copyright &amp;copy;</span>
+                            <span
+                                t-field="res_company.name"
+                                itemprop="name"
+                            >Company name</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <template id="website.footer_custom" inherit_id="website.layout" name="Footer">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div
+                id="footer"
+                class="oe_structure oe_structure_solo"
+                t-ignore="true"
+                t-if="not no_footer"
+            >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-12">
+                            <a href="/" class="logo">
+                                <h2>
+                                    <t t-esc="res_company.name" />
+                                </h2>
+                            </a>
+                            <ul class="list-unstyled">
+                                <li class="footer_contact" t-ignore="true">
+                                    <p class="">Call.
+                                    <b>
+                                            <span t-field="res_company.phone" />
+                                        </b><br />Email.
+                                    <b>
+                                            <span t-field="res_company.email" />
+                                        </b></p>
+                                </li>
+                            </ul>
+                            <address
+                                itemscope="itemscope"
+                                itemtype="http://schema.org/Organization"
+                            >
+                                <div
+                                    t-field="res_company.partner_id"
+                                    t-options="{                                         &quot;widget&quot;: &quot;contact&quot;,                                         &quot;fields&quot;: [&quot;address&quot;]}"
+                                />
+                            </address>
+                        </div>
+                        <div class="col-md-2 col-sm-3 col-6 mt32" id="info">
+                            <ul class="list-unstyled menu_footer">
+                                <li>
+                                    <a href="/">Home</a>
+                                </li>
+                                <li>
+                                    <a href="/packages">Packages</a>
+                                </li>
+                                <li>
+                                    <a href="/hotels">Hotels</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 col-sm-3 col-6 mt32" id="connect">
+                            <ul class="list-unstyled menu_footer">
+                                <li>
+                                    <a href="/visa">Visa</a>
+                                </li>
+                                <li>
+                                    <a href="/transportation">Transportation</a>
+                                </li>
+                                <li>
+                                    <a href="/contactus">Contact us</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer_contact col-md-4 col-sm-12 col-12 mt16">
+                            <h4>
+                                <span t-field="res_company.name" />
+                                <small> - <a href="/aboutus">About us</a></small>
+                            </h4>
+                            <div class="">
+                                <p>
+                                We are a team of passionate people whose goal is to improve everyone's
+                                life through disruptive products. We build great products to solve your
+                                business problems.
+                                </p>
+                                <p>
+                                Our products are designed for small to medium size companies willing to optimize
+                                their performance.
+                                </p>
+                            </div>
+                            <t t-call="website.language_selector" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

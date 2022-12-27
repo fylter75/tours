@@ -1,0 +1,26 @@
+.o_kanban_view.o_package_kanban_view {
+    .o_kanban_record {
+        position: relative;
+        padding: 0;
+
+        display: flex;
+
+        .o_package_left {
+            flex: 1 1 20%;
+            text-align: center;
+            color: white;
+            background-color: $o-brand-primary;
+            padding: 8px;
+
+            .o_package_day {
+                font-size: 25px;
+            }
+        }
+
+        .o_package_right {
+            flex: 1 1 75%;
+            padding: 8px;
+            margin-left: 8px;
+        }
+    }
+}

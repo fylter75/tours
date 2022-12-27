@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="menu_packages" model="website.menu">
+            <field name="name">Packages</field>
+            <field name="url">/packages</field>
+            <field name="parent_id" ref="website.main_menu" />
+            <field name="sequence" type="int">11</field>
+        </record>
+        <record id="menu_hotel" model="website.menu">
+            <field name="name">Hotels</field>
+            <field name="url">/hotels</field>
+            <field name="parent_id" ref="website.main_menu" />
+            <field name="sequence" type="int">12</field>
+        </record>
+        <record id="menu_visa" model="website.menu">
+            <field name="name">Visa</field>
+            <field name="url">/visa</field>
+            <field name="parent_id" ref="website.main_menu" />
+            <field name="sequence" type="int">13</field>
+        </record>
+        <record id="menu_transportation" model="website.menu">
+            <field name="name">Transportation</field>
+            <field name="url">/transportation</field>
+            <field name="parent_id" ref="website.main_menu" />
+            <field name="sequence" type="int">14</field>
+        </record>
+    </data>
+</odoo>

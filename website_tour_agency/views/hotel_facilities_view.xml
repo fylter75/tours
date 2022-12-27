@@ -1,0 +1,59 @@
+<odoo>
+    <record id="hotel_registration_form_inherit_inherited" model="ir.ui.view">
+        <field name="name">hotel.registration.form.inherited</field>
+        <field name="model">res.partner</field>
+        <field
+            name="inherit_id"
+            ref="tour_travel_management.supplier_registration_form"
+        />
+        <field name="arch" type="xml">
+            <field name="vat" position="after">
+                <field
+                    name="rating"
+                    widget="priority"
+                    attrs="{'invisible': [('registration_type','!=','hotel')]}"
+                />
+                <field
+                    name="website_visible"
+                    widget="website_button"
+                    attrs="{'invisible': [('registration_type','!=','hotel')]}"
+                />
+            </field>
+            <xpath expr="//notebook" position="inside">
+                <page
+                    string="Hotel Overview"
+                    name="hotel_description"
+                    attrs="{'invisible': [('registration_type','!=','hotel')]}"
+                >
+                    <field name="description" />
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="hotel_facilities_form_inherited" model="ir.ui.view">
+        <field name="name">hotel_facilities_form.inherited</field>
+        <field name="model">hotel.facilities</field>
+        <field
+            name="inherit_id"
+            ref="tour_travel_hotel_management.hotel_facilities_form"
+        />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="icon_class" placeholder="fa fa-check-circle-o" />
+            </field>
+        </field>
+    </record>
+    <record id="hotel_facilities_tree_inherited" model="ir.ui.view">
+        <field name="name">hotel_facilities_tree.inherited</field>
+        <field name="model">hotel.facilities</field>
+        <field
+            name="inherit_id"
+            ref="tour_travel_hotel_management.hotel_facilities_tree"
+        />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="icon_class" placeholder="fa fa-check-circle-o" />
+            </field>
+        </field>
+    </record>
+</odoo>

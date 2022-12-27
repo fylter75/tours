@@ -1,0 +1,227 @@
+<odoo>
+    <template
+        id="report_quotation_tour_guide_inherit"
+        inherit_id="tour_travel_management.report_quotation_tour"
+    >
+        <xpath expr="//div[hasclass('container')]" position="inside">
+            <div style="height: 15px;">
+            </div>
+            <div class="row mt32" t-if="o.guide_line_ids">
+                <div class="col-md-12">
+                    <div
+                        style="float: left; margin-left: 45px; margin-top: -25px; padding: 10px; background-color: white; align: center;color: #19460b;font-size: 20px; bold: 12px;"
+                    >
+                        <span>
+                            <b>Guide Details</b>
+                        </span>
+                    </div>
+                    <div style="margin-top: 5px; border: 1.5px solid #e6b800">
+                        <table
+                            class="table-condensed"
+                            width="100%"
+                            style="text-align: center; border: 0;"
+                        >
+                            <tr>
+                                <th
+                                    width="15%"
+                                    class="text-center"
+                                    style="color:#19460b"
+                                >Day</th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="15%"
+                                >Guide Name
+                             </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="20%"
+                                >Service Name
+                             </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="10%"
+                                >Service Quantity
+                             </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="20%"
+                                >Guide Price
+                             </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="20%"
+                                >Sub Total
+                             </th>
+                            </tr>
+                            <t t-foreach="o.guide_line_ids" t-as="line">
+                                <tr style="text-align: center; font-size: 10px">
+                                    <td
+                                        width="15%"
+                                        style=" border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.date"
+                                        />
+                                    </td>
+                                    <td
+                                        width="15%"
+                                        style="padding: 5px; border-left: 1px dotted black !important; padding: 5px;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.guide_id.name"
+                                        />
+                                    </td>
+                                    <td
+                                        width="20%"
+                                        style="padding: 5px; border-top: 1px dotted black !important; border-left: 1px dotted black !important; padding: 5px"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.service_id.name"
+                                        />
+                                    </td>
+                                    <td
+                                        width="10%"
+                                        style="padding: 5px; border-left: 1px dotted black !important;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.product_uom_qty"
+                                        />
+                                    </td>
+                                    <td
+                                        width="20%"
+                                        style="padding: 5px; border-left: 1px dotted black !important;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.price_unit"
+                                        />
+                                    </td>
+                                    <td
+                                        width="20%"
+                                        style="padding: 5px; border-left: 1px dotted black !important; padding: 5px;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.price_subtotal"
+                                        />
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 18px;">
+            </div>
+            <!--Extra Ticket Details-->
+            <div class="row mt32" t-if="o.extra_ticket_line_ids">
+                <div class="col-md-12">
+                    <div
+                        style="float: left; margin-left: 45px; margin-top: -25px; padding: 10px; background-color: white; align: center;color: #19460b;font-size: 20px; bold: 12px;"
+                    >
+                        <span>
+                            <b>Extra Ticket Details</b>
+                        </span>
+                    </div>
+                    <div style="margin-top: 5px; border: 1.5px solid #e6b800">
+                        <table
+                            class="table-condensed"
+                            width="100%"
+                            style="text-align: center; border: 0;"
+                        >
+                            <tr>
+                                <th
+                                    width="20%"
+                                    class="text-center"
+                                    style="color:#19460b"
+                                >Day</th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="20%"
+                                >Ticket Name
+                                </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="20%"
+                                >Ticket Quantity
+                                </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="20%"
+                                >Ticket Price
+                                </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="20%"
+                                >Sub Total
+                                </th>
+                            </tr>
+                            <t t-foreach="o.extra_ticket_line_ids" t-as="line">
+                                <tr style="text-align: center; font-size: 10px">
+                                    <td
+                                        width="20%"
+                                        style=" border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.date"
+                                        />
+                                    </td>
+                                    <td
+                                        width="20%"
+                                        style="padding: 5px; border-left: 1px dotted black !important; padding: 5px;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.ticket_id.name"
+                                        />
+                                    </td>
+                                    <td
+                                        width="20%"
+                                        style="padding: 5px; border-top: 1px dotted black !important; border-left: 1px dotted black !important; padding: 5px"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.product_uom_qty"
+                                        />
+                                    </td>
+                                    <td
+                                        width="20%"
+                                        style="padding: 5px; border-left: 1px dotted black !important;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.price_unit"
+                                        />
+                                    </td>
+                                    <td
+                                        width="20%"
+                                        style="padding: 5px; border-left: 1px dotted black !important; padding: 5px;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.price_subtotal"
+                                        />
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

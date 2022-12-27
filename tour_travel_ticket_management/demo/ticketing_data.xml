@@ -1,0 +1,47 @@
+<odoo noupdate="1">
+    <record id="fare_type_flight" model="fare.type">
+        <field name="name">Air Flight</field>
+    </record>
+    <record id="fare_type_bus" model="fare.type">
+        <field name="name">Bus</field>
+    </record>
+    <record id="fare_type_train" model="fare.type">
+        <field name="name">Train</field>
+    </record>
+    <!--Transport Ticket-->
+    <record id="ticketing1" model="product.product">
+        <field name="name">First Class</field>
+        <field name="type_travel_product">tickets</field>
+        <field name="type">service</field>
+    </record>
+    <record id="ticketing2" model="product.product">
+        <field name="name">Second Class</field>
+        <field name="type_travel_product">tickets</field>
+        <field name="type">service</field>
+    </record>
+    <record id="ticketing3" model="product.product">
+        <field name="name">Business-Class</field>
+        <field name="type_travel_product">tickets</field>
+        <field name="type">service</field>
+    </record>
+    <record id="ticketing4" model="product.product">
+        <field name="name">Economy-Class</field>
+        <field name="type_travel_product">tickets</field>
+        <field name="type">service</field>
+    </record>
+    <!--Package Ticket Line -->
+    <record id="package_ticket_line_01" model="ticket.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="source_id" ref="tour_travel_management.city11" />
+        <field name="destination_id" ref="tour_travel_management.city4" />
+        <field name="fare_type_id" ref="fare_type_flight" />
+        <field name="product_id" ref="ticketing1" />
+        <field name="name">Ticket type : Economy-Class Journey : New York -> Dubai
+Fare Type: Air Flight</field>
+        <field name="issue_date" eval="DateTime.now()" />
+        <field name="qty">1</field>
+        <field name="cost_price">5000</field>
+        <field name="unit_price">10000</field>
+        <field name="price_subtotal">10000</field>
+    </record>
+</odoo>

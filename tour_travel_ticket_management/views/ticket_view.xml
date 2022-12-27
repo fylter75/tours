@@ -1,0 +1,59 @@
+<odoo>
+    <!-- Tree view of Tickets-->
+    <record id="view_ticket_tree" model="ir.ui.view">
+        <field name="name">tickets.tree</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <tree string="Tickets">
+                <field name="name" />
+                <field name="lst_price" string="Sales Price" />
+                <field name="standard_price" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_tickets" model="ir.actions.act_window">
+        <field name="name">Tickets</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_ticket_tree" />
+        <field name="context">{'default_detailed_type': 'service',
+                               'default_type_travel_product': 'tickets'}</field>
+        <field name="domain">[('type_travel_product','=','tickets')]</field>
+    </record>
+    <!-- Tree view of Fare Type-->
+    <record id="view_fare_type_tree" model="ir.ui.view">
+        <field name="name">fare.type.tree</field>
+        <field name="model">fare.type</field>
+        <field name="arch" type="xml">
+            <tree string="Fare Type">
+                <field name="name" required="1" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_fare_type" model="ir.actions.act_window">
+        <field name="name">Fare Type</field>
+        <field name="res_model">fare.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_fare_type_tree" />
+    </record>
+    <menuitem
+        id="menu_ticket_configuration"
+        parent="tour_travel_management.menu_configuration"
+        sequence="40"
+        name="Tickets Configuration"
+    />
+    <menuitem
+        id="menu_fare_type"
+        parent="menu_ticket_configuration"
+        action="action_fare_type"
+        sequence="10"
+        name="Fare Type"
+    />
+    <menuitem
+        id="menu_tickets"
+        parent="menu_ticket_configuration"
+        action="action_tickets"
+        sequence="20"
+        name="Ticket"
+    />
+</odoo>

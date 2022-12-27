@@ -1,0 +1,97 @@
+<odoo>
+    <menuitem id="menu_sale_package_root" sequence="1" name="Tours &amp; Travels" />
+    <menuitem
+        id="menu_sale_package_child"
+        parent="menu_sale_package_root"
+        sequence="1"
+        action="package_category_action"
+        name="Packages"
+    />
+    <menuitem
+        id="menu_package_contract"
+        parent="menu_sale_package_root"
+        action="action_package_contract"
+        sequence="2"
+        name="Contracts"
+    />
+    <menuitem
+        id="menu_tour_registration"
+        parent="menu_sale_package_root"
+        action="tour_package_registration_quotations"
+        sequence="1"
+        name="Registration"
+    />
+    <menuitem
+        id="menu_report"
+        parent="menu_sale_package_root"
+        sequence="3"
+        name="Reports"
+    />
+    <menuitem
+        id="menu_report_passenger"
+        parent="menu_report"
+        action="action_wizzard_passenger_list"
+        sequence="1"
+        name="Passenger List"
+    />
+    <menuitem
+        id="menu_configuration"
+        parent="menu_sale_package_root"
+        sequence="100"
+        name="Configurations"
+    />
+    <menuitem
+        id="menu_other_info"
+        name="Other Info"
+        parent="menu_configuration"
+        sequence="50"
+    />
+    <menuitem
+        id="menu_city_city"
+        name="City"
+        parent="menu_other_info"
+        action="action_city_city"
+        sequence="10"
+    />
+    <menuitem
+        id="travelling_season_menu"
+        name="Season"
+        parent="menu_other_info"
+        action="action_travelling_season"
+        sequence="20"
+    />
+    <menuitem
+        id="menu_package_category"
+        parent="menu_configuration"
+        sequence="600"
+        name="Packages"
+    />
+    <!--      <menuitem
+        id="tour_package_menu"
+        name=" Tour Packages"
+        parent="menu_package_category"
+        action="action_tour_travel_package_tree"
+        sequence="20"
+        /> -->
+    <menuitem
+        id="tour_packages_menu"
+        name="Tour Package"
+        parent="menu_package_category"
+        action="action_tour_travel_package"
+        sequence="10"
+    />
+    <menuitem
+        id="package_category_menu"
+        name="Package Category"
+        parent="menu_package_category"
+        action="action_package_category"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_package_contract_cancel"
+        parent="menu_other_info"
+        action="action_contract_cancel_reason"
+        sequence="30"
+        name="Contract Cancel Reason"
+    />
+</odoo>

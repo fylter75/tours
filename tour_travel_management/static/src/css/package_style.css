@@ -1,0 +1,26 @@
+.div_title {
+    padding: 10px;
+    font-size: 20px;
+    color: #19460b;
+    bold: 12px;
+}
+
+.content_div_table {
+    margin-top: 5px;
+    border: 1.5px solid #e6b800;
+}
+
+.table_border {
+    text-align: center;
+    border: 0;
+}
+
+.td_border {
+    border-left: 1px dotted black !important;
+    padding: 5px;
+}
+
+.tr_border {
+    border-top: 1px dotted black !important;
+    text-align: center;
+}
