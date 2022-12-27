@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_meal_packages_line_manager,access.meal.packages.line.manager,model_meal_packages_line,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_meal_packages_line_user,access.meal.packages.line.user,model_meal_packages_line,tour_travel_management.group_tour_traveller_user,1,1,1,1
+access_meal_package_manager,access.meal.packages.manager,model_meal_package,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_template_meal_package_line_manager,access.template.meal.packages.line.manager,model_template_meal_package_line,tour_travel_management.group_tour_traveller_manager,1,1,1,1

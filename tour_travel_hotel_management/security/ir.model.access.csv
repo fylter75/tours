@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hotel_room_manager,access.hotel.room.manager,model_hotel_room,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_hotel_room_type_manager,access.hotel.room.type.manager,model_hotel_room_type,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_hotel_facilities,access.hotel.facilities.manager,model_hotel_facilities,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_hotel_package_line,access.hotel.package.line.manager,model_hotel_package_line,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_hotel_room_line,access.hotel.room.line.manager,model_hotel_room_line,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_package_contract_line,access.package.contract.line.manager,model_package_contract_line,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_hotel_room_user,access.hotel.room.user,model_hotel_room,tour_travel_management.group_tour_traveller_user,1,1,1,1
+access_hotel_room_type_user,access.hotel.room.type.user,model_hotel_room_type,tour_travel_management.group_tour_traveller_user,1,1,1,1
+access_hotel_facilities_user,access.hotel.facilities.user,model_hotel_facilities,tour_travel_management.group_tour_traveller_user,1,1,1,1
+access_hotel_package_line_user,access.hotel.package.line.user,model_hotel_package_line,tour_travel_management.group_tour_traveller_user,1,1,1,1
+access_hotel_room_line_user,access.hotel.room.line.user,model_hotel_room_line,tour_travel_management.group_tour_traveller_user,1,1,1,1
+access_package_contract_line_user,access.package.contract.line.user,model_package_contract_line,tour_travel_management.group_tour_traveller_user,1,1,1,1

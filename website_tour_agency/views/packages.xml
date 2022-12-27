@@ -1,0 +1,167 @@
+<odoo>
+    <template id="package_search_box" name="Packages searchbox">
+        <div class="col-md-6 offset-md-3">
+            <form t-att-action="keep('/packages', search=0)" method="get">
+                <div class="input-group">
+                    <div class="oe_search package_search mt64" style="width:80%;">
+                        <input
+                            style="border-radius: 0;"
+                            type="text"
+                            name="search"
+                            class="border_radius_no search-query form-control oe_search_box mail_input_height"
+                            placeholder="Search..."
+                            t-att-value="search if search else ''"
+                        />
+                    </div>
+                    <span class="input-group-btn package_search_btn">
+                        <button
+                            style="border-radius:0;"
+                            type="submit"
+                            class="mt64 btn btn-default oe_search_button serch_btn"
+                        >
+                            <i class="fa fa-search" />
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </template>
+    <template id="packages" name="Packages">
+        <t t-call="website.layout">
+            <div class="oe_structure" />
+            <section
+                class="s_cover parallax s_parallax_is_fixed bg-black-50 pt96 pb96"
+                data-scroll-background-ratio="1"
+                style="background-image: none;"
+            >
+                <span
+                    class="s_parallax_bg oe_img_bg oe_custom_bg"
+                    style="background-image: url('/website_tour_agency/static/src/img/package_header.jpg'); background-position: 50% 0;"
+                />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 s_title" data-name="Title">
+                            <h1
+                                class="trans_text"
+                                style="font-size: 62px; text-align: center;"
+                            >Packages</h1>
+                        </div>
+                        <div class="col-12 s_text pt16 pb16" data-name="Text">
+                            <p
+                                class="lead o_default_snippet_text"
+                                style="text-align: center;"
+                            >Write one or two paragraphs describing your product, services or a specific feature.<br
+                                /> To be successful your content needs to be useful to your readers.</p>
+                        </div>
+                        <t t-call="website_tour_agency.package_search_box" />
+                    </div>
+                </div>
+            </section>
+            <div class="oe_structure" />
+            <section class="package gray-bg">
+                <div class="container-fluid">
+                    <div class="row justify-content-center pt64 pb64">
+                        <div class="col-md-3 col-sm-4 col-11 mb32">
+                            <div class="cd-filter filter-is-visible">
+                                <div class="cd-filter-block">
+                                    <form
+                                        t-att-action="keep('/packages', search=0, )"
+                                        method="get"
+                                    >
+                                        <div class="cd-filter-block">
+                                            <h4>Filter by Categories</h4>
+                                            <ul
+                                                class="cd-filter-content cd-filters list"
+                                                style="padding-inline-start: 10px;"
+                                            >
+                                                <t
+                                                    t-foreach="package_categs"
+                                                    t-as="categ"
+                                                >
+                                                    <li>
+                                                        <input
+                                                            class="filter"
+                                                            type="checkbox"
+                                                            name="categories"
+                                                            t-att-value="'%s-%s' % (categ.id,categ.id)"
+                                                            t-att-checked="categ.id in categs_selected"
+                                                        />
+                                                        <label
+                                                            class="checkbox-label"
+                                                            for=""
+                                                        >
+                                                            <t t-esc="categ.name" />
+                                                        </label>
+                                                    </li>
+                                                </t>
+                                            </ul>
+                                        </div>
+                                        <div class="text-center">
+                                            <button
+                                                type="submit"
+                                                class="btn btn-black"
+                                            >Apply</button>
+                                        </div>
+                                    </form>
+                                    <a
+                                        href='/packages'
+                                        class="cd-close"
+                                    >Remove Filters</a>
+                                    <a
+                                        href="#0"
+                                        class="cd-filter-trigger filter-is-visible"
+                                    >Filters</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-sm-8 col-12 mb32">
+                            <div class="row mr-2 ml-2">
+                                <t t-if="not packages">
+                                    <div class="text-center col-12 mb16">
+                                        <h4
+                                            class=" text-muted mb-0"
+                                        >No packages Found</h4>
+                                    </div>
+                                </t>
+                                <t t-foreach="packages" t-as="package">
+                                    <div class="col-md-4 col-sm-6 col-11 mb16">
+                                        <div class="package-wiget">
+                                            <div class="grid">
+                                                <a
+                                                    t-attf-href="/package/details/#{ slug(package) }"
+                                                    class="disable_anchor_link"
+                                                >
+                                                    <img
+                                                        class="img-responsive"
+                                                        id=""
+                                                        t-att-value="package.image_medium"
+                                                        t-att-src="website.image_url(package, 'image_medium')"
+                                                    />
+                                                    <div
+                                                        class="package-content text-center mt16"
+                                                    >
+                                                        <h5>
+                                                            <t t-esc="package.name" />
+                                                        </h5>
+                                                        <p
+                                                            class="text-yellow mb0"
+                                                            t-esc="package.category_id.name"
+                                                        />
+                                                        <div
+                                                            class="package-price"
+                                                        > More Details
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+</odoo>

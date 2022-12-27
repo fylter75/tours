@@ -1,0 +1,75 @@
+<odoo>
+    <record id="transportation_vehicle_form" model="ir.ui.view">
+        <field name="name">transportation.vehicle.form</field>
+        <field name="model">transportation.vehicle</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Detail">
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        text="Archived"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': [('active', '=', True)]}"
+                    />
+                    <field
+                        name="image_1920"
+                        widget="image"
+                        class="oe_avatar"
+                        options="{'preview_image': 'image_128'}"
+                    />
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name" string="Vehicle Name" />
+                        <h1>
+                            <field name="name" placeholder="ex.Bus" />
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page name="information_vehicle_detail" string="Information">
+                            <group>
+                                <group>
+                                    <field name="detailed_type" />
+                                    <field name="list_price" />
+                                    <field name="standard_price" />
+                                    <field name="taxes_id" widget="many2many_tags" />
+                                </group>
+                                <group>
+                                    <field name="vehicle_number" />
+                                    <field name="capacity" />
+                                    <field name="default_code" />
+                                    <field name="barcode" />
+                                    <field name="active" invisible="1" />
+                                </group>
+                            </group>
+                            <separator string="Description" />
+                            <field colspan="4" name="description" nolabel="1" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='transportation_vehicle_tree' model='ir.ui.view'>
+        <field name='name'>transportation.vehicle.tree</field>
+        <field name='model'>transportation.vehicle</field>
+        <field name='arch' type='xml'>
+            <tree string='Vehicle Detail'>
+                <field name='name' />
+                <field name="vehicle_number" />
+                <field name="capacity" />
+                <field name="list_price" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_transportation_vehicle" model="ir.actions.act_window">
+        <field name="name">Vehicle Detail</field>
+        <field name="res_model">transportation.vehicle</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="transportation_vehicle_menu"
+        action="action_transportation_vehicle"
+        name="Vehicle Detail"
+        parent="transportation_configuration_menu"
+        sequence="20"
+    />
+</odoo>

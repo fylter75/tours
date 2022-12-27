@@ -1,0 +1,164 @@
+<odoo>
+    <record id="done_package_action_from_dashboard" model="ir.actions.act_window">
+        <field name="name">Packages</field>
+        <field name="res_model">sale.order.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="search_view_id" ref="tour_travel_package_search" />
+        <field name="context">{'default_is_package':1}</field>
+        <field name="domain">[('category_id','=',active_id)]</field>
+    </record>
+    <record id="package_category_form" model="ir.ui.view">
+        <field name="name">package.category.form</field>
+        <field name="model">package.category</field>
+        <field name="arch" type="xml">
+            <form string="Package Category Form">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="%(done_package_action_from_dashboard)d"
+                            type="action"
+                            icon="fa-book"
+                        >
+                            <field
+                                name="package_count"
+                                widget="statinfo"
+                                string="Packages"
+                            />
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='package_category_tree' model='ir.ui.view'>
+        <field name='name'>package.category.tree</field>
+        <field name='model'>package.category</field>
+        <field name='arch' type='xml'>
+            <tree string='description'>
+                <field name='name' />
+            </tree>
+        </field>
+    </record>
+    <record id="package_category_dashboard_kanban" model="ir.ui.view">
+        <field name="name">package.category.dashboard.kanban</field>
+        <field name="model">package.category</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard" create="0">
+                <field name='name' />
+                <field name="in_draft" />
+                <field name="in_confirm" />
+                <field name="in_done" />
+                <field name="in_cancel" />
+                <field name="todo_package" />
+                <templates>
+                    <t t-name='kanban-box'>
+                        <div
+                            style="box-shadow: 0px 0px 5px 0px #aeaeae;border-radius: 2px;"
+                        >
+                            <div t-attf-class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary">
+                                        <a
+                                            name="%(done_package_action_from_dashboard)d"
+                                            type="action"
+                                            context="{'form_view_ref':'tour_travel_management.tour_travel_package_form'}"
+                                        >
+                                            <field name="name" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container o_kanban_card_content">
+                                <div class="row">
+                                    <div class="col-6 o_kanban_primary_left">
+                                        <button
+                                            class="btn btn-primary"
+                                            name="%(done_package_action_from_dashboard)d"
+                                            type="action"
+                                            context="{'search_default_draft': 1,'search_default_confirm': 1, 'form_view_ref':'tour_travel_management.tour_travel_package_form'}"
+                                        >
+                                            <b>
+                                                <field name="todo_package" />
+                                            </b> Packages
+                                    </button>
+                                    </div>
+                                    <div class="col-6 o_kanban_primary_right">
+                                        <div class="row">
+                                            <div class="col-9">
+                                                <a
+                                                    name="%(done_package_action_from_dashboard)d"
+                                                    type="action"
+                                                    context="{'search_default_draft': 1, 'form_view_ref':'tour_travel_management.tour_travel_package_form'}"
+                                                >
+                                                    Draft
+                                                </a>
+                                            </div>
+                                            <div class="col-3">
+                                                <field name="in_draft" />
+                                            </div>
+                                            <div class="col-9">
+                                                <a
+                                                    name="%(done_package_action_from_dashboard)d"
+                                                    type="action"
+                                                    context="{'search_default_confirm': 1, 'form_view_ref':'tour_travel_management.tour_travel_package_form'}"
+                                                >
+                                                    Confirmed
+                                                </a>
+                                            </div>
+                                            <div class="col-3">
+                                                <field name="in_confirm" />
+                                            </div>
+                                            <div class="col-9">
+                                                <a
+                                                    name="%(done_package_action_from_dashboard)d"
+                                                    type="action"
+                                                    context="{'search_default_done': 1, 'form_view_ref':'tour_travel_management.tour_travel_package_form'}"
+                                                >
+                                                    Done
+                                                </a>
+                                            </div>
+                                            <div class="col-3">
+                                                <field name="in_done" />
+                                            </div>
+                                            <div class="col-9">
+                                                <a
+                                                    name="%(done_package_action_from_dashboard)d"
+                                                    type="action"
+                                                    context="{'search_default_cancel': 1, 'form_view_ref':'tour_travel_management.tour_travel_package_form'}"
+                                                >
+                                                    Cancelled
+                                                </a>
+                                            </div>
+                                            <div class="col-3">
+                                                <field name="in_cancel" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="action_package_category" model="ir.actions.act_window">
+        <field name="name">Package Category</field>
+        <field name="res_model">package.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="package_category_action" model="ir.actions.act_window">
+        <field name="name">Package Category</field>
+        <field name="res_model">package.category</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="view_id" ref="package_category_dashboard_kanban" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Add a new Package Category
+          </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,60 @@
+<odoo>
+    <!-- Inherit Package Contract Form View-->
+    <record id="package_contract_hotel_form_inherit" model="ir.ui.view">
+        <field name="name">package.contract.form.inherit</field>
+        <field name="model">package.contract</field>
+        <field name="inherit_id" ref="tour_travel_management.package_contract_form" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="before">
+                <field
+                    name="hotel_id"
+                    attrs="{'invisible': [('package_contract_type', '!=', 'hotel')], 'required': [('package_contract_type', '=', 'hotel')],'readonly':[('state','in',['open','close','cancel'])]}"
+                    context="{'city_id': city_id, 'package_contract_type':package_contract_type, 'form_view_ref': 'tour_travel_hotel_management.hotel_supplier_registration_form_inherit'}"
+                    domain="[('is_hotel','=',True),('registration_type','=','hotel')]"
+                    options="{'no_create': True, 'no_create_edit':True,'no_open':True}"
+                />
+            </field>
+            <xpath expr="//page[@name='notes']" position="before">
+                <page
+                    name="hotel_rooms"
+                    string="Hotel Rooms"
+                    attrs="{'invisible': [('package_contract_type', '!=', 'hotel')]}"
+                >
+                    <field
+                        name="contract_lines_ids"
+                        attrs="{'readonly':[('state','in',['open','close','cancel'])]}"
+                    >
+                        <tree string="Contract Lines" editable='bottom'>
+                            <field name="hotel_id" invisible="1" />
+                            <field name="package_contract_type" invisible="1" />
+                            <field
+                                name="room_id"
+                                string="Room"
+                                required="1"
+                                options="{'no_create': True, 'no_create_edit':True,'no_open':True}"
+                            />
+                            <field
+                                name="room_type_id"
+                                options="{'no_create': True, 'no_create_edit':True,'no_open':True}"
+                            />
+                            <field name="capacity" />
+                            <field name="room_qty" string="Qty" />
+                            <field name="unit_price" string="Cost Price" />
+                            <field name="sales_price" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="hotel_package_contract_inherit_search" model="ir.ui.view">
+        <field name="name">hotel.package.contract.inherite.search</field>
+        <field name="model">package.contract</field>
+        <field name="inherit_id" ref="tour_travel_management.package_contract_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="hotel_id" filter_domain="[('hotel_id','ilike',self)]" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

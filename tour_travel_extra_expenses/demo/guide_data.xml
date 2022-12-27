@@ -1,0 +1,181 @@
+<odoo noupdate="1">
+    <!--Extra Tickets-->
+    <record id="tickets1" model="product.product">
+        <field name="name">Zoo</field>
+        <field name="type_travel_product">extra_tickets</field>
+        <field name="type">service</field>
+    </record>
+    <record id="tickets2" model="product.product">
+        <field name="name">Safari Park</field>
+        <field name="type_travel_product">extra_tickets</field>
+        <field name="type">service</field>
+    </record>
+    <record id="tickets3" model="product.product">
+        <field name="name">Scuba diving</field>
+        <field name="type_travel_product">extra_tickets</field>
+        <field name="type">service</field>
+    </record>
+    <record id="tickets4" model="product.product">
+        <field name="name">Dance Show</field>
+        <field name="type_travel_product">extra_tickets</field>
+        <field name="type">service</field>
+    </record>
+    <record id="tour1" model="product.product">
+        <field name="name">City Tour</field>
+        <field name="type_travel_product">extra_tickets</field>
+        <field name="type">service</field>
+    </record>
+    <record id="tour2" model="product.product">
+        <field name="name">Museum Tour</field>
+        <field name="type_travel_product">extra_tickets</field>
+        <field name="type">service</field>
+    </record>
+    <record id="tour3" model="product.product">
+        <field name="name">Castle Tour</field>
+        <field name="type_travel_product">extra_tickets</field>
+        <field name="type">service</field>
+    </record>
+    <record id="tour4" model="product.product">
+        <field name="name">Zoo Tour</field>
+        <field name="type_travel_product">extra_tickets</field>
+        <field name="type">service</field>
+    </record>
+    <!--Package Extra Ticket Line -->
+    <record id="package_extra_ticket_line_01" model="extra.ticket.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="(DateTime.now()+ relativedelta(days=1))" />
+        <field name="ticket_id" ref="tickets1" />
+        <field name="name">Zoo</field>
+        <field name="qty">1</field>
+        <field name="cost_price">500</field>
+        <field name="price_unit">1000</field>
+        <field name="price_subtotal">1000</field>
+    </record>
+    <record id="package_extra_ticket_line_02" model="extra.ticket.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="(DateTime.now()+ relativedelta(days=2))" />
+        <field name="ticket_id" ref="tickets2" />
+        <field name="name">Safari Park</field>
+        <field name="qty">1</field>
+        <field name="cost_price">250</field>
+        <field name="price_unit">500</field>
+        <field name="price_subtotal">500</field>
+    </record>
+    <record id="package_extra_ticket_line_03" model="extra.ticket.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="(DateTime.now()+ relativedelta(days=3))" />
+        <field name="ticket_id" ref="tickets3" />
+        <field name="name">Scuba diving</field>
+        <field name="qty">11</field>
+        <field name="cost_price">350</field>
+        <field name="price_unit">600</field>
+        <field name="price_subtotal">600</field>
+    </record>
+    <!--guide-->
+    <record id="guide1" model="product.product">
+        <field name="name">Guide for City Tour</field>
+        <field name="type_travel_product">guide</field>
+        <field name="type">service</field>
+    </record>
+    <record id="guide2" model="product.product">
+        <field name="name">Guide for Zoo</field>
+        <field name="type_travel_product">guide</field>
+        <field name="type">service</field>
+    </record>
+    <record id="guide3" model="product.product">
+        <field name="name">Guide for scuba diving</field>
+        <field name="type_travel_product">guide</field>
+        <field name="type">service</field>
+    </record>
+    <!-- Guide Registration -->
+    <record id="guide_registration_01" model="res.partner">
+        <field name="name">Dubai Tourist Guide</field>
+        <field name="company_id" eval="None" />
+        <field name="is_company" eval="False" />
+        <field name="street">2nd December Street, Al Jafiliya</field>
+        <field name="zip">119444</field>
+        <field name="phone" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="state_id" ref="base.state_ae_du" />
+        <field name="registration_type">guide</field>
+    </record>
+    <record id="guide_registration_02" model="res.partner">
+        <field name="name">New York Tourist Guide</field>
+        <field name="company_id" eval="None" />
+        <field name="is_company" eval="False" />
+        <field name="street">870 7TH AVENUE NEW YORK</field>
+        <field name="zip">10019-4038</field>
+        <field name="phone" />
+        <field name="city_id" ref="tour_travel_management.city11" />
+        <field name="state_id" ref="base.state_us_27" />
+        <field name="registration_type">guide</field>
+    </record>
+    <!-- Guide Registration Service Line -->
+    <record id="guide_registration_service_line_01" model="guide.service.line">
+        <field name="guide_id" ref="guide_registration_01" />
+        <field name="service_id" ref="guide1" />
+        <field name="cost_price">500</field>
+        <field name="unit_price">1000</field>
+    </record>
+    <record id="guide_registration_service_line_02" model="guide.service.line">
+        <field name="guide_id" ref="guide_registration_01" />
+        <field name="service_id" ref="guide2" />
+        <field name="cost_price">1000</field>
+        <field name="unit_price">2000</field>
+    </record>
+    <record id="guide_registration_service_line_03" model="guide.service.line">
+        <field name="guide_id" ref="guide_registration_01" />
+        <field name="service_id" ref="guide3" />
+        <field name="cost_price">2000</field>
+        <field name="unit_price">3000</field>
+    </record>
+    <record id="guide_registration_service_line_04" model="guide.service.line">
+        <field name="guide_id" ref="guide_registration_02" />
+        <field name="service_id" ref="guide1" />
+        <field name="cost_price">500</field>
+        <field name="unit_price">1000</field>
+    </record>
+    <record id="guide_registration_service_line_05" model="guide.service.line">
+        <field name="guide_id" ref="guide_registration_02" />
+        <field name="service_id" ref="guide2" />
+        <field name="cost_price">1000</field>
+        <field name="unit_price">2000</field>
+    </record>
+    <record id="guide_registration_service_line_06" model="guide.service.line">
+        <field name="guide_id" ref="guide_registration_02" />
+        <field name="service_id" ref="guide3" />
+        <field name="cost_price">2000</field>
+        <field name="unit_price">3000</field>
+    </record>
+    <!--Package Guide Line -->
+    <record id="package_guide_line_01" model="guide.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="(DateTime.now()+ relativedelta(days=1))" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="guide_id" ref="guide_registration_01" />
+        <field name="service_id" ref="guide1" />
+        <field name="name">Guide for City Tour</field>
+        <field name="cost_price">500</field>
+        <field name="price_unit">1000</field>
+    </record>
+    <record id="package_guide_line_02" model="guide.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="(DateTime.now()+ relativedelta(days=2))" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="guide_id" ref="guide_registration_01" />
+        <field name="service_id" ref="guide2" />
+        <field name="name">Guide for Zoo</field>
+        <field name="cost_price">1000</field>
+        <field name="price_unit">2000</field>
+    </record>
+    <record id="package_guide_line_03" model="guide.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="date" eval="(DateTime.now()+ relativedelta(days=3))" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="guide_id" ref="guide_registration_01" />
+        <field name="service_id" ref="guide3" />
+        <field name="name">Guide for Scuba diving</field>
+        <field name="cost_price">2000</field>
+        <field name="price_unit">3000</field>
+    </record>
+</odoo>

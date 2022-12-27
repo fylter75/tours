@@ -1,0 +1,200 @@
+<odoo>
+    <!-- Inherit CRM Lead Form View-->
+    <record id="tour_travel_crm_lead_view_form_inherit" model="ir.ui.view">
+        <field name="name">tour.travel.crm.ead.view.form.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/group[1]" position="after">
+                <group>
+                    <group>
+                        <label for="date_of_arrival" string="Arrival/Departure Date" />
+                        <div class="o_row">
+                            <field
+                                name="date_of_arrival"
+                                widget="daterange"
+                                options="{'related_end_date': 'date_of_return'}"
+                                nolabel="1"
+                                class="oe_inline"
+                                required="1"
+                            />
+                            <i
+                                class="fa fa-long-arrow-right mx-2"
+                                aria-label="Arrow icon"
+                                title="Arrow"
+                            />
+                            <field
+                                name="date_of_return"
+                                widget="daterange"
+                                options="{'related_end_date': 'date_of_arrival'}"
+                                nolabel="1"
+                                class="oe_inline"
+                                required="1"
+                            />
+                        </div>
+                        <field name="adult" />
+                        <field
+                            name="package_id"
+                            domain="[('state','=','confirm'),('is_package', '=', True)]"
+                        />
+                    </group>
+                    <group>
+                        <field name="stay_duration" />
+                        <field name="children" />
+                    </group>
+                </group>
+                <group col="4">
+                    <field name="tour_type" />
+                    <field
+                        name="visa_assistance"
+                        attrs="{'invisible':[('tour_type','=','domestic')]}"
+                        widget="radio"
+                        options='{"horizontal": 1}'
+                    />
+                    <field
+                        name="visa_id"
+                        domain="[('type_travel_product', '=', 'visa')]"
+                        attrs="{'invisible':['|',('tour_type','=','domestic'),('visa_assistance','=','no')]}"
+                    />
+                    <field
+                        name="applied_country_id"
+                        attrs="{'invisible':['|',('tour_type','=','domestic'),('visa_assistance','=','no')]}"
+                    />
+                    <field
+                        name="passport_number"
+                        attrs="{'invisible':['|',('tour_type','=','domestic'),('visa_assistance','=','no')]}"
+                    />
+                    <field
+                        name="name_on_passport"
+                        attrs="{'invisible':['|',('tour_type','=','domestic'),('visa_assistance','=','no')]}"
+                    />
+                    <field
+                        name="purpose_to_visit_id"
+                        attrs="{'invisible':['|',('tour_type','=','domestic'),('visa_assistance','=','no')]}"
+                    />
+                </group>
+                <group col="4">
+                    <field name="hotel_id" />
+                    <field name="meal_type" />
+                    <field name="transportation_id" />
+                </group>
+            </xpath>
+            <xpath expr="//page[1]" position="before">
+                <page string="Visiting Location">
+                    <group>
+                        <field name="visiting_location_ids" nolabel="1" />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="sale_action_quotations_new" model="ir.actions.act_window">
+        <field name="name">Quotation</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">form</field>
+        <field
+            name="view_id"
+            ref="tour_travel_management.tour_package_registration_form"
+        />
+        <field name="domain">[('opportunity_id', '=', active_id)]</field>
+        <field
+            name="context"
+        >{'search_default_opportunity_id': active_id, 'default_opportunity_id': active_id}</field>
+    </record>
+    <record id='visit_purpose_tree' model='ir.ui.view'>
+        <field name='name'>visit.purpose.tree</field>
+        <field name='model'>visit.purpose</field>
+        <field name='arch' type='xml'>
+            <tree string='Visit Purpose' editable="top">
+                <field name='name' />
+            </tree>
+        </field>
+    </record>
+    <record id="action_visit_purpose" model="ir.actions.act_window">
+        <field name="name">Visit Purpose</field>
+        <field name="res_model">visit.purpose</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record id="visiting_location_form" model="ir.ui.view">
+        <field name="name">visiting.location.form</field>
+        <field name="model">visiting.location</field>
+        <field name="arch" type="xml">
+            <form string="Visiting Location">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="country_id" />
+                        <field name="state_id" />
+                        <field name="city_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='visiting_location_tree' model='ir.ui.view'>
+        <field name='name'>visiting.location.tree</field>
+        <field name='model'>visiting.location</field>
+        <field name='arch' type='xml'>
+            <tree string='Visiting Location' editable="top">
+                <field name="name" />
+                <field name="country_id" />
+                <field name="state_id" />
+                <field name="city_id" />
+            </tree>
+        </field>
+    </record>
+    <record id='transportation_mode_tree' model='ir.ui.view'>
+        <field name='name'>transportation.mode.tree</field>
+        <field name='model'>transportation.mode</field>
+        <field name='arch' type='xml'>
+            <tree string='Mode of Transportation' editable="top">
+                <field name='name' />
+            </tree>
+        </field>
+    </record>
+    <record id="action_transportation_mode" model="ir.actions.act_window">
+        <field name="name">Mode of Transportation</field>
+        <field name="res_model">transportation.mode</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record id='hotel_type_tree' model='ir.ui.view'>
+        <field name='name'>hotel.type.tree</field>
+        <field name='model'>hotel.type</field>
+        <field name='arch' type='xml'>
+            <tree string='Type of Hotel' editable="top">
+                <field name='name' />
+            </tree>
+        </field>
+    </record>
+    <record id="action_hotel_type" model="ir.actions.act_window">
+        <field name="name">Type of Hotel</field>
+        <field name="res_model">hotel.type</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <menuitem
+        id="menu_tour_travel_crm_config"
+        parent="crm.crm_menu_config"
+        name="Tour Travel Configuration"
+    />
+    <menuitem
+        id="menu_visiting_reason"
+        parent="menu_tour_travel_crm_config"
+        action="action_visit_purpose"
+        sequence="10"
+        name="Visiting Reason"
+    />
+    <menuitem
+        id="menu_transportation_mode"
+        parent="menu_tour_travel_crm_config"
+        action="action_transportation_mode"
+        sequence="20"
+        name="Mode of Transportation"
+    />
+    <menuitem
+        id="menu_hotel_type"
+        parent="menu_tour_travel_crm_config"
+        action="action_hotel_type"
+        sequence="30"
+        name="Type of Hotel"
+    />
+</odoo>

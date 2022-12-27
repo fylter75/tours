@@ -1,0 +1,51 @@
+<odoo>
+    <record id="renew_contract_form" model="ir.ui.view">
+        <field name="name">renew.contract.form</field>
+        <field name="model">renew.contract</field>
+        <field name="arch" type="xml">
+            <form string="Renew">
+                <p colspan="2" class="oe_edit_only oe_grey">
+                    Enter start date and end date to renew contract.
+                </p>
+                <label for='date_start' string="Arrival/Departure Date" />
+                <field
+                    name="date_start"
+                    widget="daterange"
+                    nolabel="1"
+                    class="oe_inline"
+                    required="1"
+                    options="{'related_end_date': 'date_end'}"
+                />
+                <i
+                    class="fa fa-long-arrow-right mx-2"
+                    aria-label="Arrow icon"
+                    title="Arrow"
+                />
+                <field
+                    name="date_end"
+                    widget="daterange"
+                    nolabel="1"
+                    class="oe_inline"
+                    required="1"
+                    options="{'related_start_date': 'date_start'}"
+                />
+                <footer>
+                    <button
+                        name="renew_contract"
+                        type="object"
+                        string="Renew"
+                        class="oe_highlight"
+                    />
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <!-- Action for Renew contract Wizard -->
+    <record id="action_renew_contract" model="ir.actions.act_window">
+        <field name="name">Renew contract Wizard</field>
+        <field name="res_model">renew.contract</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

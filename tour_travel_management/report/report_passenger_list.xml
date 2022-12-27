@@ -1,0 +1,129 @@
+<odoo>
+    <template id="report_total_passenger_list">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div class='page'>
+                        <div class="row">
+                            <div class="col-md-12 mt64">
+                                <div
+                                    style="font: 20px sans-serif; margin-top: 30px; position: relative; text-align: center;color:#19460b"
+                                    class='mb64'
+                                >
+                                    <h5>
+                                        <b>
+                                            <span>Package : <span
+                                                    t-esc="o.package_id.name"
+                                                /> [<span
+                                                    t-esc="o.package_id.package_total_days"
+                                                />]
+                                    </span>
+                                        </b>
+                                    </h5>
+                                </div>
+                                <div
+                                    style="float: left; margin-left: 45px; margin-top: -25px; padding: 10px; background-color: white; align: center;color: #19460b;font-size: 20px; bold: 12px;"
+                                >
+                                    <span>
+                                        <b>Passenger List</b>
+                                    </span>
+                                </div>
+                                <div
+                                    style="margin-top: 5px; border: 1.5px solid #e6b800"
+                                >
+                                    <table
+                                        class="table table-condensed; page-break-inside: auto;"
+                                        width="100%"
+                                        style="text-align: center; border: 0;"
+                                    >
+                                        <tr>
+                                            <th
+                                                width="15%"
+                                                class="text-center"
+                                                style="color:#19460b"
+                                            >Sr.No.</th>
+                                            <th
+                                                width="45%"
+                                                class="text-center"
+                                                style="color:#19460b;border-left: 1px dotted black !important;"
+                                            >Name</th>
+                                            <th
+                                                class="text-center"
+                                                style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                                width="20%"
+                                            >Age
+                                        </th>
+                                            <th
+                                                class="text-center"
+                                                style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                                width="20%"
+                                            >Gender
+                                        </th>
+                                        </tr>
+                                        <t t-set="i" t-value="1" />
+                                        <t t-foreach="passenger" t-as="p">
+                                            <tr
+                                                style="text-align: center; font-size: 10px"
+                                            >
+                                                <td
+                                                    width="15%"
+                                                    style=" border-top: 1px dotted black !important;"
+                                                >
+                                                    <span
+                                                        style="color:#19460b"
+                                                        t-esc="i"
+                                                    />
+                                                </td>
+                                                <td
+                                                    width="45%"
+                                                    style=" border-top: 1px dotted black !important;border-left: 1px dotted black !important; text-align: left;"
+                                                >
+                                                    <span
+                                                        style="color:#19460b"
+                                                        t-esc="p.name"
+                                                    />
+                                                </td>
+                                                <td
+                                                    width="20%"
+                                                    style="padding: 5px; border-left: 1px dotted black !important; padding: 5px;border-top: 1px dotted black !important;"
+                                                >
+                                                    <span
+                                                        style="color:#19460b"
+                                                        t-esc="p.age"
+                                                    />
+                                                </td>
+                                                <td
+                                                    width="20%"
+                                                    style="padding: 5px; border-top: 1px dotted black !important; border-left: 1px dotted black !important; padding: 5px"
+                                                >
+                                                    <span
+                                                        style="color:#19460b"
+                                                        t-esc="p.gender"
+                                                    />
+                                                </td>
+                                            </tr>
+                                            <t t-set="i" t-value="i+1" />
+                                        </t>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="action_total_passenger_list" model="ir.actions.report">
+        <field name="name">Passenger List</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="model">travellers.list</field>
+        <field
+            name="report_name"
+        >tour_travel_management.report_total_passenger_list</field>
+        <field
+            name="report_file"
+        >tour_travel_management.report_total_passenger_list</field>
+        <field name="binding_model_id" ref="" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

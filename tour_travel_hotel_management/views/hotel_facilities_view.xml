@@ -1,0 +1,36 @@
+<odoo>
+    <record id="hotel_facilities_form" model="ir.ui.view">
+        <field name="name">hotel.facilities.form</field>
+        <field name="model">hotel.facilities</field>
+        <field name="arch" type="xml">
+            <form string="Hotel Facilities">
+                <sheet>
+                    <group>
+                        <field name="name" required="1" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='hotel_facilities_tree' model='ir.ui.view'>
+        <field name='name'>hotel.facilities.tree</field>
+        <field name='model'>hotel.facilities</field>
+        <field name='arch' type='xml'>
+            <tree string="Hotel Facility" editable="top">
+                <field name="name" required="1" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_hotel_facilities" model="ir.actions.act_window">
+        <field name="name">Hotel Facilities</field>
+        <field name="res_model">hotel.facilities</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="hotel_hotel_facilities_menu"
+        action="action_hotel_facilities"
+        name="Hotel Facilities"
+        parent="hotel_configuration_menu"
+        sequence="40"
+    />
+</odoo>

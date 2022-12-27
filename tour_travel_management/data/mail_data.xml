@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="email_template_7_day_before" model="mail.template">
+            <field name="name">Agreement for Services Reminder: 7 Day Before</field>
+            <field
+                name="model_id"
+                ref="tour_travel_management.model_package_contract"
+            />
+            <field name="email_from">{{ object.company_id.partner_id.email }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="subject">Reminder: Agreement for Services</field>
+            <field name="body_html" type="html">
+                <table
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"
+                >
+                    <tr>
+                        <td align="center">
+                            <table
+                                border="0"
+                                cellpadding="0"
+                                cellspacing="0"
+                                width="590"
+                                style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;"
+                            >
+                                <tbody>
+                                    <!-- CONTENT -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table
+                                                border="0"
+                                                cellpadding="0"
+                                                cellspacing="0"
+                                                width="590"
+                                                style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;"
+                                            >
+                                                <tr>
+                                                    <td
+                                                        valign="top"
+                                                        style="font-size: 13px;"
+                                                    >
+                                                        <div>
+                                                            <p>Dear <strong>
+                                                            <t t-out="object.partner_id.name or ''"/>
+                                                            </strong>,</p>
+                                                            <p>
+                                                            <t t-out="object.city_id.name or ''"/>.
+                                                            </p>
+                                                            <br />
+                                                            <p>
+                                                     Thank you for participating in our <t t-out="object.company_id.name or ''"/> for your valuation services needs.
+                                                </p>
+                                                            <br />
+                                                            <p>
+                                                    This is a friendly reminder that your service agreement expired soon.The agreement details are below
+                                                </p>
+                                                            <p>
+                                                    <strong
+                                                                >Name: </strong> <t t-out="object.name or ''"/>.<br
+                                                                />
+                                                    <strong
+                                                                >Duration: </strong> <t t-out="object.date_start or ''"/> -> <t t-out="object.date_end or ''"/>.<br/>
+                                                </p>
+                                                            <br />
+                                                            <p>
+                                                    For renew service agreement please contact us
+                                                </p>
+                                                            <br />
+                                                            <p>
+                                                    Again, thank you for choosing <t t-out="object.company_id.name or ''"/>.
+                                                </p>
+                                                            <br />
+                                                            <p>
+                                                    Sincerely,
+                                                    <br />
+                                                    <t t-out="object.company_id.name or ''"/>.
+                                                </p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- FOOTER -->
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True" />
+        </record>
+        <record id="email_template_expire_package_contract" model="mail.template">
+            <field name="name">Agreement for Services:Expire </field>
+            <field
+                name="model_id"
+                ref="tour_travel_management.model_package_contract"
+            />
+            <field name="email_from">{{ object.company_id.partner_id.email }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="subject">Expire: Services Agreement</field>
+            <field name="body_html" type="html">
+                <table
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"
+                >
+                    <tr>
+                        <td align="center">
+                            <table
+                                border="0"
+                                cellpadding="0"
+                                cellspacing="0"
+                                width="590"
+                                style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;"
+                            >
+                                <tbody>
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table
+                                                border="0"
+                                                cellpadding="0"
+                                                cellspacing="0"
+                                                width="590"
+                                                style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;"
+                                            >
+                                                <tr>
+                                                    <td
+                                                        valign="top"
+                                                        style="font-size: 13px;"
+                                                    >
+                                                        <div>
+                                                            <p>Dear <strong>
+                                                                <t t-out="object.partner_id.name or ''"/>
+                                                            </strong>,</p>
+                                                            <p>
+                                                            <t t-out="object.city_id.name or ''"/>.</p>
+                                                            <br />
+                                                            <p>
+                                                    Thank you for choosing <t t-out="object.company_id.name or ''"/> for your valuation services. We would like to inform to you that your service agreement expired today.
+                                                </p>
+                                                            <p>
+                                                    For renew service agreement please contact us.
+                                                </p>
+                                                            <br/>
+                                                            <p>
+                                                    Again, thank you for choosing <t t-out="object.company_id.name or ''"/>.
+                                                </p>
+                                                            <br />
+                                                            <p>
+                                                    Sincerely,
+                                                    <br />
+                                                    <t t-out="object.company_id.name or ''"/>.
+                                                </p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True" />
+        </record>
+        <record id="mail_template_package_contract_receipt" model="mail.template">
+            <field name="name">Agreement for Services</field>
+            <field
+                name="model_id"
+                ref="tour_travel_management.model_package_contract"
+            />
+            <field name="email_from">{{ object.company_id.partner_id.email }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="subject">Agreement for Services</field>
+            <field
+                name="report_template"
+                ref="tour_travel_management.action_report_agreement"
+            />
+            <field name="report_name">Services Agreement</field>
+            <field name="body_html" type="html" >
+                <table
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"
+                >
+                    <tr>
+                        <td align="center">
+                            <table
+                                border="0"
+                                cellpadding="0"
+                                cellspacing="0"
+                                width="590"
+                                style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;"
+                            >
+                                <tbody>
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table
+                                                border="0"
+                                                cellpadding="0"
+                                                cellspacing="0"
+                                                width="590"
+                                                style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;"
+                                            >
+                                                <tr>
+                                                    <td
+                                                        valign="top"
+                                                        style="font-size: 13px;"
+                                                    >
+                                                        <div>
+                                                            <p>Dear <strong>
+                                                                <t t-out="object.partner_id.name or ''"/>
+                                                                </strong>,</p>
+                                                            <p
+                                                            ><t t-out="object.city_id.name or ''"/>.</p>
+                                                            <br />
+                                                            <p>
+                                                    Thank you for choosing <t t-out="object.company_id.name or ''"/> for your valuation services needs. We confident that you will be very satisfied with the services that we offer.
+                                                    Enclosed please find our Agreement for Services. If this Agreement is acceptable to you, please sign and return to our office via fax/email. Once we receive the signed Agreement from you, we will expedite your request.
+                                                </p>
+                                                            <br />
+                                                            <p>
+                                                    If you have questions, please don’t hesitate to contact us.
+                                                </p>
+                                                            <br />
+                                                            <p>
+                                                    Again, thank you for choosing <t t-out="object.company_id.name or ''"/>.
+                                                </p>
+                                                            <br />
+                                                            <p>
+                                                    Sincerely,
+                                                    <br />
+                                                    <t t-out="object.company_id.name or ''"/>.
+                                                </p>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True" />
+        </record>
+    </data>
+</odoo>

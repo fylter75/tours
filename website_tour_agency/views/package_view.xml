@@ -1,0 +1,45 @@
+<odoo>
+    <record
+        id="sale_quotation_form_view_extend_for_website_packages"
+        model="ir.ui.view"
+    >
+        <field name="name">sale.order.template.view.form.website.packages</field>
+        <field name="model">sale.order.template</field>
+        <field
+            name="inherit_id"
+            ref="tour_travel_management.tour_travel_package_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/div[2]" position="after">
+                <field name="image_medium" widget="image" class="oe_avatar" />
+            </xpath>
+        </field>
+    </record>
+    <record id="package_category_form_extend" model="ir.ui.view">
+        <field name="name">package.category.view.form.extend</field>
+        <field name="model">package.category</field>
+        <field name="inherit_id" ref="tour_travel_management.package_category_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/div[hasclass('oe_button_box')]" position="inside">
+                <button
+                    class="oe_stat_button"
+                    name="website_publish_button"
+                    type="object"
+                    icon="fa-globe"
+                >
+                    <field name="website_published" widget="website_publish_button">
+                           Published
+                   </field>
+                </button>
+            </xpath>
+            <xpath expr="//form/sheet/group" position="inside">
+                <field
+                    name="image"
+                    widget="image"
+                    class="oe_avatar oe_left"
+                    options="{'size': [128, 128]}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

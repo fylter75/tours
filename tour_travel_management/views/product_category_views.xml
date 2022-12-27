@@ -1,0 +1,12 @@
+<odoo>
+    <record id="tour_travel_product_catagory" model="ir.ui.view">
+        <field name="name">tour.travel.product.catagory</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view" />
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <field name="type_travel_product" class="oe_inline" />
+            </field>
+        </field>
+    </record>
+</odoo>

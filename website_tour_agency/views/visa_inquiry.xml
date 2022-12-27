@@ -1,0 +1,204 @@
+<odoo>
+    <template id="visa_inquiry" name="Visa Inquiry">
+        <t t-call="website.layout">
+            <section
+                class="oe_structure"
+                style="background-image: url('/website_tour_agency/static/src/img/bg_yellow.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-position: center center; background-size: cover !important;"
+            >
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-10 mt64 mb64">
+                            <div
+                                class="col-12 form_booking"
+                                style="background-color: #fff;"
+                            >
+                                <h3 style="color:black;" class="text-center">
+                                    Apply for Visa
+                                </h3>
+                                <p
+                                    class="mb16 text-center"
+                                    style="color:gray;"
+                                >Enter your details to get expert advise</p>
+                                <div class="row justify-content-center">
+                                    <div class="col-10 mb64 v_form_div pt16 pb16">
+                                        <form
+                                            role="form"
+                                            action="/submit_inquiry"
+                                            method="post"
+                                            class="inquiry_form"
+                                            enctype="multipart/form-data"
+                                        >
+                                            <input
+                                                type="hidden"
+                                                class="form-control"
+                                                name="name"
+                                                value="Visa Inquiry"
+                                            />
+                                            <input
+                                                type="hidden"
+                                                name="csrf_token"
+                                                t-att-value="request.csrf_token()"
+                                            />
+                                            <div class="form-row">
+                                                <div
+                                                    class="form-group o_website_form_required_custom col-md-6"
+                                                >
+                                                    <label for="name">Name</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        name="contact_name"
+                                                        required="true"
+                                                    />
+                                                </div>
+                                                <div
+                                                    class="form-group o_website_form_required_custom col-md-6"
+                                                >
+                                                    <label for="mobile">Mobile</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control number"
+                                                        name="mobile"
+                                                        required="true"
+                                                    />
+                                                    <span class="errmsg" />
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="email">Email</label>
+                                                    <input
+                                                        type="email"
+                                                        class="form-control"
+                                                        name="email_from"
+                                                        required="true"
+                                                    />
+                                                </div>
+                                                <div
+                                                    class="form-group o_website_form_required_custom col-md-6"
+                                                    id="visa_select"
+                                                >
+                                                    <label for="visa_id">Visa</label>
+                                                    <select
+                                                        name="visa_id"
+                                                        class="form-control"
+                                                        required="true"
+                                                    >
+                                                        <option value="" />
+                                                        <t
+                                                            t-foreach="visas"
+                                                            t-as="visa"
+                                                        >
+                                                            <option
+                                                                t-att-value="visa.id"
+                                                            >
+                                                                <t t-esc="visa.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                                <div
+                                                    class="form-group o_website_form_required_custom col-md-12"
+                                                >
+                                                    <label
+                                                        for="applied_country_id"
+                                                    >Apply for Country</label>
+                                                    <select
+                                                        name="applied_country_id"
+                                                        class="form-control"
+                                                        required="true"
+                                                    >
+                                                        <option value="" />
+                                                        <t
+                                                            t-foreach="countries"
+                                                            t-as="country"
+                                                        >
+                                                            <option
+                                                                t-att-value="country.id"
+                                                            >
+                                                                <t
+                                                                    t-esc="country.name"
+                                                                />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="startdate">
+                                                   Travel Date
+                                               </label>
+                                                    <div class="date">
+                                                        <div
+                                                            class="input-group input-append"
+                                                            id="StartdatePicker"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                class="form-control piker-date travel_date"
+                                                                name="date_of_arrival"
+                                                                required="true"
+                                                            />
+                                                            <span
+                                                                class="input-group-addon add-on"
+                                                            >
+                                                                <span
+                                                                    class="fa fa-calendar"
+                                                                />
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="startdate">
+                                                       Return Date
+                                                   </label>
+                                                    <div class="date">
+                                                        <div
+                                                            class="input-group input-append"
+                                                            id="ReturndatePicker"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                class="form-control piker-date return_date"
+                                                                name="date_of_return"
+                                                                required="true"
+                                                            />
+                                                            <span
+                                                                class="input-group-addon add-on"
+                                                            >
+                                                                <span
+                                                                    class="fa fa-calendar"
+                                                                />
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="notes">Message</label>
+                                                    <textarea
+                                                        type="text"
+                                                        rows="3"
+                                                        class="form-control"
+                                                        name="description"
+                                                    />
+                                                </div>
+                                                <div
+                                                    class="form-group col-md-12 mt16 text-center get_call_btn"
+                                                >
+                                                    <button
+                                                        type="submit"
+                                                        class="btn btn-black"
+                                                    >Submit</button>
+                                                    <!-- 		                                            <span class="btn btn-black o_website_form_send get_call_btn_color_white">Submit</span> -->
+                                                    <!-- 		                                            <span id="o_website_form_result"></span> -->
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+</odoo>

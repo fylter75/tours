@@ -1,0 +1,323 @@
+<odoo>
+    <template id="hotel_search_box" name="Hotels searchbox">
+        <div class="col-md-6 offset-md-3">
+            <form t-att-action="keep('/hotels', search=0)" method="get">
+                <div class="input-group">
+                    <div class="oe_search package_search mt64" style="width:80%;">
+                        <input
+                            style="border-radius: 0;"
+                            type="text"
+                            name="search"
+                            class="search-query form-control oe_search_box"
+                            placeholder="Search..."
+                            t-att-value="search"
+                        />
+                        <span class="search-clear" />
+                    </div>
+                    <span class="input-group-btn package_search_btn">
+                        <button
+                            style="border-radius:0;"
+                            type="submit"
+                            class="mt64 btn btn-default oe_search_button serch_btn"
+                        >
+                            <i class="fa fa-search" />
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </template>
+    <template id="hotel_star_filter_box" name="Hotels searchbox">
+        <div class="cd-filter filter-is-visible">
+            <form>
+                <div class="cd-filter-block">
+                    <h4>Filter by Rating</h4>
+                    <form
+                        t-att-action="keep('/hotels', star=0, facilities=0, range=0)"
+                        method="get"
+                    >
+                        <ul
+                            class="cd-filter-content cd-filters list"
+                            style="list-style: none;"
+                        >
+                            <li>
+                                <input
+                                    class="filter"
+                                    type="radio"
+                                    value="1"
+                                    name="star"
+                                    id="radio1"
+                                    t-att-checked="star == '1'"
+                                />
+                                <label class="radio-label" for="radio1">★</label>
+                            </li>
+                            <li>
+                                <input
+                                    class="filter"
+                                    type="radio"
+                                    value="2"
+                                    name="star"
+                                    id="radio2"
+                                    t-att-checked="star == '2'"
+                                />
+                                <label class="radio-label" for="radio2">★★</label>
+                            </li>
+                            <li>
+                                <input
+                                    class="filter"
+                                    type="radio"
+                                    value="3"
+                                    name="star"
+                                    id="radio3"
+                                    t-att-checked="star == '3'"
+                                />
+                                <label class="radio-label" for="radio3">★★★</label>
+                            </li>
+                            <li>
+                                <input
+                                    class="filter"
+                                    type="radio"
+                                    value="4"
+                                    name="star"
+                                    id="radio4"
+                                    t-att-checked="star == '4'"
+                                />
+                                <label class="radio-label" for="radio4">★★★★</label>
+                            </li>
+                            <li>
+                                <input
+                                    class="filter"
+                                    type="radio"
+                                    value="5"
+                                    name="star"
+                                    id="radio5"
+                                    t-att-checked="star == '5'"
+                                />
+                                <label class="radio-label" for="radio5">★★★★★</label>
+                            </li>
+                        </ul>
+                        <div class="cd-filter-block">
+                            <h4>Filter by Facilities</h4>
+                            <ul class="cd-filter-content cd-filters list">
+                                <t t-foreach="facilities" t-as="facility">
+                                    <li>
+                                        <input
+                                            class="filter"
+                                            type="checkbox"
+                                            name="facilities"
+                                            t-att-value="'%s-%s' % (facility.id,facility.id)"
+                                            t-att-checked="facility.id in facilities_selected"
+                                        />
+                                        <label class="checkbox-label" for="">
+                                            <t t-esc="facility.name" />
+                                        </label>
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-black">Apply</button>
+                        </div>
+                    </form>
+                    <a id="clear_fil" class="cd-close">Remove Filters</a>
+                    <a href="#0" class="cd-filter-trigger filter-is-visible">Filters</a>
+                </div>
+            </form>
+        </div>
+    </template>
+    <template id="hotel" name="Hotels">
+        <t t-call="website.layout">
+            <div class="oe_structure" />
+            <section
+                class="s_cover parallax s_parallax_is_fixed bg-black-50 pt96 pb96"
+                data-scroll-background-ratio="1"
+                style="background-image: none;"
+            >
+                <span
+                    class="s_parallax_bg oe_img_bg oe_custom_bg"
+                    style="background-image: url('/website_tour_agency/static/src/img/Hotel_header.jpg'); background-position: 50% 0;"
+                />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 s_title" data-name="Title">
+                            <h1
+                                class="s_title_thin o_default_snippet_text trans_text"
+                                style="font-size: 62px; text-align: center;"
+                            >Hotels</h1>
+                        </div>
+                        <div class="col-lg-12 s_text pt16 pb16" data-name="Text">
+                            <p
+                                class="lead o_default_snippet_text"
+                                style="text-align: center;"
+                            >Write one or two paragraphs describing your product, services or a specific feature.<br
+                                /> To be successful your content needs to be useful to your readers.</p>
+                        </div>
+                        <t t-call="website_tour_agency.hotel_search_box" />
+                    </div>
+                </div>
+            </section>
+            <div class="oe_structure" />
+            <div class="oe_structure" />
+            <section class="hotel gray-bg">
+                <div class="container-fluid">
+                    <div class="row justify-align-center">
+                        <div class="col-md-3 oe_structure mt32 mb32">
+                            <t t-call="website_tour_agency.hotel_star_filter_box" />
+                        </div>
+                        <section class="col-md-9 popular-inner">
+                            <div class="thm-margin mt32 mr16 ml16">
+                                <t t-if="not hotels">
+                                    <h4
+                                        class="text-center text-muted"
+                                    >No Hotels Found</h4>
+                                </t>
+                                <t t-foreach="hotels" t-as="hotel">
+                                    <div class="hotel-item row align-items-center mb16">
+                                        <div class="hotel-image col-sm-3 col-12">
+                                            <a
+                                                itemprop="url"
+                                                t-attf-href="/hotel/details/#{hotel.id}"
+                                            >
+                                                <img
+                                                    t-if="hotel.image_1920"
+                                                    t-att-src="image_data_uri(hotel.image_1920)"
+                                                    t-att-alt="hotel.name"
+                                                />
+                                                <img
+                                                    t-if="not hotel.image_1920"
+                                                    src="/web/static/src/img/placeholder.png"
+                                                    alt="Contact"
+                                                />
+                                            </a>
+                                        </div>
+                                        <div
+                                            class="hotel-body col-sm-6 col-12 pt16 pb16"
+                                        >
+                                            <h3>
+                                                <t t-esc="hotel.name" />
+                                            </h3>
+                                            <div class="ratting">
+                                                <t
+                                                    t-call="website_tour_agency.star_card_travel"
+                                                >
+                                                    <t
+                                                        t-set="val_integer"
+                                                        t-value="hotel.rating"
+                                                    />
+                                                </t>
+                                            </div>
+                                            <div class="mt8">
+                                                <p>
+                                                    <t
+                                                        t-if="hotel.street or hotel.street2 or hotel.city or hotel.state_id or hotel.country_id or hotel.zip"
+                                                    >
+                                                        <i
+                                                            class="fa fa-1x fa-map-marker"
+                                                        />
+                                                    </t>
+                                                    <span itemprop="streetAddress">
+                                                        <t t-if="hotel.street">
+                                                            <t
+                                                                t-esc="hotel.street"
+                                                            />, </t>
+                                                        <t t-if="hotel.street2">
+                                                            <t t-esc="hotel.street2" />
+                                                            <br />
+                                                        </t>
+                                                        <t t-if="hotel.city">
+                                                            <t
+                                                                t-esc="hotel.city"
+                                                            />, </t>
+                                                        <t t-if="hotel.state_id">
+                                                            <t
+                                                                t-esc="hotel.state_id.name"
+                                                            />,</t>
+                                                        <t t-if="hotel.zip">
+                                                            <t t-esc="hotel.zip" />
+                                                            <br />
+                                                        </t>
+                                                        <t t-if="hotel.country_id">
+                                                            <t
+                                                                t-esc="hotel.country_id.name"
+                                                            />
+                                                        </t>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="mt8 list_style_none facility_icons text-container-facility"
+                                            >
+                                                <div
+                                                    class="text-content-facility short-text-facility"
+                                                >
+                                                    <div class="row">
+                                                        <t
+                                                            t-foreach="hotel.facilities_ids"
+                                                            t-as="facilities"
+                                                        >
+                                                            <li
+                                                                class="col-md-3"
+                                                                data-toggle="tooltip"
+                                                                t-att-title="facilities.name"
+                                                            >
+                                                                <t
+                                                                    t-if="facilities.icon_class"
+                                                                >
+                                                                    <i
+                                                                        t-attf-class="#{facilities.icon_class} icon_color"
+                                                                    />
+                                                                </t>
+                                                                <span
+                                                                    t-esc="facilities.name"
+                                                                />
+                                                            </li>
+                                                        </t>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="show-more-facility pull-left"
+                                                >
+                                                    <a href="#">Show more</a>
+                                                </div>
+                                            </div>
+                                            <div class="free-service" />
+                                        </div>
+                                        <div
+                                            class="hotel-right col-sm-3 col-12 text-center"
+                                        >
+                                            <t
+                                                t-if="hotel.room_line_ids"
+                                                t-set="room_price"
+                                                t-value="min(hotel.room_line_ids.mapped('unit_price'))"
+                                            />
+                                            <div
+                                                t-if="hotel.room_line_ids"
+                                                class="product_price mb8"
+                                                style="font-size: 25px;"
+                                            >
+                                                <small
+                                                    style="font-size:18px; font-weight:normal;"
+                                                >Starting from</small>
+                                                <br />
+                                                <span>
+                                                    <t
+                                                        t-esc="room_price"
+                                                        t-options='{"widget": "monetary", "display_currency": hotel.currency_id}'
+                                                    />
+                                                </span>
+                                            </div>
+                                            <a
+                                                class="btn btn-black detail_btn"
+                                                t-attf-href="/hotel/details/#{hotel.id}"
+                                            > Details </a>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+</odoo>

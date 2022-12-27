@@ -1,0 +1,42 @@
+<odoo>
+    <template id="visa" name="Visa">
+        <t t-call="website.layout">
+            <section class="oe_structure">
+                <div class="container">
+                    <div class="row align-items-center mt64 mb64">
+                        <div class="col-lg-6 pt16 pb16 o_colored_level">
+                            <div class="img-responsive ">
+                                <img
+                                    class="img img-fluid mx-auto fixed_carousel_height"
+                                    src="/website_tour_agency/static/src/img/visa_left.jpg"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 pt16 pb16 o_colored_level">
+                            <div class="mb32 small_box_h3">
+                                <h3 class="text-center ">Visa</h3>
+                            </div>
+                            <div class="text-container">
+                                <div class="text-content short-text l_height">
+                                    <p>
+                                        This property is 11 minutes walk from the beach. Situated 500 m from Bur Dubai's waterfront, the 4-star Capitol Hotel is a 5- minute drive from the World Trade Centre. It has a rooftop pool and offers spacious guestrooms with satellite TV. Dubai Mall is 10 minutes away by car. Hotel Capitol's spacious, carpeted guest rooms include a minibar and a seating area with sofa. The private bathrooms include luxury amenities and a bathrobe. Some rooms have a dining area and Executive Lounge access. Guests can enjoy Arabic dishes, shisha and live belly dancing in the rooftop Bazerkan restaurant. Hotel guests can also enjoy a relaxing massage, or visit the fitness centre which includes cardiovascular equipment. A tour desk is available to assist with car hire, and offers information on local attractions. Capitol Hotel is less than 3 km from the Gold Souk and Burjuman Mall. Dubai International Airport is a 15-minute drive away. The hotel offers 24-hour front desk service and free on-site private parking. We speak your language!
+                                    </p>
+                                </div>
+                                <div class="show-more pull-left col-md-12">
+                                    <a href="#">Show more</a>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <a
+                                    href="/visa/inquiry"
+                                    type="button"
+                                    class="btn apply_v_btn btn-black"
+                                > Enquire For Visa</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,60 @@
+<odoo>
+    <record id="package_sale1" model="product.product">
+        <field name="name">With Twin Bed</field>
+        <field name="uom_id" ref="uom.product_uom_categ_unit" />
+        <field name="type">service</field>
+    </record>
+    <record id="package_sale2" model="product.product">
+        <field name="name">With Single Bed</field>
+        <field name="uom_id" ref="uom.product_uom_categ_unit" />
+        <field name="type">service</field>
+    </record>
+    <record id="package_sale3" model="product.product">
+        <field name="name">With Triple Bed</field>
+        <field name="uom_id" ref="uom.product_uom_categ_unit" />
+        <field name="type">service</field>
+    </record>
+    <record id="package_sale4" model="product.product">
+        <field name="name">Fixed cost</field>
+        <field name="uom_id" ref="uom.product_uom_categ_unit" />
+        <field name="type">service</field>
+    </record>
+    <record id="contract_cancel_reason_1" model="package.contract.cancel">
+        <field name="name">Converted</field>
+    </record>
+    <record id="contract_cancel__reason_2" model="package.contract.cancel">
+        <field name="name">Booked with others</field>
+    </record>
+    <record id="contract_cancel_reason_3" model="package.contract.cancel">
+        <field name="name">Trip Postponed </field>
+    </record>
+    <record id="contract_cancel_reason_3_2" model="package.contract.cancel">
+        <field name="name">Trip Cancelled</field>
+    </record>
+    <record id="lead_lost_reason_4" model="package.contract.cancel">
+        <field name="name">Booked their own</field>
+    </record>
+    <record id="contract_cancel_reason_5" model="package.contract.cancel">
+        <field name="name">Service Unavailable</field>
+    </record>
+    <record id="contract_cancel_reason_6" model="package.contract.cancel">
+        <field name="name">Could not match Price</field>
+    </record>
+    <record id="contract_cancel_reason_7" model="package.contract.cancel">
+        <field name="name">Booked Online</field>
+    </record>
+    <record id="package_discount" model="product.product">
+        <field name="name">Discount</field>
+        <field name="uom_id" ref="uom.product_uom_categ_unit" />
+        <field name="type">service</field>
+    </record>
+    <record id="package_extra_bed" model="product.product">
+        <field name="name">Extra Bed</field>
+        <field name="uom_id" ref="uom.product_uom_categ_unit" />
+        <field name="type">service</field>
+    </record>
+    <record id="set_discount_extra_bed_config" model="res.config.settings">
+        <field name="product_discount_id" ref="package_discount" />
+        <field name="product_extra_bed_id" ref="package_extra_bed" />
+    </record>
+</odoo>
