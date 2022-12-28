@@ -1,0 +1,38 @@
+<odoo>
+    <record id='passenger_list_tree' model='ir.ui.view'>
+        <field name='name'>travellers.list.tree</field>
+        <field name='model'>travellers.list</field>
+        <field name='arch' type='xml'>
+            <tree string='Passenger List'>
+                <field name="name" />
+                <field name="age" />
+                <field name="gender" />
+                <field name="identities_images" />
+                <field name="remarks" />
+            </tree>
+        </field>
+    </record>
+    <record id="passenger_list_form" model="ir.ui.view">
+        <field name="name">travellers.list.form</field>
+        <field name="model">travellers.list</field>
+        <field name="arch" type="xml">
+            <form string="Passenger List">
+                <sheet>
+                    <group col='4' colspan='4'>
+                        <field name="name" />
+                        <field name="age" required='1' />
+                        <field name="gender" required='1' />
+                        <field name="remarks" />
+                    </group>
+                    <group>
+                        <field
+                            name="identities_images"
+                            widget="many2many_binary"
+                            required='1'
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

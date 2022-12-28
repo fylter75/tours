@@ -1,0 +1,86 @@
+<odoo>
+    <!-- Inherit Sale Order Template Form View-->
+    <record id="transportation_sale_order_template_form_inherit" model="ir.ui.view">
+        <field name="name">transportation.sale.order.templete.form.inherit</field>
+        <field name="model">sale.order.template</field>
+        <field
+            name="inherit_id"
+            ref="tour_travel_management.tour_travel_package_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='lines']" position="after">
+                <page name="transportation" string="Transportation">
+                    <field
+                        name="transportation_package_line_ids"
+                        context="{'default_from_date': arrival_date,'default_to_date': return_date}"
+                        widget="section_and_note_one2many"
+                    >
+                        <tree string='Transportation' editable='bottom'>
+                            <control>
+                                <create
+                                    name="add_product_control"
+                                    string="Add a transportation"
+                                />
+                                <create
+                                    name="add_section_control"
+                                    string="Add a section"
+                                    context="{'default_display_type': 'line_section'}"
+                                />
+                                <create
+                                    name="add_note_control"
+                                    string="Add a note"
+                                    context="{'default_display_type': 'line_note'}"
+                                />
+                            </control>
+                            <field name="sequence" widget="handle" />
+                            <field name="display_type" invisible="1" />
+                            <field
+                                name="journey_date"
+                                attrs="{'required': [('display_type','=', False)]}"
+                            />
+                            <field
+                                name="source_id"
+                                options="{'no_create': True, 'no_create_edit':True,'no_open':True}"
+                            />
+                            <field
+                                name="destination_id"
+                                options="{'no_create': True, 'no_create_edit':True,'no_open':True}"
+                            />
+                            <field
+                                name="transportation_id"
+                                context="{'journey_date':journey_date, 'source_id':source_id}"
+                                domain="[('registration_type','=','transportation')]"
+                                attrs="{'required': [('display_type','=', False)]}"
+                                options="{'no_create': True, 'no_create_edit':True,'no_open':True}"
+                            />
+                            <field
+                                name="vehicle_id"
+                                context="{'journey_date':journey_date, 'transportation_id':transportation_id}"
+                                attrs="{'required': [('display_type','=', False)]}"
+                                options="{'no_create': True, 'no_create_edit':True,'no_open':True}"
+                            />
+                            <field
+                                name="name"
+                                required="1"
+                                widget="section_and_note_text"
+                                attrs="{'required': [('display_type', 'in', ['line_section','line_note'])]}"
+                            />
+                            <field name="qty" />
+                            <field name="cost_price" />
+                            <field name="price_unit" />
+                            <field name="price_subtotal" />
+                            <field name="sale_order_templete_id" invisible="1" />
+                            <field name="contract_id" invisible="1" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <xpath
+                expr="//page[@name='itinerary']//field[@name='itinerary_ids']//tree[@name='itinerary']"
+                position="inside"
+            >
+                <field name="transport_ids" widget="many2many_tags" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

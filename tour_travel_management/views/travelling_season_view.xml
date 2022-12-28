@@ -1,0 +1,29 @@
+<odoo>
+    <record id="travelling_season_form" model="ir.ui.view">
+        <field name="name">travelling.season.form</field>
+        <field name="model">travelling.season</field>
+        <field name="arch" type="xml">
+            <form string="Season">
+                <sheet>
+                    <group>
+                        <field name="name" required="1" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='travelling_season_tree' model='ir.ui.view'>
+        <field name='name'>travelling.season.tree</field>
+        <field name='model'>travelling.season</field>
+        <field name='arch' type='xml'>
+            <tree string='Season' editable="top">
+                <field name='name' required="1" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_travelling_season" model="ir.actions.act_window">
+        <field name="name">Travelling Seasons</field>
+        <field name="res_model">travelling.season</field>
+        <field name="view_mode">tree</field>
+    </record>
+</odoo>

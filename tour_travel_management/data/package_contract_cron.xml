@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!-- Contract Expiry Email Reminder Scheduler-->
+        <record
+            model="ir.cron"
+            forcecreate="True"
+            id="contract_expiry_07_day_email_reminder_scheduler"
+        >
+            <field name="name">Contract: 07 Day Email Reminder </field>
+            <field name="model_id" ref="model_package_contract" />
+            <field name="state">code</field>
+            <field name="code">model._cron_7_day_before_email_reminder()</field>
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+        </record>
+        <!-- Contract Expiry Scheduler-->
+        <record model="ir.cron" forcecreate="True" id="contract_auto_expiry_scheduler">
+            <field name="name">Contract Auto Expiry </field>
+            <field name="model_id" ref="model_package_contract" />
+            <field name="state">code</field>
+            <field name="code">model._cron_auto_expiry()</field>
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+        </record>
+    </data>
+</odoo>

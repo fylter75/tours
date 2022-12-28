@@ -1,0 +1,244 @@
+<odoo noupdate="1">
+    <!-- Vehicle Detail -->
+    <record id="vehicle_01" model="transportation.vehicle">
+        <field name="name">Tempo Traveller</field>
+        <field name="detailed_type">service</field>
+        <field name="capacity">15</field>
+        <field name="list_price">10000</field>
+        <field name="standard_price">8000</field>
+    </record>
+    <record id="vehicle_02" model="transportation.vehicle">
+        <field name="name">Bus</field>
+        <field name="detailed_type">service</field>
+        <field name="capacity">30</field>
+        <field name="list_price">15000</field>
+        <field name="standard_price">10000</field>
+    </record>
+    <record id="vehicle_03" model="transportation.vehicle">
+        <field name="name">Innova</field>
+        <field name="detailed_type">service</field>
+        <field name="capacity">6</field>
+        <field name="list_price">6000</field>
+        <field name="standard_price">4000</field>
+    </record>
+    <!-- Transportation Registration -->
+    <record id="transportation_registration_01" model="res.partner">
+        <field name="name">ReloPacks Transportation</field>
+        <field name="company_id" eval="None" />
+        <field name="is_company" eval="False" />
+        <field
+            name="street"
+        >Al Tayer Commercial Building - 7a Street - Al Mina Rd</field>
+        <field name="zip">119444</field>
+        <field name="phone" />
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="state_id" ref="base.state_ae_du" />
+        <field name="registration_type">transportation</field>
+    </record>
+    <record id="transportation_registration_02" model="res.partner">
+        <field name="name">RoadLink Transport</field>
+        <field name="company_id" eval="None" />
+        <field name="is_company" eval="False" />
+        <field name="street">870 7TH AVENUE NEW YORK</field>
+        <field name="zip">10019-4038</field>
+        <field name="phone" />
+        <field name="city_id" ref="tour_travel_management.city11" />
+        <field name="state_id" ref="base.state_us_27" />
+        <field name="registration_type">transportation</field>
+    </record>
+    <!-- Transportation Registration Line -->
+    <record
+        id="transportation_registration_line_01"
+        model="transportation.vehicle.line"
+    >
+        <field name="transportation_id" ref="transportation_registration_01" />
+        <field name="vehicle_id" ref="vehicle_01" />
+        <field name="cost_price">8000</field>
+        <field name="unit_price">10000</field>
+        <field name="qty">10</field>
+        <field name="capacity">15</field>
+    </record>
+    <record
+        id="transportation_registration_line_02"
+        model="transportation.vehicle.line"
+    >
+        <field name="transportation_id" ref="transportation_registration_01" />
+        <field name="vehicle_id" ref="vehicle_02" />
+        <field name="cost_price">10000</field>
+        <field name="unit_price">15000</field>
+        <field name="qty">10</field>
+        <field name="capacity">30</field>
+    </record>
+    <record
+        id="transportation_registration_line_03"
+        model="transportation.vehicle.line"
+    >
+        <field name="transportation_id" ref="transportation_registration_01" />
+        <field name="vehicle_id" ref="vehicle_03" />
+        <field name="cost_price">4000</field>
+        <field name="unit_price">6000</field>
+        <field name="qty">10</field>
+        <field name="capacity">6</field>
+    </record>
+    <record
+        id="transportation_registration_line_04"
+        model="transportation.vehicle.line"
+    >
+        <field name="transportation_id" ref="transportation_registration_02" />
+        <field name="vehicle_id" ref="vehicle_01" />
+        <field name="cost_price">8000</field>
+        <field name="unit_price">10000</field>
+        <field name="qty">10</field>
+        <field name="capacity">15</field>
+    </record>
+    <record
+        id="transportation_registration_line_05"
+        model="transportation.vehicle.line"
+    >
+        <field name="transportation_id" ref="transportation_registration_02" />
+        <field name="vehicle_id" ref="vehicle_02" />
+        <field name="cost_price">10000</field>
+        <field name="unit_price">15000</field>
+        <field name="qty">10</field>
+        <field name="capacity">30</field>
+    </record>
+    <record
+        id="transportation_registration_line_06"
+        model="transportation.vehicle.line"
+    >
+        <field name="transportation_id" ref="transportation_registration_02" />
+        <field name="vehicle_id" ref="vehicle_03" />
+        <field name="cost_price">4000</field>
+        <field name="unit_price">6000</field>
+        <field name="qty">10</field>
+        <field name="capacity">6</field>
+    </record>
+    <!-- Transportation Contract-->
+    <record id="transprtation01_contract" model="package.contract">
+        <field name="name">Contract For ReloPacks Transportation</field>
+        <field name="city_id" ref="tour_travel_management.city4" />
+        <field name="package_contract_type">transportation</field>
+        <field name="partner_id" ref="transportation_registration_01" />
+        <field name="transportation_id" ref="transportation_registration_01" />
+        <field name="date_start" eval="(DateTime.today())" />
+        <field name="date_end" eval="(DateTime.today()+ timedelta(days=15))" />
+        <field name="state">open</field>
+    </record>
+    <record id="transprtation02_contract" model="package.contract">
+        <field name="name">Contract For RoadLink Transport</field>
+        <field name="city_id" ref="tour_travel_management.city11" />
+        <field name="package_contract_type">transportation</field>
+        <field name="partner_id" ref="transportation_registration_02" />
+        <field name="transportation_id" ref="transportation_registration_02" />
+        <field name="date_start" eval="(DateTime.today())" />
+        <field name="date_end" eval="(DateTime.today()+ timedelta(days=15))" />
+        <field name="state">open</field>
+    </record>
+    <!-- Transportation Contract Lines-->
+    <record id="transportation_contract_line_01" model="package.contract.line">
+        <field
+            name="transportation_package_contract_id"
+            ref="transprtation01_contract"
+        />
+        <field name="vehicle_id" ref="vehicle_01" />
+        <field name="unit_price">8000</field>
+        <field name="sales_price">10000</field>
+        <field name="capacity">15</field>
+    </record>
+    <record id="transportation_contract_line_02" model="package.contract.line">
+        <field
+            name="transportation_package_contract_id"
+            ref="transprtation01_contract"
+        />
+        <field name="vehicle_id" ref="vehicle_02" />
+        <field name="unit_price">10000</field>
+        <field name="sales_price">15000</field>
+        <field name="capacity">30</field>
+    </record>
+    <record id="transportation_contract_line_03" model="package.contract.line">
+        <field
+            name="transportation_package_contract_id"
+            ref="transprtation01_contract"
+        />
+        <field name="vehicle_id" ref="vehicle_03" />
+        <field name="unit_price">4000</field>
+        <field name="sales_price">6000</field>
+        <field name="capacity">6</field>
+    </record>
+    <record id="transportation_contract_line_04" model="package.contract.line">
+        <field
+            name="transportation_package_contract_id"
+            ref="transprtation02_contract"
+        />
+        <field name="vehicle_id" ref="vehicle_01" />
+        <field name="unit_price">8000</field>
+        <field name="sales_price">10000</field>
+        <field name="capacity">15</field>
+    </record>
+    <record id="transportation_contract_line_05" model="package.contract.line">
+        <field
+            name="transportation_package_contract_id"
+            ref="transprtation02_contract"
+        />
+        <field name="vehicle_id" ref="vehicle_02" />
+        <field name="unit_price">10000</field>
+        <field name="sales_price">15000</field>
+        <field name="capacity">30</field>
+    </record>
+    <record id="transportation_contract_line_06" model="package.contract.line">
+        <field
+            name="transportation_package_contract_id"
+            ref="transprtation02_contract"
+        />
+        <field name="vehicle_id" ref="vehicle_03" />
+        <field name="unit_price">4000</field>
+        <field name="sales_price">6000</field>
+        <field name="capacity">6</field>
+    </record>
+    <!--Package Transportation Line -->
+    <record id="package_transportation_line_01" model="transportation.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="journey_date" eval="DateTime.now()" />
+        <field name="source_id" ref="tour_travel_management.city4" />
+        <field name="destination_id" ref="tour_travel_management.city4" />
+        <field name="transportation_id" ref="transportation_registration_01" />
+        <field name="vehicle_id" ref="vehicle_01" />
+        <field name="name">Journey : Dubai -> Dubai
+Journey Date: 2020-10-20
+Vehicle: Tempo Traveller</field>
+        <field name="qty">1</field>
+        <field name="cost_price">533.33</field>
+        <field name="price_unit">666.66</field>
+        <field name="price_subtotal">666.66</field>
+    </record>
+    <record id="package_transportation_line_02" model="transportation.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="journey_date" eval="(DateTime.now() + relativedelta(days=2))" />
+        <field name="source_id" ref="tour_travel_management.city4" />
+        <field name="destination_id" ref="tour_travel_management.city4" />
+        <field name="transportation_id" ref="transportation_registration_01" />
+        <field name="vehicle_id" ref="vehicle_02" />
+        <field name="name">Journey : Dubai -> Dubai
+Journey Date: 2020-10-22
+Vehicle: Bus</field>
+        <field name="qty">1</field>
+        <field name="cost_price">333.33</field>
+        <field name="price_unit">500</field>
+        <field name="price_subtotal">500</field>
+    </record>
+    <record id="package_transportation_line_03" model="transportation.package.line">
+        <field name="sale_order_templete_id" ref="tour_travel_management.package1" />
+        <field name="journey_date" eval="(DateTime.now() + relativedelta(days=3))" />
+        <field name="source_id" ref="tour_travel_management.city4" />
+        <field name="destination_id" ref="tour_travel_management.city4" />
+        <field name="transportation_id" ref="transportation_registration_01" />
+        <field name="vehicle_id" ref="vehicle_03" />
+        <field name="name">Journey : Dubai -> Dubai
+Journey Date: 2020-10-23
+Vehicle: Innova</field>
+        <field name="qty">1</field>
+        <field name="cost_price">666.66</field>
+        <field name="price_unit">1000</field>
+        <field name="price_subtotal">1000</field>
+    </record>
+</odoo>

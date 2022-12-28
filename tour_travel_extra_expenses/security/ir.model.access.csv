@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_guide_service_line_manager,access.guide.service.line.manager,model_guide_service_line,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_guid_package_line_manager,access.guide.package.line.manager,model_guide_package_line,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_guid_package_line_user,access.guide.package.line.user,model_guide_package_line,tour_travel_management.group_tour_traveller_user,1,1,1,1
+access_extra_ticket_package_line_manager,access.extra.ticket.package.line.manager,model_extra_ticket_package_line,tour_travel_management.group_tour_traveller_manager,1,1,1,1

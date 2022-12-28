@@ -1,0 +1,138 @@
+<odoo>
+    <record id="act_display_transportation_contract" model="ir.actions.act_window">
+        <field name="name">Transportation Contract</field>
+        <field name="res_model">package.contract</field>
+        <field name="view_mode">tree,form</field>
+        <field
+            name="domain"
+        >[('transportation_id','=',active_id),('package_contract_type','=','transportation')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                    This vendor has no contract. Create a new Contract
+                </p>
+        </field>
+    </record>
+    <record id="transportation_supplier_registration_form_inherit" model="ir.ui.view">
+        <field name="name">transportation.registration.form</field>
+        <field name="model">res.partner</field>
+        <field
+            name="inherit_id"
+            ref="tour_travel_management.supplier_registration_form"
+        />
+        <field name="arch" type="xml">
+            <field name="image_1920" position="before">
+                <div
+                    class="oe_button_box"
+                    name="button_box"
+                    attrs="{'invisible': [('registration_type','!=','transportation')]}"
+                >
+                    <button
+                        name="%(tour_travel_transportation.act_display_transportation_contract)d"
+                        class="oe_stat_button"
+                        icon="fa-book"
+                        type="action"
+                        context="{
+                            'search_default_transportation_id': [active_id],
+                            'default_transportation_id':active_id,
+                            'default_package_contract_type':'transportation',
+                            'default_name':'Contract for ' + name,
+                            'default_city_id':city_id}"
+                    >
+                        <field
+                            name="transportation_contract_count"
+                            widget="statinfo"
+                            string="Contracts"
+                        />
+                    </button>
+                </div>
+            </field>
+            <xpath expr="//page[@name='sales_purchases']" position="after">
+                <page
+                    name="vehicle_detail"
+                    string="Vehicles"
+                    attrs="{'invisible': [('registration_type','!=','transportation')]}"
+                >
+                    <field name="vehicle_line_ids">
+                        <tree string='Vehicles' editable='bottom'>
+                            <field name="vehicle_id" required="1" />
+                            <field name="capacity" />
+                            <field name="qty" />
+                            <field name="cost_price" />
+                            <field name="unit_price" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_transportation_registrations" model="ir.actions.act_window">
+        <field name="name">Transportation Registration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field
+            name="view_id"
+            ref="tour_travel_management.supplier_registrations_kanban_view"
+        />
+        <field name="view_mode">kanban,tree,form</field>
+        <field
+            name="search_view_id"
+            ref="tour_travel_management.supplier_registration_search_view"
+        />
+        <field
+            name="context"
+        >{'default_supplier_rank': True,'search_default_is_contract_running':1,
+                               'default_registration_type': 'transportation'}</field>
+        <field name="domain">[('registration_type','=','transportation')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Registration
+              </p>
+        </field>
+    </record>
+    <!-- Action Of Transportation Registration Kanban View -->
+    <record
+        id="action_kanban_transportation_registration"
+        model="ir.actions.act_window.view"
+    >
+        <field name="sequence" eval="2" />
+        <field name="view_mode">kanban</field>
+        <field
+            name="view_id"
+            ref="tour_travel_management.supplier_registrations_kanban_view"
+        />
+        <field name="act_window_id" ref="action_transportation_registrations" />
+    </record>
+    <!-- Action Of Transportation Registration Tree View -->
+    <record
+        id="action_tree_transportation_registration"
+        model="ir.actions.act_window.view"
+    >
+        <field name="sequence" eval="3" />
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="tour_travel_management.supplier_registration_tree" />
+        <field name="act_window_id" ref="action_transportation_registrations" />
+    </record>
+    <!-- Action Of Transportation Registration Form View -->
+    <record
+        id="action_transportation_registration_form"
+        model="ir.actions.act_window.view"
+    >
+        <field name="sequence" eval="4" />
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="transportation_supplier_registration_form_inherit" />
+        <field name="act_window_id" ref="action_transportation_registrations" />
+    </record>
+    <menuitem
+        id="transportation_configuration_menu"
+        name="Transportation Configuration"
+        parent="tour_travel_management.menu_configuration"
+        sequence="20"
+    />
+    <menuitem
+        id="transportation_registration_menu"
+        action="action_transportation_registrations"
+        name="Transportation Registration"
+        parent="transportation_configuration_menu"
+        sequence="10"
+    />
+</odoo>

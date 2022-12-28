@@ -1,0 +1,314 @@
+<odoo>
+    <template id="report_quotation_tour">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div class="container" style="margin-top: 25px;">
+                        <div class="row text-right">
+                            <div class="mt64 col-md-12">
+                            <span t-field="o.partner_id.name" /><br />
+                            <span t-field="o.partner_id.street" />,<br />
+                            <span t-field="o.partner_id.city" />-<span
+                                    t-field="o.partner_id.zip"
+                                /><br />
+                            <span t-field="o.partner_id.state_id.name" />,<span
+                                    t-field="o.partner_id.country_id.name"
+                                />.<br />
+                        </div>
+                        </div>
+                        <div class="row mt32">
+                            <div class="col-md-12">
+                                <div
+                                    style="float: left; margin-left: 45px; margin-top: -25px; padding: 10px; background-color: white; align: center;color: #19460b;font-size: 20px; bold: 12px;"
+                                >
+                                    <span>
+                                        <b>Quotation#<span t-field="o.name" /></b>
+                                    </span>
+                                </div>
+                                <div
+                                    style="margin-top: 5px; border: 1.5px solid #e6b800"
+                                >
+                                    <table
+                                        class="table-condensed"
+                                        width="100%"
+                                        style="text-align: center; border: 0;"
+                                    >
+                                        <tr>
+                                            <th
+                                                width="25%"
+                                                class="text-center"
+                                                style="color:#19460b"
+                                            >Quotation Date</th>
+                                            <th
+                                                class="text-center"
+                                                style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                                width="25%"
+                                            >Expiration Date
+                                        </th>
+                                            <th
+                                                class="text-center"
+                                                style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                                width="25%"
+                                            >Payment Terms
+                                        </th>
+                                            <th
+                                                class="text-center"
+                                                style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                                width="25%"
+                                            >Number of Persons
+                                        </th>
+                                        </tr>
+                                        <tr style="text-align: center; font-size: 10px">
+                                            <td
+                                                width="25%"
+                                                style=" border-top: 1px dotted black !important;"
+                                            >
+                                                <span
+                                                    style="color:#19460b"
+                                                    t-field="o.date_order"
+                                                />
+                                            </td>
+                                            <td
+                                                width="25%"
+                                                style="padding: 5px; border-left: 1px dotted black !important; padding: 5px;border-top: 1px dotted black !important;"
+                                            >
+                                                <span
+                                                    style="color:#19460b"
+                                                    t-field="o.validity_date"
+                                                />
+                                            </td>
+                                            <td
+                                                width="25%"
+                                                style="padding: 5px; border-top: 1px dotted black !important; border-left: 1px dotted black !important; padding: 5px"
+                                            >
+                                                <span
+                                                    style="color:#19460b"
+                                                    t-field="o.payment_term_id.name"
+                                                />
+                                            </td>
+                                            <td
+                                                width="25%"
+                                                style="padding: 5px; border-left: 1px dotted black !important; padding: 5px;border-top: 1px dotted black !important;"
+                                            >
+                                                <span
+                                                    style="color:#19460b"
+                                                    t-field="o.adults"
+                                                />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" t-if="o.sale_order_template_id.name">
+                            <div class="mt64 col-md-12">
+                                <div
+                                    style="font: 20px sans-serif; position: relative; text-align: center;"
+                                >
+                                    <h5 style="color:#19460b;">
+                                        <b>
+                                            <span>Package : <span
+                                                    t-field="o.sale_order_template_id.name"
+                                                /> [<span
+                                                    t-field="o.sale_order_template_id.package_total_days"
+                                                />]
+                                </span>
+                                        </b>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 15px;">
+                </div>
+                    <div class="container page">
+                        <div class="row mt32" t-if="o.hotel_line_ids">
+                            <div class="col-md-12">
+                                <div
+                                    style="float: left; margin-left: 45px; margin-top: -25px; padding: 10px; background-color: white; align: center;color: #19460b;font-size: 20px; bold: 12px;"
+                                >
+                                    <span>
+                                        <b>Other Services</b>
+                                    </span>
+                                </div>
+                                <div
+                                    style="margin-top: 5px; border: 1.5px solid #e6b800"
+                                >
+                                    <table
+                                        class="table-condensed"
+                                        width="100%"
+                                        style="text-align: center; border: 0;"
+                                    >
+                                        <tr>
+                                            <th
+                                                class="text-center"
+                                                style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                                width="20%"
+                                            >Service Name
+                                    </th>
+                                            <th
+                                                class="text-center"
+                                                style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                                width="20%"
+                                            >Description
+                                    </th>
+                                            <th
+                                                class="text-center"
+                                                style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                                width="20%"
+                                            >Unit Price
+                                    </th>
+                                            <th
+                                                class="text-center"
+                                                style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                                width="20%"
+                                            >Sub Total
+                                    </th>
+                                        </tr>
+                                        <t t-foreach="o.extra_service_ids" t-as="line">
+                                            <tr
+                                                style="text-align: center; font-size: 10px"
+                                            >
+                                                <td
+                                                    width="15%"
+                                                    style=" border-top: 1px dotted black !important;"
+                                                >
+                                                    <span
+                                                        style="color:#19460b"
+                                                        t-field="line.product_id.name"
+                                                    />
+                                                </td>
+                                                <td
+                                                    width="15%"
+                                                    style="padding: 5px; border-left: 1px dotted black !important; padding: 5px;border-top: 1px dotted black !important;"
+                                                >
+                                                    <span
+                                                        style="color:#19460b"
+                                                        t-field="line.name"
+                                                    />
+                                                </td>
+                                                <td
+                                                    width="15%"
+                                                    style="padding: 5px; border-top: 1px dotted black !important; border-left: 1px dotted black !important; padding: 5px"
+                                                >
+                                                    <span
+                                                        style="color:#19460b"
+                                                        t-field="line.price_unit"
+                                                    />
+                                                </td>
+                                                <td
+                                                    width="10%"
+                                                    style="padding: 5px; border-left: 1px dotted black !important;border-top: 1px dotted black !important;"
+                                                >
+                                                    <span
+                                                        style="color:#19460b"
+                                                        t-field="line.price_subtotal"
+                                                    />
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 18px;">
+                </div>
+                    <div class="container page">
+                        <div class='row mt32'>
+                            <div class="col-md-12">
+                                <div
+                                    style="float: left; margin-left: 10px; margin-top: -25px; padding: 10px; background-color: white; align: center;color: #19460b;font-size: 20px; bold: 12px;"
+                                >
+                                    <span>
+                                        <b>Tour Cost</b>
+                                    </span>
+                                </div>
+                                <div
+                                    style="margin-top: 5px; border: 1.5px solid #e6b800"
+                                >
+                                    <table
+                                        class="table-condensed"
+                                        width="100%"
+                                        style="text-align: center; border: 0;"
+                                    >
+                                        <tr style="font-size: 15px; color:#19460b">
+                                            <td width="50%" />
+                                            <td style="text-align:right;" width="35%;">
+                                                <strong
+                                                    style="margin-left:36px"
+                                                >Untaxed Amount  :</strong>
+                                            </td>
+                                            <td style="text-align:right;" width="15%">
+                                                <span t-field="o.amount_untaxed" />
+                                            </td>
+                                        </tr>
+                                        <tr style="font-size: 15px; color:#19460b">
+                                            <td width="50%" />
+                                            <td style="text-align:right;" width="35%">
+                                                <strong
+                                                    style="margin-left:73px;"
+                                                >Service Tax :
+                                        </strong>
+                                            </td>
+                                            <td style="text-align:right;" width="15%">
+                                                <span t-field="o.amount_tax" />
+                                            </td>
+                                        </tr>
+                                        <tr style="font-size: 15px; color:#19460b">
+                                            <td width="50%" />
+                                            <td style="text-align:right;" width="35%">
+                                                <strong>Total Amount Payable :
+                                        </strong>
+                                            </td>
+                                            <td style="text-align:right;" width="15%">
+                                                <span t-field="o.amount_total" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row mt32'>
+                            <div class="col-md-12">
+                                <div
+                                    style="float: left; margin-left: 10px; margin-top: -25px; padding: 10px; background-color: white; align: center;color: #19460b;font-size: 20px; bold: 12px;"
+                                >
+                                    <span>
+                                        <b>Terms And Conditions</b>
+                                    </span>
+                                </div>
+                                <div
+                                    style="margin-top: 5px; border: 1.5px solid #e6b800"
+                                >
+                                    <table
+                                        class="table-condensed"
+                                        width="100%"
+                                        style="text-align: left; border: 0;"
+                                    >
+                                        <tr style="font-size: 10px">
+                                            <td style='padding: 18px;'>
+                                                <span
+                                                    t-field="o.sale_order_template_id.note"
+                                                />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="action_quotation_tour" model="ir.actions.report">
+        <field name="name">Package Quotation</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="model">sale.order</field>
+        <field name="report_name">tour_travel_management.report_quotation_tour</field>
+        <field name="report_file">tour_travel_management.report_quotation_tour</field>
+        <field name="binding_model_id" ref="model_sale_order" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

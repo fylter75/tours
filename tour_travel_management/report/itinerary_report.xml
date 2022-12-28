@@ -1,0 +1,121 @@
+<odoo>
+    <template id="report_itinerary">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div class="container" style="margin-top: 25px;">
+                        <div class="row">
+                            <div class="mt64 col-md-12">
+                                <div
+                                    style="font: 20px sans-serif; margin-top: 30px; position: relative; text-align: center;"
+                                >
+                                    <h5>
+                                        <b>
+                                            <span>Package : <span
+                                                    t-field="o.name"
+                                                /> [<span
+                                                    t-field="o.package_total_days"
+                                                />]
+                                </span>
+                                        </b>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt32">
+                            <div class="col-md-12">
+                                <div
+                                    style="float: left; margin-left: 5px; margin-top: -25px; padding: 10px; background-color: white; align: center;color: #19460b;font-size: 20px; bold: 12px;"
+                                >
+                                    <span>
+                                        <b>Itinerary</b>
+                                    </span>
+                                </div>
+                                <div
+                                    style="margin-top: 5px; border: 1.5px solid #e6b800"
+                                >
+                                    <table
+                                        class="table-condensed"
+                                        width="100%"
+                                        style="text-align: center; border: 0;"
+                                    >
+                                        <tr>
+                                            <th
+                                                width="15%"
+                                                class="text-center"
+                                                style="color:#19460b"
+                                            >Day</th>
+                                            <th
+                                                class="text-center"
+                                                style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                                width="70%"
+                                            >Description
+                                        </th>
+                                        </tr>
+                                        <t t-foreach="o.itinerary_ids" t-as="line">
+                                            <tr style="font-size: 10px">
+                                                <td
+                                                    width="20%"
+                                                    style="text-align: center;border-top: 1px dotted black !important;"
+                                                >
+                                                    <span
+                                                        style="color:#19460b"
+                                                        t-field="line.itinerary_date"
+                                                    />
+                                                </td>
+                                                <td
+                                                    width="60%"
+                                                    style="text-align: left;padding: 5px; border-left: 1px dotted black !important; padding: 5px;border-top: 1px dotted black !important;"
+                                                >
+                                                    <span
+                                                        style="color:#19460b"
+                                                        t-field="line.name"
+                                                    />
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row mt32'>
+                            <div class="col-md-12">
+                                <div
+                                    style="float: left; margin-left: 10px; margin-top: -25px; padding: 10px; background-color: white; align: center;color: #19460b;font-size: 20px; bold: 12px;"
+                                >
+                                    <span>
+                                        <b>Terms And Conditions</b>
+                                    </span>
+                                </div>
+                                <div
+                                    style="margin-top: 5px; border: 1.5px solid #e6b800"
+                                >
+                                    <table
+                                        class="table-condensed"
+                                        width="100%"
+                                        style="text-align: left; border: 0;"
+                                    >
+                                        <tr style="font-size: 10px;">
+                                            <td style='padding: 18px;'>
+                                                <span t-field="o.note" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="action_report_itinerary" model="ir.actions.report">
+        <field name="name">Itinerary</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="model">sale.order.template</field>
+        <field name="report_name">tour_travel_management.report_itinerary</field>
+        <field name="report_file">tour_travel_management.report_itinerary</field>
+        <field name="binding_model_id" ref="model_sale_order_template" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

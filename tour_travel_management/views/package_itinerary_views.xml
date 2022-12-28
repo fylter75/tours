@@ -1,0 +1,37 @@
+<odoo>
+    <record id="package_itinerary_form" model="ir.ui.view">
+        <field name="name">package.itinerary.form</field>
+        <field name="model">package.itinerary</field>
+        <field name="arch" type="xml">
+            <form string="Package Itinerary" create="0">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="days" required="1" />
+                            <field name="name" />
+                        </group>
+                        <group>
+                            <field name="sale_order_template_id" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='package_itinerary_tree' model='ir.ui.view'>
+        <field name='name'>package.itinerary.tree</field>
+        <field name='model'>package.itinerary</field>
+        <field name='arch' type='xml'>
+            <tree string='Package Itinerary' create="0">
+                <field name="days" />
+                <field name="name" />
+                <field name="sale_order_template_id" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_package_itinerary" model="ir.actions.act_window">
+        <field name="name">Package Itinerary</field>
+        <field name="res_model">package.itinerary</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,198 @@
+<odoo>
+    <template id="report_agreement_template_hotel">
+        <div class="row">
+            <div class="mt64 col-md-12">
+                <div
+                    style="font: 20px sans-serif; margin-top: 30px; position: relative; text-align: center;border:1px solid black;background-color: aliceblue"
+                >
+                    <h5>
+                        <b>Hotel:<span t-field="o.hotel_id.name" /><br />
+                    </b>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <br />
+        <h5>
+            <b>
+                <span t-field="o.name" />
+            </b>
+        </h5>
+        <br />
+        <p>
+            We hereby declare that you have done contract with our hotel
+            &#160;
+            <strong>
+                <span t-field="o.hotel_id.name" />
+            </strong>
+            in
+            <strong>
+                <span t-field="o.city_id.name" />
+            </strong>.
+            The contract between us will be from
+            <strong>
+                <span t-field="o.date_start" />
+            </strong>
+            to
+            <strong>
+                <span t-field="o.date_end" />
+            </strong>.
+            Contract Details are given below:
+        </p>
+        <div style="height: 15px;">
+        </div>
+        <div class="row mt32">
+            <div class="col-md-12">
+                <div
+                    style="float: left; margin-left: 45px; margin-top: -25px; padding: 10px; background-color: white; align: center;color:black;font-size: 20px; bold: 12px;"
+                >
+                    <span>
+                        <b>Contract Details</b>
+                    </span>
+                </div>
+                <div style="margin-top: 5px; border: 1.5px solid black">
+                    <table
+                        class="table-condensed"
+                        width="100%"
+                        style="text-align: center; border: 0;background-color: aliceblue"
+                    >
+                        <tr>
+                            <th
+                                width="20%"
+                                class="text-center"
+                                style="color:black"
+                            >Room Name</th>
+                            <th
+                                class="text-center"
+                                style="color:black;border-left: 1px solid black; padding: 5px"
+                                width="20%"
+                            >Room Type
+                            </th>
+                            <th
+                                class="text-center"
+                                style="color:black;border-left: 1px solid black; padding: 5px"
+                                width="10%"
+                            >Room Capacity
+                            </th>
+                            <th
+                                class="text-center"
+                                style="color:black;border-left: 1px solid black; padding: 5px"
+                                width="10%"
+                            >Room Quantity
+                            </th>
+                            <th
+                                class="text-center"
+                                style="color:black;border-left: 1px solid black; padding: 5px"
+                                width="20%"
+                            >Room Cost Price
+                            </th>
+                        </tr>
+                        <t t-foreach="o.contract_lines_ids" t-as="line">
+                            <tr style="text-align: center; font-size: 10px">
+                                <td width="20%" style=" border-top: 1px solid black;">
+                                    <span
+                                        style="color:black"
+                                        t-field="line.room_id.name"
+                                    />
+                                </td>
+                                <td
+                                    width="20%"
+                                    style="padding: 5px; border-left: 1px solid black; padding: 5px;border-top: 1px solid black"
+                                >
+                                    <span
+                                        style="color:black"
+                                        t-field="line.room_type_id.name"
+                                    />
+                                </td>
+                                <td
+                                    width="10%"
+                                    style="padding: 5px; border-left: 1px solid black; padding: 5px;border-top: 1px solid black;"
+                                >
+                                    <span style="color:black" t-field="line.capacity" />
+                                </td>
+                                <td
+                                    width="10%"
+                                    style="padding: 5px; border-left: 1px solid black; padding: 5px;border-top: 1px solid black"
+                                >
+                                    <span style="color:black" t-field="line.room_qty" />
+                                </td>
+                                <td
+                                    width="20%"
+                                    style="padding: 5px; border-left: 1px solid black; padding: 5px;border-top: 1px solid black"
+                                >
+                                    <span
+                                        style="color:black"
+                                        t-field="line.unit_price"
+                                    />
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <table width="100%">
+            <tr>
+                <td style="text-align:left;" width="50%">
+                    <strong>
+                        .............................................
+                    </strong>
+                </td>
+                <td style="text-align:right;" width="50%">
+                    <strong>
+                        .............................................
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:left;" width="50%">
+                    <strong>Customer signature</strong>
+                </td>
+                <td style="text-align:right;" width="50%">
+                    <strong>Manager Signature</strong>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <div align="left" style="margin-left:1px " class="row">
+            <span>
+                <b>Kind Regards</b>
+            </span>
+            ,
+            <br />
+            <b>Hotel&#160;<span t-field="o.hotel_id.name" />&#160;Team</b>
+            <br />
+            <t t-if="o.hotel_id.street">
+                <span t-field="o.hotel_id.street" />
+                <br />
+            </t>
+            <t t-if="o.hotel_id.city_id.name"><span t-field="o.hotel_id.city_id.name" />
+                ,</t><t t-if="o.hotel_id.state_id.name">
+                <span t-field="o.hotel_id.state_id.name" />
+                <br />
+            </t>
+            <t t-if="o.hotel_id.country_id.name">
+                <span t-field="o.hotel_id.country_id.name" />
+                <br />
+            </t>
+            <t t-if="o.hotel_id.website">
+                <span t-field="o.hotel_id.website" />
+                <br />
+            </t>
+        </div>
+    </template>
+    <template
+        id="report_agreement_template_inherit1"
+        inherit_id='tour_travel_management.report_agreement_template'
+    >
+        <xpath expr="//div[hasclass('container')]" position="inside">
+            <t t-if="o.hotel_id">
+                <t
+                    t-call="tour_travel_hotel_management.report_agreement_template_hotel"
+                />
+            </t>
+        </xpath>
+    </template>
+</odoo>

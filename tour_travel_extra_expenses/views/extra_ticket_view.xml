@@ -1,0 +1,36 @@
+<odoo>
+    <!-- Tree view of Extra Expenses -->
+    <record id="view_extra_expenses_tree" model="ir.ui.view">
+        <field name="name">extra.expenses.tree</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <tree string="Extra Tickets">
+                <field name="name" />
+                <field name="lst_price" string="Sales Price" />
+                <field name="standard_price" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_extra_tickets" model="ir.actions.act_window">
+        <field name="name">Extra Tickets</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_extra_expenses_tree" />
+        <field name="context">{'default_detailed_type': 'service',
+                               'default_type_travel_product': 'extra_tickets'}</field>
+        <field name="domain">[('type_travel_product','=','extra_tickets')]</field>
+    </record>
+    <menuitem
+        id="menu_extra_expenses_configuration"
+        parent="tour_travel_management.menu_configuration"
+        sequence="40"
+        name="Extra Expenses"
+    />
+    <menuitem
+        id="menu_extra_ticjkets"
+        parent="menu_extra_expenses_configuration"
+        action="action_extra_tickets"
+        sequence="10"
+        name="Extra Tickets"
+    />
+</odoo>

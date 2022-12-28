@@ -1,0 +1,118 @@
+<odoo>
+    <record id="guide_supplier_registration_form_inherit" model="ir.ui.view">
+        <field name="name">guide.registration.form</field>
+        <field name="model">res.partner</field>
+        <field
+            name="inherit_id"
+            ref="tour_travel_management.supplier_registration_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']" position="after">
+                <page
+                    name="guide_service"
+                    string="Services"
+                    attrs="{'invisible': [('registration_type','!=','guide')]}"
+                >
+                    <field name="service_line_ids">
+                        <tree string='Services' editable='bottom'>
+                            <field
+                                name="service_id"
+                                required="1"
+                                domain="[('type_travel_product','=','guide')]"
+                            />
+                            <field name="cost_price" />
+                            <field name="unit_price" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_guide_registration" model="ir.actions.act_window">
+        <field name="name">Guide Registration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field
+            name="view_id"
+            ref="tour_travel_management.supplier_registrations_kanban_view"
+        />
+        <field name="view_mode">kanban,tree,form</field>
+        <field
+            name="search_view_id"
+            ref="tour_travel_management.supplier_registration_search_view"
+        />
+        <field name="context">{'default_supplier_rank': True,
+                               'default_registration_type': 'guide'}</field>
+        <field name="domain">[('registration_type','=','guide')]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Registration
+              </p>
+        </field>
+    </record>
+    <!-- Action Of Guide Registration Kanban View -->
+    <record id="action_kanban_guide_registration" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2" />
+        <field name="view_mode">kanban</field>
+        <field
+            name="view_id"
+            ref="tour_travel_management.supplier_registrations_kanban_view"
+        />
+        <field name="act_window_id" ref="action_guide_registration" />
+    </record>
+    <!-- Action Of Guide Registration Tree View -->
+    <record id="action_tree_guide_registration" model="ir.actions.act_window.view">
+        <field name="sequence" eval="3" />
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="tour_travel_management.supplier_registration_tree" />
+        <field name="act_window_id" ref="action_guide_registration" />
+    </record>
+    <!-- Action Of Guide Registration Form View -->
+    <record id="action_form_guide_registration" model="ir.actions.act_window.view">
+        <field name="sequence" eval="4" />
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="guide_supplier_registration_form_inherit" />
+        <field name="act_window_id" ref="action_guide_registration" />
+    </record>
+    <menuitem
+        id="menu_guide_configuration"
+        parent="tour_travel_management.menu_configuration"
+        sequence="30"
+        name="Guide Configuration"
+    />
+    <menuitem
+        id="menu_guide_registration"
+        parent="menu_guide_configuration"
+        action="action_guide_registration"
+        sequence="10"
+        name="Guide Registration"
+    />
+    <!-- Tree view of Guide Services-->
+    <record id="view_guide_services_tree" model="ir.ui.view">
+        <field name="name">guide.services.tree</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <tree string="Extra Tickets">
+                <field name="name" />
+                <field name="lst_price" string="Sales Price" />
+                <field name="standard_price" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_guide_service" model="ir.actions.act_window">
+        <field name="name">Guide Services</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_guide_services_tree" />
+        <field name="context">{'default_detailed_type': 'service',
+                               'default_type_travel_product': 'guide'}</field>
+        <field name="domain">[('type_travel_product','=','guide')]</field>
+    </record>
+    <menuitem
+        id="menu_guide_services"
+        parent="menu_guide_configuration"
+        action="action_guide_service"
+        sequence="20"
+        name="Guide Services"
+    />
+</odoo>

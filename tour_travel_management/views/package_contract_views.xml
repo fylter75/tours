@@ -1,0 +1,208 @@
+<odoo>
+    <record id="package_contract_form" model="ir.ui.view">
+        <field name="name">package.contract.form</field>
+        <field name="model">package.contract</field>
+        <field name="arch" type="xml">
+            <form string="Package Contract">
+                <header>
+                    <button
+                        name="button_start"
+                        states="draft"
+                        string="Start"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    <button
+                        name="button_close"
+                        states="open"
+                        string="Expire"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    <button
+                        name="send_contract_receipt_mail"
+                        type="object"
+                        string="Send by Email"
+                        states="draft"
+                        class="oe_highlight"
+                    />
+                    <button
+                        name="%(tour_travel_management.package_contract_cancel_wiz_action)d"
+                        states="open"
+                        string="Cancel"
+                        type="action"
+                        class="oe_highlight"
+                    />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,open"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="button_set_to_renew"
+                            string="Renew Contract"
+                            type="object"
+                            icon="fa-undo"
+                            colspan="2"
+                            class="oe_stat_button"
+                            attrs="{'invisible': [('state','in', ['draft','cancel'])]}"
+                        />
+                    </div>
+                    <label for="name" string="Contract" />
+                    <h2>
+                        <field
+                            name="name"
+                            placeholder="Contract"
+                            style="width:50%; max-width:60%"
+                            attrs="{'readonly':[('state','in',['open','close','cancel'])]}"
+                        />
+                    </h2>
+                    <group col="4">
+                        <field
+                            name="city_id"
+                            required="1"
+                            attrs="{'readonly':[('state','in',['open','close','cancel'])]}"
+                        />
+                        <field
+                            name="package_contract_type"
+                            required="1"
+                            attrs="{'readonly':[('state','in',['open','close','cancel'])]}"
+                        />
+                    </group>
+                    <group>
+                        <group>
+                            <field
+                                name="partner_id"
+                                required="1"
+                                attrs="{'readonly':[('state','in',['open','close','cancel'])]}"
+                            />
+                            <label for="date_start" string="Contract Duration" />
+                            <div class="o_row">
+                                <field
+                                    name="date_start"
+                                    widget="daterange"
+                                    nolabel="1"
+                                    class="oe_inline"
+                                    required="1"
+                                    options="{'related_end_date': 'date_end'}"
+                                    attrs="{'readonly':[('state','in',['open','close','cancel'])]}"
+                                />
+                                <i
+                                    class="fa fa-long-arrow-right mx-2"
+                                    aria-label="Arrow icon"
+                                    title="Arrow"
+                                />
+                                <field
+                                    name="date_end"
+                                    widget="daterange"
+                                    nolabel="1"
+                                    class="oe_inline"
+                                    required="1"
+                                    options="{'related_start_date': 'date_start'}"
+                                    attrs="{'readonly':[('state','in',['open','close','cancel'])]}"
+                                />
+                            </div>
+                        </group>
+                        <group>
+                            <field
+                                name="seasons_ids"
+                                widget="many2many_tags"
+                                attrs="{'readonly':[('state','in',['open','close','cancel'])]}"
+                            />
+                            <field
+                                name="currency_id"
+                                groups="base.group_multi_currency"
+                                attrs="{'readonly':[('state','in',['open','close','cancel'])]}"
+                            />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_currency"
+                                attrs="{'readonly':[('state','in',['open','close','cancel'])]}"
+                            />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="notes" string="Notes">
+                            <group>
+                                <field
+                                    name="cancel_reason_id"
+                                    attrs="{'readonly':[('state','in',['open','close','cancel'])], 'invisible':[('state','in',['new','open','close'])]}"
+                                    readonly="1"
+                                />
+                                <field
+                                    name="notes"
+                                    attrs="{'readonly':[('state','in',['open','close','cancel'])]}"
+                                />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id='package_contract_tree' model='ir.ui.view'>
+        <field name='name'>package.contract.tree</field>
+        <field name='model'>package.contract</field>
+        <field name='arch' type='xml'>
+            <tree
+                string='Package Contract'
+                decoration-info="state == 'new'"
+                decoration-muted="state == 'cancel'"
+                decoration-danger="state == 'close'"
+                decoration-success="state == 'open'"
+            >
+                <field name='name' />
+                <field name="date_start" />
+                <field name="date_end" />
+                <field name="seasons_ids" widget="many2many_tags" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+    <record id="package_contract_search" model="ir.ui.view">
+        <field name="name">package.contract.search</field>
+        <field name="model">package.contract</field>
+        <field name="arch" type="xml">
+            <search string="Search Contract">
+                <field name="name" filter_domain="[('name', 'ilike', self)]" />
+                <field name="package_contract_type" />
+                <group expand="0" name="group_by" string="Group By">
+                    <filter
+                        name="contract_type"
+                        string="Contract Type"
+                        domain="[]"
+                        context="{'group_by' : 'package_contract_type'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_package_contract" model="ir.actions.act_window">
+        <field name="name">Package Contract</field>
+        <field name="res_model">package.contract</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="package_contract_search" />
+        <field name="context">{'search_default_contract_type':1}</field>
+    </record>
+    <record id='package_contract_cancel_tree' model='ir.ui.view'>
+        <field name='name'>package.contract.cancel.tree</field>
+        <field name='model'>package.contract.cancel</field>
+        <field name='arch' type='xml'>
+            <tree string='Contract Cancel Reason' editable="top">
+                <field name='name' required="1" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_contract_cancel_reason" model="ir.actions.act_window">
+        <field name="name">Contract Cancel Reason</field>
+        <field name="res_model">package.contract.cancel</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

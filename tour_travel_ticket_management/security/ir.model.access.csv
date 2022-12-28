@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ticket_package_line,access.ticket.package.line.manager,model_ticket_package_line,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_visa_package_line,access.visa.package.line.manager,model_visa_package_line,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+access_fare_type_manager,access.fare.type.manager,model_fare_type,tour_travel_management.group_tour_traveller_manager,1,1,1,1
+,,,,,,,
+access_ticket_package_line_user,access.ticket.package.line.user,model_ticket_package_line,tour_travel_management.group_tour_traveller_user,1,1,1,0
+access_visa_package_line_user,access.visa.package.line.user,model_visa_package_line,tour_travel_management.group_tour_traveller_user,1,1,1,0
+access_fare_type_user,access.fare.type.user,model_fare_type,tour_travel_management.group_tour_traveller_user,1,1,1,0

@@ -1,0 +1,125 @@
+<odoo>
+    <template
+        id="report_quotation_tour_restaurant_inherit"
+        inherit_id="tour_travel_management.report_quotation_tour"
+    >
+        <xpath expr="//div[hasclass('container')]" position="inside">
+            <div style="height: 15px">
+            </div>
+            <div class="row mt32" t-if="o.meal_line_ids">
+                <div class="col-md-12">
+                    <div
+                        style="float: left; margin-left: 45px; margin-top: -25px; padding: 10px; background-color: white; align: center;color: #19460b;font-size: 20px; bold: 12px;"
+                    >
+                        <span>
+                            <b>Meal Details</b>
+                        </span>
+                    </div>
+                    <div style="margin-top: 5px; border: 1.5px solid #e6b800">
+                        <table
+                            class="table-condensed"
+                            width="100%"
+                            style="text-align: center; border: 0;"
+                        >
+                            <tr>
+                                <th
+                                    width="15%"
+                                    class="text-center"
+                                    style="color:#19460b"
+                                >Day</th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="15%"
+                                >Restaurant Name
+                                </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="20%"
+                                >Meal Name
+                                </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="10%"
+                                >Meal Quantity
+                                </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="20%"
+                                >Meal Price
+                                </th>
+                                <th
+                                    class="text-center"
+                                    style="color:#19460b;border-left: 1px dotted black !important; padding: 5px"
+                                    width="20%"
+                                >Sub Total
+                                </th>
+                            </tr>
+                            <t t-foreach="o.meal_line_ids" t-as="line">
+                                <tr style="text-align: center; font-size: 10px">
+                                    <td
+                                        width="15%"
+                                        style=" border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.date"
+                                        />
+                                    </td>
+                                    <td
+                                        width="15%"
+                                        style="padding: 5px; border-left: 1px dotted black !important; padding: 5px;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.meal_id.name"
+                                        />
+                                    </td>
+                                    <td
+                                        width="20%"
+                                        style="padding: 5px; border-top: 1px dotted black !important; border-left: 1px dotted black !important; padding: 5px"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.meal_package_id.name"
+                                        />
+                                    </td>
+                                    <td
+                                        width="10%"
+                                        style="padding: 5px; border-left: 1px dotted black !important;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.product_uom_qty"
+                                        />
+                                    </td>
+                                    <td
+                                        width="20%"
+                                        style="padding: 5px; border-left: 1px dotted black !important;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.price_unit"
+                                        />
+                                    </td>
+                                    <td
+                                        width="20%"
+                                        style="padding: 5px; border-left: 1px dotted black !important; padding: 5px;border-top: 1px dotted black !important;"
+                                    >
+                                        <span
+                                            style="color:#19460b"
+                                            t-field="line.price_subtotal"
+                                        />
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

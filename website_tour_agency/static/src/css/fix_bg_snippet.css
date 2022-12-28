@@ -1,0 +1,77 @@
+.s_fix_bg_hover_zoom {
+    min-height: 500px !important;
+    height: auto !important;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+}
+
+.s_fix_bg_snippet {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-image: url(/website_fix_bg_snippet/static/src/img/background_fix.jpg);
+    background-size: cover !important;
+    height: auto;
+}
+
+.s_fix_bg_title {
+    padding-top: 10em;
+}
+
+/* .s_fix_bg_title span {
+    font-size: 50px;
+    color: white;
+}*/
+
+.s_fix_bg_scroll_down {
+    border-radius: 50%;
+    opacity: 0.3;
+    background-color: black;
+    cursor: pointer;
+    padding: 20px;
+    margin-top: 150px !important;
+}
+
+@media screen and (min-width: 1px) and (max-width: 320px) {
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+    .s_fix_bg_title span {
+        font-size: 30px;
+    }
+    .s_fix_bg_scroll_down {
+        margin-top: 100px !important;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px) {
+    /* smartphones, Android phones, landscape iPhone */
+    .s_fix_bg_title span {
+        font-size: 30px;
+    }
+    .s_fix_bg_scroll_down {
+        margin-top: 100px !important;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 600px) {
+    /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+    .s_fix_bg_title span {
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 800px) {
+    /* tablet, landscape iPad, lo-res laptops ands desktops */
+    .s_fix_bg_title span {
+        font-size: 40px;
+    }
+}
+
+@media screen and (min-width: 801px) and (max-width: 1025px) {
+    /* big landscape tablets, laptops, and desktops */
+}
+
+@media screen and (min-width: 1026px) and (max-width: 1281px) {
+    /* hi-res laptops and desktops */
+}
